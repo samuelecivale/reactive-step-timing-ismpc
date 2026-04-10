@@ -1,0 +1,162 @@
+[init] step_timing_adaptation=True
+[init] adapt_debug=True
+[push] scheduled left push on base: t=4.38s, F=45.0N, dt=0.10s
+[adapt-state] t=0000 step=0 phase=ds
+[adapt-skip] t=0000 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0005 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0010 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0015 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0020 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0025 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0030 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0035 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0040 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0045 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0050 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0055 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0060 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0065 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0070 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0075 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0080 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0085 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0090 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0095 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0100 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0105 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0110 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0115 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0120 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0125 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0130 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0135 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0140 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0145 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0150 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0155 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0160 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0165 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0170 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0175 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0180 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0185 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0190 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0195 step=0 reason=not_single_support phase=ds
+[adapt-state] t=0200 step=1 phase=ss
+[adapt-skip] t=0200 step=1 reason=warmup time_in_step=0 warmup=20
+[adapt-skip] t=0205 step=1 reason=warmup time_in_step=5 warmup=20
+[adapt-skip] t=0210 step=1 reason=warmup time_in_step=10 warmup=20
+[adapt-skip] t=0215 step=1 reason=warmup time_in_step=15 warmup=20
+[adapt-check] t=0220 step=1 err=0.0005 err_thr=0.0020 margin=-0.0414 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0220 step=1 reason=below_activation_threshold
+[adapt-check] t=0225 step=1 err=0.0005 err_thr=0.0020 margin=-0.0271 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0225 step=1 reason=below_activation_threshold
+[adapt-check] t=0230 step=1 err=0.0007 err_thr=0.0020 margin=-0.0177 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0230 step=1 reason=below_activation_threshold
+[adapt-check] t=0235 step=1 err=0.0005 err_thr=0.0020 margin=-0.0119 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0235 step=1 reason=below_activation_threshold
+[adapt-check] t=0240 step=1 err=0.0005 err_thr=0.0020 margin=-0.0086 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0240 step=1 reason=below_activation_threshold
+[adapt-check] t=0245 step=1 err=0.0005 err_thr=0.0020 margin=-0.0070 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0245 step=1 reason=below_activation_threshold
+[adapt-check] t=0250 step=1 err=0.0006 err_thr=0.0020 margin=-0.0067 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0250 step=1 reason=below_activation_threshold
+[adapt-check] t=0255 step=1 err=0.0007 err_thr=0.0020 margin=-0.0077 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0255 step=1 reason=below_activation_threshold
+[adapt-check] t=0260 step=1 err=0.0007 err_thr=0.0020 margin=-0.0098 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0260 step=1 reason=below_activation_threshold
+[adapt-skip] t=0265 step=1 reason=freeze_window remaining=5 freeze=6
+[adapt-skip] t=0270 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0275 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0280 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0285 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0290 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0295 step=1 reason=not_single_support phase=ds
+[adapt-state] t=0300 step=2 phase=ss
+[adapt-skip] t=0300 step=2 reason=warmup time_in_step=0 warmup=20
+[adapt-skip] t=0305 step=2 reason=warmup time_in_step=5 warmup=20
+[adapt-skip] t=0310 step=2 reason=warmup time_in_step=10 warmup=20
+[adapt-skip] t=0315 step=2 reason=warmup time_in_step=15 warmup=20
+[adapt-check] t=0320 step=2 err=0.0008 err_thr=0.0020 margin=-0.1338 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0320 step=2 reason=below_activation_threshold
+[adapt-check] t=0325 step=2 err=0.0007 err_thr=0.0020 margin=-0.1169 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0325 step=2 reason=below_activation_threshold
+[adapt-check] t=0330 step=2 err=0.0005 err_thr=0.0020 margin=-0.0994 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0330 step=2 reason=below_activation_threshold
+[adapt-check] t=0335 step=2 err=0.0002 err_thr=0.0020 margin=-0.0799 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0335 step=2 reason=below_activation_threshold
+[adapt-check] t=0340 step=2 err=0.0002 err_thr=0.0020 margin=-0.0612 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0340 step=2 reason=below_activation_threshold
+[adapt-check] t=0345 step=2 err=0.0001 err_thr=0.0020 margin=-0.0475 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0345 step=2 reason=below_activation_threshold
+[adapt-check] t=0350 step=2 err=0.0001 err_thr=0.0020 margin=-0.0401 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0350 step=2 reason=below_activation_threshold
+[adapt-check] t=0355 step=2 err=0.0002 err_thr=0.0020 margin=-0.0371 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0355 step=2 reason=below_activation_threshold
+[adapt-check] t=0360 step=2 err=0.0002 err_thr=0.0020 margin=-0.0366 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0360 step=2 reason=below_activation_threshold
+[adapt-skip] t=0365 step=2 reason=freeze_window remaining=5 freeze=6
+[adapt-skip] t=0370 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0375 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0380 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0385 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0390 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0395 step=2 reason=not_single_support phase=ds
+[adapt-state] t=0400 step=3 phase=ss
+[adapt-skip] t=0400 step=3 reason=warmup time_in_step=0 warmup=20
+[adapt-skip] t=0405 step=3 reason=warmup time_in_step=5 warmup=20
+[adapt-skip] t=0410 step=3 reason=warmup time_in_step=10 warmup=20
+[adapt-skip] t=0415 step=3 reason=warmup time_in_step=15 warmup=20
+[adapt-check] t=0420 step=3 err=0.0009 err_thr=0.0020 margin=-0.0308 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0420 step=3 reason=below_activation_threshold
+[adapt-check] t=0425 step=3 err=0.0007 err_thr=0.0020 margin=-0.0342 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0425 step=3 reason=below_activation_threshold
+[adapt-check] t=0430 step=3 err=0.0004 err_thr=0.0020 margin=-0.0338 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0430 step=3 reason=below_activation_threshold
+[adapt-check] t=0435 step=3 err=0.0002 err_thr=0.0020 margin=-0.0299 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0435 step=3 reason=below_activation_threshold
+[adapt-check] t=0440 step=3 err=0.0011 err_thr=0.0020 margin=-0.0307 margin_thr=0.0200 gate_err=0.0010 activate=True
+[adapt-enter] t=0440 step=3 err=0.0011 margin=-0.0307
+[adapter] t=0440 step=3 err=0.0011 margin=-0.0307 ss:70->70 xy:(0.600,-0.100)->(0.589,-0.067) slack=(0.0000e+00,0.0000e+00)
+[adapt-skip] t=0445 step=3 reason=cooldown dt=5 cooldown=12
+[adapt-skip] t=0450 step=3 reason=cooldown dt=10 cooldown=12
+[adapt-enter] t=0452 step=3 err=0.0014 margin=-0.1066
+QP Solver failed: Error in Opti::solve [OptiNode] at .../casadi/core/optistack.cpp:217:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:1466:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:362:
+Error in Function::operator() for 'solver_qpsol' [OsqpInterface] at .../casadi/core/function.cpp:1547:
+.../casadi/core/conic.cpp:558: conic process failed. Set 'error_on_fail' option to false to ignore this error.
+[adapt-qpfail] t=0452 step=3
+[adapt-enter] t=0453 step=3 err=0.0011 margin=-0.1085
+QP Solver failed: Error in Opti::solve [OptiNode] at .../casadi/core/optistack.cpp:217:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:1466:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:362:
+Error in Function::operator() for 'solver_qpsol' [OsqpInterface] at .../casadi/core/function.cpp:1547:
+.../casadi/core/conic.cpp:558: conic process failed. Set 'error_on_fail' option to false to ignore this error.
+[adapt-qpfail] t=0453 step=3
+[adapt-check] t=0455 step=3 err=0.0007 err_thr=0.0020 margin=-0.1100 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0455 step=3 reason=below_activation_threshold
+[adapt-check] t=0460 step=3 err=0.0004 err_thr=0.0020 margin=-0.1064 margin_thr=0.0200 gate_err=0.0010 activate=False
+[adapt-skip] t=0460 step=3 reason=below_activation_threshold
+[adapt-skip] t=0465 step=3 reason=freeze_window remaining=5 freeze=6
+[adapt-skip] t=0470 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0475 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0480 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0485 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0490 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0495 step=3 reason=not_single_support phase=ds
+[adapt-state] t=0500 step=4 phase=ss
+[adapt-skip] t=0500 step=4 reason=warmup time_in_step=0 warmup=20
+[adapt-skip] t=0505 step=4 reason=warmup time_in_step=5 warmup=20
+[adapt-skip] t=0510 step=4 reason=warmup time_in_step=10 warmup=20
+[adapt-skip] t=0515 step=4 reason=warmup time_in_step=15 warmup=20
+[summary]
+  profile=forward adapt=True fell=True ticks=519 sim_time=5.19s contact=rfoot
+  force=45.0N duration=0.10s direction=left push_step=3 push_phase=0.55
+  adapter_updates=1 activations=3 qp_failures=2 max_dcm_error=0.0014
+  failure_type=RuntimeError
+  failure_message=Error in Opti::solve [OptiNode] at .../casadi/core/optistack.cpp:217:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:1466:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:362:
+Error in Function::operator() for 'solver_qpsol' [OsqpInterface] at .../casadi/core/function.cpp:1547:
+.../casadi/core/conic.cpp:558: conic process failed. Set 'error_on_fail' option to false to ignore this error.

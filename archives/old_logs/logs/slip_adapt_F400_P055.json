@@ -1,0 +1,22 @@
+{
+  "ticks": 1000,
+  "sim_time_s": 10.0,
+  "fell": false,
+  "last_contact": "ds",
+  "adapter": {
+    "updates": 1,
+    "activations": 7,
+    "qp_failures": 6,
+    "max_dcm_error": 0.0017684425041364301,
+    "last_update_tick": 446
+  },
+  "profile": "forward",
+  "adapt_enabled": true,
+  "force_N": 400.0,
+  "duration_s": 0.2,
+  "direction": "left",
+  "push_step": 3,
+  "push_phase": 0.55,
+  "failure": null,
+  "timestamp": "2026-04-10T23:52:16.036754"
+}

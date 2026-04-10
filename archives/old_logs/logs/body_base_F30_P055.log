@@ -1,0 +1,7 @@
+[init] step_timing_adaptation=False
+[init] adapt_debug=True
+[push] scheduled left push on base: t=4.38s, F=30.0N, dt=0.10s
+[summary]
+  profile=forward adapt=False fell=False ticks=1000 sim_time=10.00s contact=ds
+  force=30.0N duration=0.10s direction=left push_step=3 push_phase=0.55
+  adapter_updates=0 activations=0 qp_failures=0 max_dcm_error=0.0000

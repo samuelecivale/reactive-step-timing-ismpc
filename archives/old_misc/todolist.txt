@@ -1,0 +1,5 @@
+* slippery: quando sto in SS sul piede di support
+* fare grafici posizione su tempo prima 
+* modificare la threshold in modulo 
+* modificare fell false 
+
