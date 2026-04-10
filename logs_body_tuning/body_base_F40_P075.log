@@ -1,0 +1,13 @@
+[init] step_timing_adaptation=False
+[init] adapt_debug=True
+[push] scheduled left push on base: t=4.52s, F=40.0N, dt=0.10s
+[summary]
+  profile=forward adapt=False fell=True ticks=502 sim_time=5.02s contact=rfoot
+  force=40.0N duration=0.10s direction=left push_step=3 push_phase=0.75
+  adapter_updates=0 activations=0 qp_failures=0 max_dcm_error=0.0000
+  failure_type=RuntimeError
+  failure_message=Error in Opti::solve [OptiNode] at .../casadi/core/optistack.cpp:217:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:1466:
+Error in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:362:
+Error in Function::operator() for 'solver_qpsol' [OsqpInterface] at .../casadi/core/function.cpp:1547:
+.../casadi/core/conic.cpp:558: conic process failed. Set 'error_on_fail' option to false to ignore this error.

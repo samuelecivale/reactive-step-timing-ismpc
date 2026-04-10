@@ -36,6 +36,7 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         self.finished = False
         self.fall_detected = False
         self.last_contact = 'ds'
+        self.adapter_trace = []
 
         self.params = {
             'g': 9.81,
@@ -51,22 +52,22 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             'dof': self.hrp4.getNumDofs(),
             # Reactive layer parameters.
             'use_step_timing_adaptation': bool(getattr(self.args, 'adapt', False)),
-            'adapt_dcm_error_threshold': 0.002,
+            'adapt_dcm_error_threshold': 0.004,
             'adapt_viability_margin': 0.02,
-            'adapt_margin_error_gate': 0.001,
-            'adapt_alpha_step': 1.0,
+            'adapt_margin_error_gate': 0.002,
+            'adapt_alpha_step': 8.0,
             'adapt_alpha_time': 5.0,
-            'adapt_alpha_offset': 1000.0,
-            'adapt_alpha_slack': 1e6,
+            'adapt_alpha_offset': 400.0,
+            'adapt_alpha_slack': 1e5,
             'adapt_debug': True,
             'adapt_debug_every': 5,
             'adapt_debug_reasons': True,
-            'T_gap_ticks': 12,
-            'adapt_freeze_ticks': 6,
-            'adapt_warmup_ticks': 20,
-            'adapt_cooldown_ticks': 12,
-            'min_timing_update_ticks': 1,
-            'min_step_update': 0.005,
+            'T_gap_ticks': 16,
+            'adapt_freeze_ticks': 8,
+            'adapt_warmup_ticks': 25,
+            'adapt_cooldown_ticks': 20,
+            'min_timing_update_ticks': 2,
+            'min_step_update': 0.01,
             'step_length_forward_margin': 0.08,
             'step_length_backward_margin': 0.03,
             'step_width_outward_margin': 0.05,
@@ -159,9 +160,24 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         self.push_start_tick = None
         self.push_end_tick = None
         self.push_force_world = np.zeros(3)
+        self.push_target = 'base'
+
+        self.push_force_arrow_shape = None
+        self.push_force_simple_frame = None
+        self.push_force_visual = None
+        self._dart_shape_cls = None
+
+        self.push_visual_start_tick = None
+        self.push_visual_end_tick = None
+        self.push_visual_duration_ticks = max(
+            1, int(round(1.0 / self.params['world_time_step']))
+        )
+
+        self._init_push_visual()
+        self.push_arrow_length = self   ._estimate_push_arrow_length()
+
         self._configure_push()
         self._print_plan_summary()
-
     def _set_initial_configuration(self):
         initial_configuration = {
             'CHEST_P': 0.0, 'CHEST_Y': 0.0, 'NECK_P': 0.0, 'NECK_Y': 0.0,
@@ -193,7 +209,7 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         push_time = getattr(self.args, 'push_time', None)
         push_step = getattr(self.args, 'push_step', None)
         push_phase = float(getattr(self.args, 'push_phase', 0.7) or 0.7)
-
+        self.push_target = getattr(self.args, 'push_target', 'base')
         if force <= 0.0:
             return
 
@@ -220,11 +236,150 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
 
         self.push_end_tick = self.push_start_tick + duration_ticks
         print(
-            f"[push] scheduled {direction} push: "
+            f"[push] scheduled {direction} push on {self.push_target}: "
             f"t={self.push_start_tick * self.params['world_time_step']:.2f}s, "
             f"F={force:.1f}N, dt={duration:.2f}s"
         )
+    def _get_push_body(self):
+        target = getattr(self, 'push_target', 'base')
 
+        if target == 'base':
+            return self.base
+
+        if target == 'lfoot':
+            return self.lsole
+
+        if target == 'rfoot':
+            return self.rsole
+
+        if target == 'stance_foot':
+            step_index = self.footstep_planner.get_step_index_at_time(self.time)
+            support_foot = self.footstep_planner.get_step(step_index)['foot_id']
+            return self.lsole if support_foot == 'lfoot' else self.rsole
+
+        return self.base
+
+    def _init_push_visual(self):
+        self.push_force_arrow_shape = None
+        self.push_force_simple_frame = None
+        self.push_force_visual = None
+        self._dart_shape_cls = None
+
+        if getattr(self.args, 'headless', False):
+            return
+
+        arrow_cls = getattr(dart, 'ArrowShape', None)
+        if arrow_cls is None:
+            arrow_cls = getattr(dart.dynamics, 'ArrowShape', None)
+
+        frame_cls = getattr(dart, 'SimpleFrame', None)
+        if frame_cls is None:
+            frame_cls = getattr(dart.dynamics, 'SimpleFrame', None)
+
+        shape_cls = getattr(dart, 'Shape', None)
+        if shape_cls is None:
+            shape_cls = getattr(dart.dynamics, 'Shape', None)
+
+        if arrow_cls is None or frame_cls is None:
+            if not getattr(self.args, 'quiet', False):
+                print('[push-visual] ArrowShape/SimpleFrame not available in this dartpy build')
+            return
+
+        try:
+            self.push_force_arrow_shape = arrow_cls([0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
+            self.push_force_simple_frame = frame_cls()
+            self.push_force_simple_frame.setShape(self.push_force_arrow_shape)
+
+            self.push_force_visual = self.push_force_simple_frame.createVisualAspect()
+            self.push_force_visual.setColor([1.0, 0.0, 0.0])
+            self.push_force_visual.hide()
+
+            self._dart_shape_cls = shape_cls
+            self.world.addSimpleFrame(self.push_force_simple_frame)
+
+        except Exception as e:
+            self.push_force_arrow_shape = None
+            self.push_force_simple_frame = None
+            self.push_force_visual = None
+            self._dart_shape_cls = None
+            if not getattr(self.args, 'quiet', False):
+                print(f'[push-visual] disabled: {e}')
+    def _estimate_push_arrow_length(self):
+        try:
+            torso_tf = self.torso.getTransform(
+                withRespectTo=dart.dynamics.Frame.World(),
+                inCoordinatesOf=dart.dynamics.Frame.World(),
+            )
+            lsole_tf = self.lsole.getTransform(
+                withRespectTo=dart.dynamics.Frame.World(),
+                inCoordinatesOf=dart.dynamics.Frame.World(),
+            )
+            rsole_tf = self.rsole.getTransform(
+                withRespectTo=dart.dynamics.Frame.World(),
+                inCoordinatesOf=dart.dynamics.Frame.World(),
+            )
+
+            torso_pos = np.asarray(torso_tf.translation(), dtype=float)
+            feet_mid = 0.5 * (
+                np.asarray(lsole_tf.translation(), dtype=float) +
+                np.asarray(rsole_tf.translation(), dtype=float)
+            )
+
+            robot_height = float(np.linalg.norm(torso_pos - feet_mid))
+            return max(0.25, 0.5 * robot_height)
+
+        except Exception:
+            return 0.45
+
+    def _update_push_visual(self):
+        if self.push_force_arrow_shape is None or self.push_force_visual is None:
+            return
+
+        show_visual = (
+            self.push_visual_start_tick is not None
+            and self.push_visual_end_tick is not None
+            and self.push_visual_start_tick <= self.time < self.push_visual_end_tick
+            and float(np.linalg.norm(self.push_force_world)) > 0.0
+        )
+
+        if not show_visual:
+            try:
+                if self._dart_shape_cls is not None and hasattr(self._dart_shape_cls, 'STATIC'):
+                    self.push_force_arrow_shape.setDataVariance(self._dart_shape_cls.STATIC)
+                self.push_force_visual.hide()
+            except Exception:
+                pass
+            return
+
+        push_body = self._get_push_body()
+        body_tf = push_body.getTransform(
+            withRespectTo=dart.dynamics.Frame.World(),
+            inCoordinatesOf=dart.dynamics.Frame.World(),
+        )
+
+        arrow_tail = np.asarray(body_tf.translation(), dtype=float).copy()
+
+        if push_body == self.base:
+            arrow_tail[2] += 0.20
+        else:
+            arrow_tail[2] += 0.05
+
+        force_norm = float(np.linalg.norm(self.push_force_world))
+        arrow_dir = self.push_force_world / max(force_norm, 1e-9)
+
+        # lunghezza fissa: circa metà robot
+        arrow_length = self.push_arrow_length
+        arrow_head = arrow_tail + arrow_dir * arrow_length
+
+        self.push_force_arrow_shape.setPositions(arrow_tail, arrow_head)
+
+        try:
+            if self._dart_shape_cls is not None and hasattr(self._dart_shape_cls, 'DYNAMIC'):
+                self.push_force_arrow_shape.setDataVariance(self._dart_shape_cls.DYNAMIC)
+        except Exception:
+            pass
+
+        self.push_force_visual.show()
     def _print_plan_summary(self):
         if getattr(self.args, 'quiet', False):
             return
@@ -273,7 +428,37 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         self.current['zmp']['pos'][2] = x_flt[8]
 
         adapter_event = self.step_timing_adapter.maybe_adapt(self.current, self.desired, self.time)
-        
+        trace_row = {
+            'tick': int(self.time),
+            'time_s': float(self.time * self.params['world_time_step']),
+            'push_active': bool(
+                self.push_start_tick is not None
+                and self.push_start_tick <= self.time < self.push_end_tick
+            ),
+            'adapter_updated': bool(adapter_event is not None),
+            'step_index': None,
+            'dcm_error': None,
+            'margin': None,
+            'ss_before': None,
+            'ss_after': None,
+            'target_before_x': None,
+            'target_before_y': None,
+            'target_after_x': None,
+            'target_after_y': None,
+        }
+
+        if adapter_event is not None:
+            trace_row['step_index'] = int(adapter_event['step_index'])
+            trace_row['dcm_error'] = float(adapter_event['dcm_error'])
+            trace_row['margin'] = float(adapter_event['margin'])
+            trace_row['ss_before'] = int(adapter_event['ss_before'])
+            trace_row['ss_after'] = int(adapter_event['ss_after'])
+            trace_row['target_before_x'] = float(adapter_event['target_before_world'][0])
+            trace_row['target_before_y'] = float(adapter_event['target_before_world'][1])
+            trace_row['target_after_x'] = float(adapter_event['target_after_world'][0])
+            trace_row['target_after_y'] = float(adapter_event['target_after_world'][1])
+
+        self.adapter_trace.append(trace_row)
         if adapter_event is not None and not getattr(self.args, 'quiet', False):
             before_xy = adapter_event['target_before_world']
             after_xy = adapter_event['target_after_world']
@@ -308,8 +493,9 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         for i in range(self.params['dof'] - 6):
             self.hrp4.setCommand(i + 6, commands[i])
 
+        
         self._apply_push_if_needed()
-
+        self._update_push_visual()
         self.logger.log_data(self.desired, self.current)
         if not getattr(self.args, 'headless', False):
             # self.logger.update_plot(self.time)
@@ -330,7 +516,7 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             return
 
         force = self.push_force_world
-        body = self.base
+        body = self._get_push_body()
         offset = np.zeros(3)
 
         applied = False
@@ -349,9 +535,12 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             except Exception:
                 continue
 
-        if self.time == self.push_start_tick and applied and not getattr(self.args, 'quiet', False):
-            print(f"[push] started at t={self.time * self.params['world_time_step']:.2f}s")
+        if self.time == self.push_start_tick and applied:
+            self.push_visual_start_tick = int(self.time)
+            self.push_visual_end_tick = int(self.time) + self.push_visual_duration_ticks
 
+            if not getattr(self.args, 'quiet', False):
+                print(f"[push] started at t={self.time * self.params['world_time_step']:.2f}s")
     def has_fallen(self):
         state = self.retrieve_state()
         com_z = float(state['com']['pos'][2])
@@ -447,17 +636,34 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             'zmp': {'pos': zmp, 'vel': np.zeros(3), 'acc': np.zeros(3)},
         }
 
+   
     def get_summary(self):
         return {
             'ticks': int(self.time),
             'sim_time_s': float(self.time * self.params['world_time_step']),
             'fell': bool(self.fall_detected),
-            'finished_plan': bool(self.finished),
             'last_contact': self.last_contact,
             'adapter': self.step_timing_adapter.stats,
+            'trace': self.adapter_trace,
+            'push_window': {
+                'start_tick': self.push_start_tick,
+                'end_tick': self.push_end_tick,
+                'dt': float(self.params['world_time_step']),
+            },
+            'tuning_params': {
+                'adapt_dcm_error_threshold': self.params['adapt_dcm_error_threshold'],
+                'adapt_margin_error_gate': self.params['adapt_margin_error_gate'],
+                'adapt_cooldown_ticks': self.params['adapt_cooldown_ticks'],
+                'adapt_warmup_ticks': self.params['adapt_warmup_ticks'],
+                'adapt_freeze_ticks': self.params['adapt_freeze_ticks'],
+                'T_gap_ticks': self.params['T_gap_ticks'],
+                'min_timing_update_ticks': self.params['min_timing_update_ticks'],
+                'min_step_update': self.params['min_step_update'],
+                'adapt_alpha_time': self.params['adapt_alpha_time'],
+                'adapt_alpha_offset': self.params['adapt_alpha_offset'],
+                'adapt_alpha_slack': self.params['adapt_alpha_slack'],
+            },
         }
-
-
 def build_world(current_dir):
     world = dart.simulation.World()
     urdf_parser = dart.utils.DartLoader()
@@ -492,6 +698,8 @@ def run_headless(args):
             node.step_controller()
             world.step()
         except Exception as e:
+            node.fall_detected = True
+            node.finished = True
             failure = {
                 'type': type(e).__name__,
                 'message': str(e),
@@ -517,7 +725,7 @@ def run_headless(args):
     print('[summary]')
     print(
         f"  profile={summary['profile']} adapt={summary['adapt_enabled']} "
-        f"fell={summary['fell']} finished_plan={summary['finished_plan']} "
+        f"fell={summary['fell']} "
         f"ticks={summary['ticks']} sim_time={summary['sim_time_s']:.2f}s "
         f"contact={summary['last_contact']}"
     )
@@ -564,10 +772,12 @@ def parse_args():
     parser.add_argument('--push-time', type=float, default=None, help='Absolute push start time in seconds.')
     parser.add_argument('--push-phase', type=float, default=0.7, help='Fraction of the selected step single-support phase used for the push start.')
     parser.add_argument('--direction', choices=['left', 'right', 'forward', 'backward'], default='right', help='Push direction.')
+    parser.add_argument('--push-target',choices=['base', 'stance_foot', 'lfoot', 'rfoot'],default='base',help='Body on which the external force is applied.')
     parser.add_argument('--realtime-factor', type=float, default=10.0, help='Viewer realtime factor.')
     parser.add_argument('--quiet', action='store_true', help='Reduce console output.')
     parser.add_argument('--profile',choices=['forward', 'inplace', 'scianca'],default='forward',help='Walking reference profile.')
     parser.add_argument('--log-json',type=str,default=None,help='Optional path to save a JSON summary of the run.')
+    
     return parser.parse_args()
 
 
