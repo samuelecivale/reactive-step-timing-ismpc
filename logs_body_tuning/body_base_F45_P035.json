@@ -7308,17 +7308,17 @@
     "dt": 0.01
   },
   "tuning_params": {
-    "adapt_dcm_error_threshold": 0.004,
+    "adapt_dcm_error_threshold": 0.003,
     "adapt_margin_error_gate": 0.002,
-    "adapt_cooldown_ticks": 20,
-    "adapt_warmup_ticks": 25,
+    "adapt_cooldown_ticks": 10,
+    "adapt_warmup_ticks": 15,
     "adapt_freeze_ticks": 8,
     "T_gap_ticks": 16,
     "min_timing_update_ticks": 2,
     "min_step_update": 0.01,
     "adapt_alpha_time": 5.0,
-    "adapt_alpha_offset": 400.0,
-    "adapt_alpha_slack": 100000.0
+    "adapt_alpha_offset": 200.0,
+    "adapt_alpha_slack": 10000.0
   },
   "profile": "forward",
   "adapt_enabled": false,
@@ -7331,5 +7331,5 @@
     "type": "RuntimeError",
     "message": "Error in Opti::solve [OptiNode] at .../casadi/core/optistack.cpp:217:\nError in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:1466:\nError in Function::call for 'solver' [MXFunction] at .../casadi/core/function.cpp:362:\nError in Function::operator() for 'solver_qpsol' [OsqpInterface] at .../casadi/core/function.cpp:1547:\n.../casadi/core/conic.cpp:558: conic process failed. Set 'error_on_fail' option to false to ignore this error."
   },
-  "timestamp": "2026-04-11T01:07:55.040590"
+  "timestamp": "2026-04-17T17:05:16.400811"
 }

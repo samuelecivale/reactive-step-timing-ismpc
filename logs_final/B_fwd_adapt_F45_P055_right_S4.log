@@ -1,0 +1,420 @@
+[init] step_timing_adaptation=True
+[init] adapt_debug=True
+[push] scheduled right push on base: t=5.38s, F=45.0N, dt=0.10s
+[adapt-state] t=0000 step=0 phase=ds
+[adapt-skip] t=0000 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0005 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0010 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0015 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0020 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0025 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0030 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0035 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0040 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0045 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0050 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0055 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0060 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0065 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0070 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0075 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0080 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0085 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0090 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0095 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0100 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0105 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0110 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0115 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0120 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0125 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0130 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0135 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0140 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0145 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0150 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0155 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0160 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0165 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0170 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0175 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0180 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0185 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0190 step=0 reason=not_single_support phase=ds
+[adapt-skip] t=0195 step=0 reason=not_single_support phase=ds
+[adapt-state] t=0200 step=1 phase=ss
+[adapt-skip] t=0200 step=1 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0205 step=1 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0210 step=1 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0215 step=1 err=0.0007 err_thr=0.0030 margin=-0.0208 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0215 step=1 reason=below_activation_threshold
+[adapt-check] t=0220 step=1 err=0.0004 err_thr=0.0030 margin=-0.0066 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0220 step=1 reason=below_activation_threshold
+[adapt-check] t=0225 step=1 err=0.0007 err_thr=0.0030 margin=0.0053 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0225 step=1 reason=below_activation_threshold
+[adapt-check] t=0230 step=1 err=0.0005 err_thr=0.0030 margin=0.0151 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0230 step=1 reason=below_activation_threshold
+[adapt-check] t=0235 step=1 err=0.0005 err_thr=0.0030 margin=0.0230 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0235 step=1 reason=below_activation_threshold
+[adapt-check] t=0240 step=1 err=0.0005 err_thr=0.0030 margin=0.0292 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0240 step=1 reason=below_activation_threshold
+[adapt-check] t=0245 step=1 err=0.0005 err_thr=0.0030 margin=0.0335 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0245 step=1 reason=below_activation_threshold
+[adapt-check] t=0250 step=1 err=0.0006 err_thr=0.0030 margin=0.0362 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0250 step=1 reason=below_activation_threshold
+[adapt-check] t=0255 step=1 err=0.0006 err_thr=0.0030 margin=0.0373 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0255 step=1 reason=below_activation_threshold
+[adapt-check] t=0260 step=1 err=0.0007 err_thr=0.0030 margin=0.0368 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0260 step=1 reason=below_activation_threshold
+[adapt-skip] t=0265 step=1 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0270 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0275 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0280 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0285 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0290 step=1 reason=not_single_support phase=ds
+[adapt-skip] t=0295 step=1 reason=not_single_support phase=ds
+[adapt-state] t=0300 step=2 phase=ss
+[adapt-skip] t=0300 step=2 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0305 step=2 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0310 step=2 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0315 step=2 err=0.0002 err_thr=0.0030 margin=-0.0501 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0315 step=2 reason=below_activation_threshold
+[adapt-check] t=0320 step=2 err=0.0002 err_thr=0.0030 margin=-0.0281 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0320 step=2 reason=below_activation_threshold
+[adapt-check] t=0325 step=2 err=0.0002 err_thr=0.0030 margin=-0.0114 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0325 step=2 reason=below_activation_threshold
+[adapt-check] t=0330 step=2 err=0.0002 err_thr=0.0030 margin=0.0017 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0330 step=2 reason=below_activation_threshold
+[adapt-check] t=0335 step=2 err=0.0002 err_thr=0.0030 margin=0.0120 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0335 step=2 reason=below_activation_threshold
+[adapt-check] t=0340 step=2 err=0.0002 err_thr=0.0030 margin=0.0195 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0340 step=2 reason=below_activation_threshold
+[adapt-check] t=0345 step=2 err=0.0002 err_thr=0.0030 margin=0.0241 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0345 step=2 reason=below_activation_threshold
+[adapt-check] t=0350 step=2 err=0.0002 err_thr=0.0030 margin=0.0259 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0350 step=2 reason=below_activation_threshold
+[adapt-check] t=0355 step=2 err=0.0002 err_thr=0.0030 margin=0.0255 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0355 step=2 reason=below_activation_threshold
+[adapt-check] t=0360 step=2 err=0.0002 err_thr=0.0030 margin=0.0235 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0360 step=2 reason=below_activation_threshold
+[adapt-skip] t=0365 step=2 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0370 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0375 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0380 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0385 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0390 step=2 reason=not_single_support phase=ds
+[adapt-skip] t=0395 step=2 reason=not_single_support phase=ds
+[adapt-state] t=0400 step=3 phase=ss
+[adapt-skip] t=0400 step=3 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0405 step=3 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0410 step=3 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0415 step=3 err=0.0001 err_thr=0.0030 margin=-0.0256 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0415 step=3 reason=below_activation_threshold
+[adapt-check] t=0420 step=3 err=0.0002 err_thr=0.0030 margin=-0.0111 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0420 step=3 reason=below_activation_threshold
+[adapt-check] t=0425 step=3 err=0.0002 err_thr=0.0030 margin=0.0004 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0425 step=3 reason=below_activation_threshold
+[adapt-check] t=0430 step=3 err=0.0002 err_thr=0.0030 margin=0.0095 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0430 step=3 reason=below_activation_threshold
+[adapt-check] t=0435 step=3 err=0.0001 err_thr=0.0030 margin=0.0172 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0435 step=3 reason=below_activation_threshold
+[adapt-check] t=0440 step=3 err=0.0002 err_thr=0.0030 margin=0.0218 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0440 step=3 reason=below_activation_threshold
+[adapt-check] t=0445 step=3 err=0.0002 err_thr=0.0030 margin=0.0245 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0445 step=3 reason=below_activation_threshold
+[adapt-check] t=0450 step=3 err=0.0001 err_thr=0.0030 margin=0.0255 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0450 step=3 reason=below_activation_threshold
+[adapt-check] t=0455 step=3 err=0.0002 err_thr=0.0030 margin=0.0246 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0455 step=3 reason=below_activation_threshold
+[adapt-check] t=0460 step=3 err=0.0003 err_thr=0.0030 margin=0.0227 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0460 step=3 reason=below_activation_threshold
+[adapt-skip] t=0465 step=3 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0470 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0475 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0480 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0485 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0490 step=3 reason=not_single_support phase=ds
+[adapt-skip] t=0495 step=3 reason=not_single_support phase=ds
+[adapt-state] t=0500 step=4 phase=ss
+[adapt-skip] t=0500 step=4 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0505 step=4 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0510 step=4 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0515 step=4 err=0.0002 err_thr=0.0030 margin=-0.0204 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0515 step=4 reason=below_activation_threshold
+[adapt-check] t=0520 step=4 err=0.0002 err_thr=0.0030 margin=-0.0058 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0520 step=4 reason=below_activation_threshold
+[adapt-check] t=0525 step=4 err=0.0002 err_thr=0.0030 margin=0.0062 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0525 step=4 reason=below_activation_threshold
+[adapt-check] t=0530 step=4 err=0.0002 err_thr=0.0030 margin=0.0157 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0530 step=4 reason=below_activation_threshold
+[adapt-check] t=0535 step=4 err=0.0002 err_thr=0.0030 margin=0.0226 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0535 step=4 reason=below_activation_threshold
+[adapt-check] t=0540 step=4 err=0.0010 err_thr=0.0030 margin=0.0215 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0540 step=4 reason=below_activation_threshold
+[adapt-check] t=0545 step=4 err=0.0027 err_thr=0.0030 margin=-0.0104 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0545 step=4 reason=below_activation_threshold
+[adapt-enter] t=0547 step=4 err=0.0030 margin=-0.0260
+[adapter] t=0547 step=4 err=0.0030 margin=-0.0260 ss:70->70 xy:(0.800,0.100)->(0.726,0.051) slack=(0.0000e+00,0.0000e+00)
+[adapt-skip] t=0550 step=4 reason=cooldown dt=3 cooldown=10
+[adapt-skip] t=0555 step=4 reason=cooldown dt=8 cooldown=10
+[adapt-check] t=0560 step=4 err=0.0004 err_thr=0.0030 margin=-0.0611 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0560 step=4 reason=below_activation_threshold
+[adapt-skip] t=0565 step=4 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0570 step=4 reason=not_single_support phase=ds
+[adapt-skip] t=0575 step=4 reason=not_single_support phase=ds
+[adapt-skip] t=0580 step=4 reason=not_single_support phase=ds
+[adapt-skip] t=0585 step=4 reason=not_single_support phase=ds
+[adapt-skip] t=0590 step=4 reason=not_single_support phase=ds
+[adapt-skip] t=0595 step=4 reason=not_single_support phase=ds
+[adapt-state] t=0600 step=5 phase=ss
+[adapt-skip] t=0600 step=5 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0605 step=5 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0610 step=5 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0615 step=5 err=0.0002 err_thr=0.0030 margin=0.0823 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0615 step=5 reason=below_activation_threshold
+[adapt-check] t=0620 step=5 err=0.0002 err_thr=0.0030 margin=0.0678 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0620 step=5 reason=below_activation_threshold
+[adapt-check] t=0625 step=5 err=0.0002 err_thr=0.0030 margin=0.0471 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0625 step=5 reason=below_activation_threshold
+[adapt-check] t=0630 step=5 err=0.0003 err_thr=0.0030 margin=0.0325 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0630 step=5 reason=below_activation_threshold
+[adapt-check] t=0635 step=5 err=0.0001 err_thr=0.0030 margin=0.0219 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0635 step=5 reason=below_activation_threshold
+[adapt-check] t=0640 step=5 err=0.0002 err_thr=0.0030 margin=0.0145 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0640 step=5 reason=below_activation_threshold
+[adapt-check] t=0645 step=5 err=0.0001 err_thr=0.0030 margin=0.0086 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0645 step=5 reason=below_activation_threshold
+[adapt-check] t=0650 step=5 err=0.0003 err_thr=0.0030 margin=0.0039 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0650 step=5 reason=below_activation_threshold
+[adapt-check] t=0655 step=5 err=0.0003 err_thr=0.0030 margin=-0.0003 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0655 step=5 reason=below_activation_threshold
+[adapt-check] t=0660 step=5 err=0.0002 err_thr=0.0030 margin=-0.0044 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0660 step=5 reason=below_activation_threshold
+[adapt-skip] t=0665 step=5 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0670 step=5 reason=not_single_support phase=ds
+[adapt-skip] t=0675 step=5 reason=not_single_support phase=ds
+[adapt-skip] t=0680 step=5 reason=not_single_support phase=ds
+[adapt-skip] t=0685 step=5 reason=not_single_support phase=ds
+[adapt-skip] t=0690 step=5 reason=not_single_support phase=ds
+[adapt-skip] t=0695 step=5 reason=not_single_support phase=ds
+[adapt-state] t=0700 step=6 phase=ss
+[adapt-skip] t=0700 step=6 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0705 step=6 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0710 step=6 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0715 step=6 err=0.0001 err_thr=0.0030 margin=-0.0136 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0715 step=6 reason=below_activation_threshold
+[adapt-check] t=0720 step=6 err=0.0002 err_thr=0.0030 margin=-0.0024 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0720 step=6 reason=below_activation_threshold
+[adapt-check] t=0725 step=6 err=0.0004 err_thr=0.0030 margin=0.0057 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0725 step=6 reason=below_activation_threshold
+[adapt-check] t=0730 step=6 err=0.0002 err_thr=0.0030 margin=0.0124 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0730 step=6 reason=below_activation_threshold
+[adapt-check] t=0735 step=6 err=0.0002 err_thr=0.0030 margin=0.0186 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0735 step=6 reason=below_activation_threshold
+[adapt-check] t=0740 step=6 err=0.0001 err_thr=0.0030 margin=0.0214 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0740 step=6 reason=below_activation_threshold
+[adapt-check] t=0745 step=6 err=0.0002 err_thr=0.0030 margin=0.0242 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0745 step=6 reason=below_activation_threshold
+[adapt-check] t=0750 step=6 err=0.0001 err_thr=0.0030 margin=0.0245 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0750 step=6 reason=below_activation_threshold
+[adapt-check] t=0755 step=6 err=0.0003 err_thr=0.0030 margin=0.0225 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0755 step=6 reason=below_activation_threshold
+[adapt-check] t=0760 step=6 err=0.0002 err_thr=0.0030 margin=0.0199 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0760 step=6 reason=below_activation_threshold
+[adapt-skip] t=0765 step=6 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0770 step=6 reason=not_single_support phase=ds
+[adapt-skip] t=0775 step=6 reason=not_single_support phase=ds
+[adapt-skip] t=0780 step=6 reason=not_single_support phase=ds
+[adapt-skip] t=0785 step=6 reason=not_single_support phase=ds
+[adapt-skip] t=0790 step=6 reason=not_single_support phase=ds
+[adapt-skip] t=0795 step=6 reason=not_single_support phase=ds
+[adapt-state] t=0800 step=7 phase=ss
+[adapt-skip] t=0800 step=7 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0805 step=7 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0810 step=7 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0815 step=7 err=0.0003 err_thr=0.0030 margin=-0.0059 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0815 step=7 reason=below_activation_threshold
+[adapt-check] t=0820 step=7 err=0.0003 err_thr=0.0030 margin=0.0030 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0820 step=7 reason=below_activation_threshold
+[adapt-check] t=0825 step=7 err=0.0001 err_thr=0.0030 margin=0.0106 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0825 step=7 reason=below_activation_threshold
+[adapt-check] t=0830 step=7 err=0.0002 err_thr=0.0030 margin=0.0173 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0830 step=7 reason=below_activation_threshold
+[adapt-check] t=0835 step=7 err=0.0002 err_thr=0.0030 margin=0.0230 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0835 step=7 reason=below_activation_threshold
+[adapt-check] t=0840 step=7 err=0.0003 err_thr=0.0030 margin=0.0271 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0840 step=7 reason=below_activation_threshold
+[adapt-check] t=0845 step=7 err=0.0002 err_thr=0.0030 margin=0.0293 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0845 step=7 reason=below_activation_threshold
+[adapt-check] t=0850 step=7 err=0.0002 err_thr=0.0030 margin=0.0295 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0850 step=7 reason=below_activation_threshold
+[adapt-check] t=0855 step=7 err=0.0002 err_thr=0.0030 margin=0.0280 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0855 step=7 reason=below_activation_threshold
+[adapt-check] t=0860 step=7 err=0.0003 err_thr=0.0030 margin=0.0252 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0860 step=7 reason=below_activation_threshold
+[adapt-skip] t=0865 step=7 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0870 step=7 reason=not_single_support phase=ds
+[adapt-skip] t=0875 step=7 reason=not_single_support phase=ds
+[adapt-skip] t=0880 step=7 reason=not_single_support phase=ds
+[adapt-skip] t=0885 step=7 reason=not_single_support phase=ds
+[adapt-skip] t=0890 step=7 reason=not_single_support phase=ds
+[adapt-skip] t=0895 step=7 reason=not_single_support phase=ds
+[adapt-state] t=0900 step=8 phase=ss
+[adapt-skip] t=0900 step=8 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=0905 step=8 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=0910 step=8 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=0915 step=8 err=0.0003 err_thr=0.0030 margin=-0.0210 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0915 step=8 reason=below_activation_threshold
+[adapt-check] t=0920 step=8 err=0.0003 err_thr=0.0030 margin=-0.0079 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0920 step=8 reason=below_activation_threshold
+[adapt-check] t=0925 step=8 err=0.0001 err_thr=0.0030 margin=0.0028 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0925 step=8 reason=below_activation_threshold
+[adapt-check] t=0930 step=8 err=0.0002 err_thr=0.0030 margin=0.0116 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0930 step=8 reason=below_activation_threshold
+[adapt-check] t=0935 step=8 err=0.0002 err_thr=0.0030 margin=0.0187 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0935 step=8 reason=below_activation_threshold
+[adapt-check] t=0940 step=8 err=0.0002 err_thr=0.0030 margin=0.0230 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0940 step=8 reason=below_activation_threshold
+[adapt-check] t=0945 step=8 err=0.0002 err_thr=0.0030 margin=0.0260 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0945 step=8 reason=below_activation_threshold
+[adapt-check] t=0950 step=8 err=0.0002 err_thr=0.0030 margin=0.0267 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0950 step=8 reason=below_activation_threshold
+[adapt-check] t=0955 step=8 err=0.0002 err_thr=0.0030 margin=0.0257 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0955 step=8 reason=below_activation_threshold
+[adapt-check] t=0960 step=8 err=0.0002 err_thr=0.0030 margin=0.0236 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=0960 step=8 reason=below_activation_threshold
+[adapt-skip] t=0965 step=8 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=0970 step=8 reason=not_single_support phase=ds
+[adapt-skip] t=0975 step=8 reason=not_single_support phase=ds
+[adapt-skip] t=0980 step=8 reason=not_single_support phase=ds
+[adapt-skip] t=0985 step=8 reason=not_single_support phase=ds
+[adapt-skip] t=0990 step=8 reason=not_single_support phase=ds
+[adapt-skip] t=0995 step=8 reason=not_single_support phase=ds
+[adapt-state] t=1000 step=9 phase=ss
+[adapt-skip] t=1000 step=9 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=1005 step=9 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=1010 step=9 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=1015 step=9 err=0.0002 err_thr=0.0030 margin=-0.0185 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1015 step=9 reason=below_activation_threshold
+[adapt-check] t=1020 step=9 err=0.0001 err_thr=0.0030 margin=-0.0062 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1020 step=9 reason=below_activation_threshold
+[adapt-check] t=1025 step=9 err=0.0004 err_thr=0.0030 margin=0.0036 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1025 step=9 reason=below_activation_threshold
+[adapt-check] t=1030 step=9 err=0.0002 err_thr=0.0030 margin=0.0118 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1030 step=9 reason=below_activation_threshold
+[adapt-check] t=1035 step=9 err=0.0002 err_thr=0.0030 margin=0.0177 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1035 step=9 reason=below_activation_threshold
+[adapt-check] t=1040 step=9 err=0.0003 err_thr=0.0030 margin=0.0222 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1040 step=9 reason=below_activation_threshold
+[adapt-check] t=1045 step=9 err=0.0002 err_thr=0.0030 margin=0.0247 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1045 step=9 reason=below_activation_threshold
+[adapt-check] t=1050 step=9 err=0.0002 err_thr=0.0030 margin=0.0256 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1050 step=9 reason=below_activation_threshold
+[adapt-check] t=1055 step=9 err=0.0002 err_thr=0.0030 margin=0.0246 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1055 step=9 reason=below_activation_threshold
+[adapt-check] t=1060 step=9 err=0.0004 err_thr=0.0030 margin=0.0227 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1060 step=9 reason=below_activation_threshold
+[adapt-skip] t=1065 step=9 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=1070 step=9 reason=not_single_support phase=ds
+[adapt-skip] t=1075 step=9 reason=not_single_support phase=ds
+[adapt-skip] t=1080 step=9 reason=not_single_support phase=ds
+[adapt-skip] t=1085 step=9 reason=not_single_support phase=ds
+[adapt-skip] t=1090 step=9 reason=not_single_support phase=ds
+[adapt-skip] t=1095 step=9 reason=not_single_support phase=ds
+[adapt-state] t=1100 step=10 phase=ss
+[adapt-skip] t=1100 step=10 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=1105 step=10 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=1110 step=10 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=1115 step=10 err=0.0003 err_thr=0.0030 margin=-0.0159 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1115 step=10 reason=below_activation_threshold
+[adapt-check] t=1120 step=10 err=0.0004 err_thr=0.0030 margin=-0.0049 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1120 step=10 reason=below_activation_threshold
+[adapt-check] t=1125 step=10 err=0.0002 err_thr=0.0030 margin=0.0045 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1125 step=10 reason=below_activation_threshold
+[adapt-check] t=1130 step=10 err=0.0002 err_thr=0.0030 margin=0.0126 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1130 step=10 reason=below_activation_threshold
+[adapt-check] t=1135 step=10 err=0.0003 err_thr=0.0030 margin=0.0193 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1135 step=10 reason=below_activation_threshold
+[adapt-check] t=1140 step=10 err=0.0003 err_thr=0.0030 margin=0.0241 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1140 step=10 reason=below_activation_threshold
+[adapt-check] t=1145 step=10 err=0.0002 err_thr=0.0030 margin=0.0272 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1145 step=10 reason=below_activation_threshold
+[adapt-check] t=1150 step=10 err=0.0003 err_thr=0.0030 margin=0.0280 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1150 step=10 reason=below_activation_threshold
+[adapt-check] t=1155 step=10 err=0.0002 err_thr=0.0030 margin=0.0267 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1155 step=10 reason=below_activation_threshold
+[adapt-check] t=1160 step=10 err=0.0001 err_thr=0.0030 margin=0.0242 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1160 step=10 reason=below_activation_threshold
+[adapt-skip] t=1165 step=10 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=1170 step=10 reason=not_single_support phase=ds
+[adapt-skip] t=1175 step=10 reason=not_single_support phase=ds
+[adapt-skip] t=1180 step=10 reason=not_single_support phase=ds
+[adapt-skip] t=1185 step=10 reason=not_single_support phase=ds
+[adapt-skip] t=1190 step=10 reason=not_single_support phase=ds
+[adapt-skip] t=1195 step=10 reason=not_single_support phase=ds
+[adapt-state] t=1200 step=11 phase=ss
+[adapt-skip] t=1200 step=11 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=1205 step=11 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=1210 step=11 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=1215 step=11 err=0.0002 err_thr=0.0030 margin=-0.0206 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1215 step=11 reason=below_activation_threshold
+[adapt-check] t=1220 step=11 err=0.0001 err_thr=0.0030 margin=-0.0099 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1220 step=11 reason=below_activation_threshold
+[adapt-check] t=1225 step=11 err=0.0004 err_thr=0.0030 margin=-0.0006 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1225 step=11 reason=below_activation_threshold
+[adapt-check] t=1230 step=11 err=0.0003 err_thr=0.0030 margin=0.0076 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1230 step=11 reason=below_activation_threshold
+[adapt-check] t=1235 step=11 err=0.0003 err_thr=0.0030 margin=0.0144 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1235 step=11 reason=below_activation_threshold
+[adapt-check] t=1240 step=11 err=0.0002 err_thr=0.0030 margin=0.0197 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1240 step=11 reason=below_activation_threshold
+[adapt-check] t=1245 step=11 err=0.0002 err_thr=0.0030 margin=0.0232 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1245 step=11 reason=below_activation_threshold
+[adapt-check] t=1250 step=11 err=0.0005 err_thr=0.0030 margin=0.0248 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1250 step=11 reason=below_activation_threshold
+[adapt-check] t=1255 step=11 err=0.0003 err_thr=0.0030 margin=0.0245 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1255 step=11 reason=below_activation_threshold
+[adapt-check] t=1260 step=11 err=0.0002 err_thr=0.0030 margin=0.0227 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1260 step=11 reason=below_activation_threshold
+[adapt-skip] t=1265 step=11 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=1270 step=11 reason=not_single_support phase=ds
+[adapt-skip] t=1275 step=11 reason=not_single_support phase=ds
+[adapt-skip] t=1280 step=11 reason=not_single_support phase=ds
+[adapt-skip] t=1285 step=11 reason=not_single_support phase=ds
+[adapt-skip] t=1290 step=11 reason=not_single_support phase=ds
+[adapt-skip] t=1295 step=11 reason=not_single_support phase=ds
+[adapt-state] t=1300 step=12 phase=ss
+[adapt-skip] t=1300 step=12 reason=warmup time_in_step=0 warmup=15
+[adapt-skip] t=1305 step=12 reason=warmup time_in_step=5 warmup=15
+[adapt-skip] t=1310 step=12 reason=warmup time_in_step=10 warmup=15
+[adapt-check] t=1315 step=12 err=0.0003 err_thr=0.0030 margin=-0.0171 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1315 step=12 reason=below_activation_threshold
+[adapt-check] t=1320 step=12 err=0.0002 err_thr=0.0030 margin=-0.0058 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1320 step=12 reason=below_activation_threshold
+[adapt-check] t=1325 step=12 err=0.0004 err_thr=0.0030 margin=0.0035 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1325 step=12 reason=below_activation_threshold
+[adapt-check] t=1330 step=12 err=0.0002 err_thr=0.0030 margin=0.0115 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1330 step=12 reason=below_activation_threshold
+[adapt-check] t=1335 step=12 err=0.0004 err_thr=0.0030 margin=0.0184 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1335 step=12 reason=below_activation_threshold
+[adapt-check] t=1340 step=12 err=0.0003 err_thr=0.0030 margin=0.0231 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1340 step=12 reason=below_activation_threshold
+[adapt-check] t=1345 step=12 err=0.0003 err_thr=0.0030 margin=0.0261 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1345 step=12 reason=below_activation_threshold
+[adapt-check] t=1350 step=12 err=0.0002 err_thr=0.0030 margin=0.0269 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1350 step=12 reason=below_activation_threshold
+[adapt-check] t=1355 step=12 err=0.0002 err_thr=0.0030 margin=0.0260 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1355 step=12 reason=below_activation_threshold
+[adapt-check] t=1360 step=12 err=0.0004 err_thr=0.0030 margin=0.0234 margin_thr=0.0200 gate_err=0.0020 activate=False
+[adapt-skip] t=1360 step=12 reason=below_activation_threshold
+[adapt-skip] t=1365 step=12 reason=freeze_window remaining=5 freeze=8
+[adapt-skip] t=1370 step=12 reason=not_single_support phase=ds
+[adapt-skip] t=1375 step=12 reason=not_single_support phase=ds
+[adapt-skip] t=1380 step=12 reason=not_single_support phase=ds
+[adapt-skip] t=1385 step=12 reason=not_single_support phase=ds
+[adapt-skip] t=1390 step=12 reason=not_single_support phase=ds
+[adapt-skip] t=1395 step=12 reason=not_single_support phase=ds
+[summary]
+  profile=forward adapt=True fell=False ticks=1400 sim_time=14.00s contact=ds
+  force=45.0N duration=0.10s direction=right push_step=4 push_phase=0.55
+  adapter_updates=1 activations=1 qp_failures=0 max_dcm_error=0.0030
