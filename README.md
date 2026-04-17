@@ -61,8 +61,12 @@ You need `dartpy >= 6.16`. If pip does not allow you to install the right versio
 | `filter.py` | Kalman filter for CoM/ZMP estimation |
 | `utils.py` | QP solver wrapper, rotation utilities, block-diagonal helper |
 | `logger.py` | Real-time plotting of CoM/ZMP trajectories |
-| `run_final_tests.sh` | Exploratory test battery |
-| `run_body_tuning.sh` | Final body-push tuning battery (main quantitative results) |
+| `plot_adapter_trace.py` | Generates diagnostic plots from JSON traces |
+| `show_results.py` | Reads JSON logs and prints results grid, comparisons, viewer commands |
+| `run_all_tests.sh` | **Final unified test battery** (123 tests, 7 sections) — main quantitative results |
+| `run_slippage_tests.sh` | Slippage recovery test battery (36 tests) |
+| `run_inplace_tests.sh` | Stepping-in-place test battery (46 tests) |
+| `run_body_tuning.sh` | Earlier body-push tuning battery (superseded by `run_all_tests.sh`) |
 
 ---
 
@@ -100,6 +104,17 @@ Most extensively modified. Adds CLI argument parsing, `--headless` mode for repr
 ### `ismpc.py`
 
 The MPC core was not rewritten. It solves the original problem using `self.footstep_planner.plan` (the active plan), so when the adapter updates timings and positions the MPC automatically uses the adapted values. This keeps the baseline nearly intact and makes the comparison clean.
+
+---
+
+## Push direction and step convention
+
+The push must be directed toward the **unsupported side** of the robot to be a meaningful test. The gait alternates support feet:
+
+- **Step 3**: support = `rfoot` → push **left** is the critical case (toward the free side)
+- **Step 4**: support = `lfoot` → push **right** is the critical case (toward the free side)
+
+Pushing toward the support foot (e.g. right push on step 3) is largely absorbed by the stance leg and does not test the adapter.
 
 ---
 
@@ -170,20 +185,28 @@ If the QP solution is valid and not "too small", timing and/or position of the n
 ## Final tuning (body-push battery)
 
 ```python
-'adapt_dcm_error_threshold': 0.004,
+'adapt_dcm_error_threshold': 0.003,
 'adapt_margin_error_gate': 0.002,
-'adapt_cooldown_ticks': 20,
-'adapt_warmup_ticks': 25,
+'adapt_cooldown_ticks': 10,
+'adapt_warmup_ticks': 15,
 'adapt_freeze_ticks': 8,
 'T_gap_ticks': 16,
 'min_timing_update_ticks': 2,
 'min_step_update': 0.01,
+'adapt_alpha_step': 1.0,
 'adapt_alpha_time': 5.0,
-'adapt_alpha_offset': 400.0,
-'adapt_alpha_slack': 1e5,
+'adapt_alpha_offset': 50.0,
+'adapt_alpha_slack': 1e4,
+'step_length_forward_margin': 0.15,
+'step_length_backward_margin': 0.08,
+'step_width_outward_margin': 0.10,
+'step_width_inward_margin': 0.05,
+'cross_margin': 0.01,
+'T_min_ticks': 40,
+'T_max_ticks': 100,
 ```
 
-With this tuning the adapter is less nervous: tiny updates are filtered out, cooldown is longer, the final part of the step is protected, and the QP is unlikely to react to insignificant deviations.
+The initial tuning had geometric bounds that were too tight (`forward_margin=0.08`, `outward_margin=0.05`) and a QP weight imbalance (`alpha_offset=400` vs `alpha_step=8`), which caused the QP to fail on nearly every activation. The revised tuning widens the step bounds so the QP is feasible, lowers `alpha_offset` to give the optimizer more freedom, and shortens the warmup/cooldown windows so the adapter can intervene earlier and more than once per step if needed.
 
 ---
 
@@ -199,20 +222,31 @@ python simulation.py --adapt
 **Headless (quantitative tests):**
 
 ```bash
-# Baseline
+# Baseline — 45N left push on step 3 (falls)
 python simulation.py --headless --quiet --profile forward --steps 1400 \
-    --force 40 --duration 0.10 --direction left \
-    --push-step 3 --push-phase 0.05
+    --force 45 --duration 0.10 --direction left \
+    --push-step 3 --push-phase 0.55
 
-# Adapted
+# Adapted — same push (survives)
 python simulation.py --headless --quiet --profile forward --adapt --steps 1400 \
-    --force 40 --duration 0.10 --direction left \
+    --force 45 --duration 0.10 --direction left \
     --push-step 3 --push-phase 0.55
 
-# Stepping in place
-python simulation.py --headless --quiet --profile inplace --adapt --steps 1400 \
-    --force 30 --duration 0.10 --direction left \
+# Adapted — 50N left push (survives, strongest case)
+python simulation.py --headless --quiet --profile forward --adapt --steps 1400 \
+    --force 50 --duration 0.10 --direction left \
     --push-step 3 --push-phase 0.55
+
+# Right push on step 4 (symmetry test)
+python simulation.py --headless --quiet --profile forward --adapt --steps 1400 \
+    --force 40 --duration 0.10 --direction right \
+    --push-step 4 --push-phase 0.55
+```
+
+**Viewing results from previous headless runs:**
+
+```bash
+python show_results.py logs_final/
 ```
 
 > **Note:** the source of truth for quantitative results are headless runs only, because the viewer can crash directly if the solver raises an exception.
@@ -221,37 +255,92 @@ python simulation.py --headless --quiet --profile inplace --adapt --steps 1400 \
 
 ## Results
 
-### Main result: body push at `push_phase = 0.55`
+Results are based on the final unified battery of 123 headless tests (`run_all_tests.sh`), producing 44 direct base-vs-adapt comparisons.
 
-**Baseline:**
-- 35 N → survives
-- 40 N → fails
+### Summary
 
-**Adapted:**
-- 40 N → survives
-- 45 N → survives
-- 50 N → survives (with final tuning)
-- 55 N → fails
+| Outcome | Count |
+|---|---|
+| Adapter saves the robot | **10** |
+| Tie (both survive or both fall with similar ticks) | 32 |
+| Adapter worsens | 2 (false positives: `upd=0`, adapter made no update) |
 
-The reactive layer shifts the failure frontier forward: the adapted controller tolerates significantly higher push forces before becoming infeasible.
+### Forward walking — lateral push (main result)
 
-### Forward walking
+**Left push on step 3 (support = rfoot), `push_phase = 0.55`:**
 
-The recovery in forward walking is mainly driven by **step placement adaptation**, which is consistent with what is discussed in the reference paper.
+| Force | Baseline | Adapted |
+|---|---|---|
+| 35 N | survives | survives |
+| 40 N | survives | survives |
+| 45 N | **falls** | survives |
+| 46 N | **falls** | survives |
+| 48 N | **falls** | survives |
+| 50 N | **falls** | **survives** |
+| 52 N | falls | falls (+27 ticks) |
+| 55 N | falls | falls (+9 ticks) |
 
-### Stepping in place
+The adapter shifts the failure frontier from ~40 N to ~50 N, an improvement of approximately 25%.
 
-In stepping-in-place runs the adapter also produces genuine **timing adaptation**. A representative log entry:
+**Left push on step 3, `push_phase = 0.35`:**
 
-```
-ss:70 → 69
-```
+| Force | Baseline | Adapted |
+|---|---|---|
+| 40 N | survives | survives |
+| 45 N | **falls** | **survives** |
+| 50 N | falls | falls |
 
-This confirms that the controller modifies not only where to step but also when to step, which was the main goal of the project.
+### Symmetry — right push on step 4
 
-### Stance-foot / slip-like perturbation (exploratory)
+**Right push on step 4 (support = lfoot):**
 
-Tests with `--push-target stance_foot` were also implemented to approximate slip-like perturbations. These results were less conclusive than body-push ones for three reasons: sensitivity to the simulator's contact/friction model, physical emphasis different from the paper's setup, and less clear separation between baseline and adapted behavior. For this reason the slip-like scenario is treated as an exploratory extension, not as the main claim.
+| Force | Phase | Baseline | Adapted |
+|---|---|---|---|
+| 35 N | 0.35 | survives | survives |
+| 35 N | 0.55 | survives | survives |
+| 40 N | 0.35 | **falls** | **survives** |
+| 40 N | 0.55 | **falls** | **survives** |
+| 45 N | 0.35 | — | survives |
+| 45 N | 0.55 | — | survives |
+| 50 N | 0.35 | — | falls |
+
+This confirms that the adapter works on both sides when the push is directed toward the unsupported foot.
+
+### Forward/backward push
+
+All tests fall for both baseline and adapted at 35–45 N. The adapter is not designed for sagittal perturbations and the results are consistent with the reference paper, which shows the largest improvements for lateral pushes (see Fig. 5 in the paper, polar plot of maximum tolerable impulse by direction).
+
+### Behavior at different push phases
+
+The adapter is most effective at `push_phase = 0.55` (mid single-support). At `push_phase = 0.05` (start of step) the DCM has not diverged enough to trigger activation. At `push_phase = 0.75` (late in the step) the freeze window prevents adaptation. This is consistent with the paper's observation that push timing within a step affects recovery difficulty.
+
+---
+
+## Stepping in place — why it does not work in our setup
+
+Stepping-in-place tests (`run_inplace_tests.sh`, 46 tests) revealed that the HRP4 robot in DART is **unstable in the in-place profile even without any external push**: the robot falls at ~375 ticks with zero force applied. This makes quantitative evaluation of the adapter impossible for this scenario.
+
+The instability is not caused by the adapter (which makes no updates, `upd=0` in all cases) but by the simulation environment. The DART penalty-based contact model combined with the HRP4 whole-body dynamics does not produce a stable stepping-in-place gait. The reference paper uses a different robot (Sarcos with passive ankles) on a different simulator (SL with 18 contact points per foot and a tuned penalty contact model), where stepping in place is stable.
+
+Additionally, in the IS-MPC framework the CoM/ZMP controller is designed to track a moving reference. When the reference velocity is zero, the ZMP moving constraints in the MPC converge to a point, reducing the effective support polygon and making the controller more sensitive to any small perturbation — including numerical noise from the contact solver.
+
+For these reasons, stepping-in-place results are not included in the main quantitative claims. In earlier tuning runs where the robot survived longer in the in-place profile, the adapter did produce genuine timing changes (`ss:70→69`), confirming that the timing adaptation mechanism works correctly when the underlying gait is stable.
+
+---
+
+## Slippage recovery — why it does not work in our setup
+
+Slippage tests (`run_slippage_tests.sh`, 36 tests) simulate stance-foot slippage by applying a force directly on the support foot (`--push-target rfoot` on step 3, `--push-target lfoot` on step 4).
+
+Results show that **the adapter does not improve slippage recovery**: both baseline and adapted controllers survive at 20 N and fall at 30 N+, with no significant difference in survival time. This is an architectural limitation, not a tuning problem.
+
+The key difference with respect to the reference paper lies in the controller backbone:
+
+**The paper's controller** does not control the CoP at all. It relies entirely on step placement and timing to regulate the DCM. When the stance foot slips, the CoP assumption is not violated because there is no CoP control in the first place. The controller simply observes the DCM divergence and reacts by adjusting the next step. This is why the paper reports successful slippage recovery with forces up to 930 N (Fig. 14).
+
+**Our IS-MPC controller** actively regulates CoM/ZMP trajectories using the CoP as a control variable inside a receding-horizon optimization. The controller assumes a stable, stationary contact under the stance foot. When the foot slips, this assumption breaks: the ZMP measurement becomes unreliable, the Kalman filter receives corrupted observations, and the MPC computes control actions based on an incorrect contact model. By the time the adapter detects the DCM deviation, the whole-body controller has already entered an irrecoverable state.
+
+In other words, the IS-MPC backbone provides better nominal performance (the robot walks more stably during undisturbed forward walking) but is inherently more fragile to contact model violations. The paper's architecture trades nominal walking quality for robustness to contact disruptions. This is a fundamental architectural trade-off that cannot be resolved by tuning the adapter parameters alone — it would require modifying the IS-MPC core to be less dependent on the CoP assumption, which is outside the scope of this project.
 
 ---
 
@@ -277,19 +366,66 @@ A blue arrow shows the push direction and magnitude during viewer runs. A yellow
 
 | Folder | Purpose |
 |---|---|
-| `logs/` | First exploratory sweep (body-push + slip-like) |
-| `logs_refined/` | Second battery, refined force ranges and push phases |
-| `logs_body_tuning/` | **Final body-push battery** with tuned parameters — source of the main quantitative result |
+| `archives/old_logs/` | First exploratory sweeps (body-push + slip-like, old tuning) |
+| `logs_body_tuning/` | Earlier body-push battery (before QP fix) |
+| `logs_extra/` | Extended tests: multi-direction, frontier, in-place (old push-step convention) |
+| `logs_final/` | **Final unified battery** — 123 tests, 7 sections, source of the main quantitative results |
+| `logs_slippage/` | Slippage recovery battery — 36 tests |
+| `logs_inplace/` | Stepping-in-place battery — 46 tests (inconclusive, see above) |
+| `plots_body/` | Diagnostic plots for selected body-push runs |
+
+The final battery (`run_all_tests.sh`) is organized in sections:
+
+| Section | Description | Tests |
+|---|---|---|
+| A | Forward + left push on step 3 | 19 |
+| B | Forward + right push on step 4 (symmetry) | 10 |
+| C | Forward/backward push on step 3 and 4 | 24 |
+| D | In-place, left S3 + right S4 | 16 |
+| E | Long push 0.20 s | 12 |
+| F | Frontier (46–60 N at P=0.55) | 12 |
+| G | Paper-style push at step start (P=0.05) | 18 |
+
+Results can be inspected at any time without re-running:
+
+```bash
+python show_results.py logs_final/
+python show_results.py logs_slippage/
+python show_results.py logs_final/ logs_body_tuning/   # multiple folders
+```
 
 ---
 
 ## Differences from the reference paper
 
 1. **Architecture**: extension of the DIAG IS-MPC codebase, not a standalone reimplementation of the paper's controller.
-2. **Controller backbone**: the paper builds a stepping controller that uses only step location and timing without explicit CoP or CoM control; here the existing IS-MPC handles CoM/ZMP regulation, and the adaptation layer sits on top.
-3. **QP formulation**: the paper solves the stepping QP at every control cycle (1 kHz) with variables τ = e^(ω₀T), b, and uT. Our adapter runs only when activation conditions are met and uses a simplified 7-variable QP.
-4. **Swing-foot trajectory**: the paper uses a 9th-order vertical QP recomputed at each cycle; here we use quintics with online re-anchoring (lighter and sufficient for this setup).
-5. **Observed behavior**: coherent with the paper — forward walking recovery is mostly step placement, stepping in place also shows explicit timing adaptation.
+2. **Controller backbone**: the paper builds a stepping controller that uses only step location and timing without explicit CoP or CoM control; here the existing IS-MPC handles CoM/ZMP regulation, and the adaptation layer sits on top. This is the root cause of the different behavior in slippage recovery and stepping in place (see dedicated sections above).
+3. **QP formulation**: the paper solves the stepping QP at every control cycle (1 kHz) with variables τ = e^(ω₀T), b, and uT, and weights α₁=1, α₂=5, α₃=1000. Our adapter runs only when activation conditions are met and uses a 7-variable QP (dx, dy, τ, bx, by, sx, sy) with different weights adapted to our local-frame formulation. The paper implements the viability constraint as a soft constraint with very high weight; we use explicit slack variables for the same purpose.
+4. **Activation strategy**: the paper runs the QP at every control cycle; our adapter activates only when the DCM error or viability margin exceeds a threshold, with warmup, freeze, and cooldown windows to prevent jitter.
+5. **Swing-foot trajectory**: the paper uses a 9th-order vertical QP recomputed at each cycle; here we use quintics with online re-anchoring (lighter and sufficient for this setup).
+6. **Push direction convention**: the paper tests pushes in all directions (polar plot, Fig. 5) and finds the largest improvements for lateral pushes. Our results confirm this pattern.
+7. **Observed behavior**: coherent with the paper — forward walking recovery is mostly step placement adaptation. The paper also reports that stepping in place shows explicit timing adaptation; in our setup the in-place profile is not stable enough in DART to verify this quantitatively, although the adapter does produce genuine timing changes in runs where the robot survived longer.
+
+---
+
+## Viewer commands for best cases
+
+```bash
+# 50N lateral — strongest recovery case
+python simulation.py --profile forward --force 50 --duration 0.1 --direction left --push-step 3 --push-phase 0.55 --push-target base
+python simulation.py --adapt --profile forward --force 50 --duration 0.1 --direction left --push-step 3 --push-phase 0.55 --push-target base
+
+# 45N at two phases
+python simulation.py --profile forward --force 45 --duration 0.1 --direction left --push-step 3 --push-phase 0.35 --push-target base
+python simulation.py --adapt --profile forward --force 45 --duration 0.1 --direction left --push-step 3 --push-phase 0.35 --push-target base
+
+python simulation.py --profile forward --force 45 --duration 0.1 --direction left --push-step 3 --push-phase 0.55 --push-target base
+python simulation.py --adapt --profile forward --force 45 --duration 0.1 --direction left --push-step 3 --push-phase 0.55 --push-target base
+
+# Symmetry — right push on step 4
+python simulation.py --profile forward --force 40 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
+python simulation.py --adapt --profile forward --force 40 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
+```
 
 ---
 
