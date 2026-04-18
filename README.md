@@ -423,8 +423,8 @@ python simulation.py --profile forward --force 45 --duration 0.1 --direction lef
 python simulation.py --adapt --profile forward --force 45 --duration 0.1 --direction left --push-step 3 --push-phase 0.55 --push-target base
 
 # Symmetry — right push on step 4
-python simulation.py --profile forward --force 40 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
-python simulation.py --adapt --profile forward --force 40 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
+python simulation.py --profile forward --force 45 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
+python simulation.py --adapt --profile forward --force 45 --duration 0.1 --direction right --push-step 4 --push-phase 0.55 --push-target base
 ```
 
 ---
