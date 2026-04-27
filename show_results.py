@@ -37,6 +37,7 @@ def load_rows(logdirs):
             failure = d.get("failure")
             failure_type = failure["type"] if failure else ""
             adapter = d.get("adapter", {})
+            push_diag = d.get("push_start_diagnostics") or {}
 
             rows.append({
                 "name": os.path.basename(path).replace(".json", ""),
@@ -54,6 +55,14 @@ def load_rows(logdirs):
                 "qp_failures": adapter.get("qp_failures", 0),
                 "max_dcm_err": adapter.get("max_dcm_error", 0.0),
                 "failure": failure_type,
+
+                # Phase-aware push diagnostics.
+                "support_foot": push_diag.get("support_foot", "?"),
+                "swing_foot": push_diag.get("swing_foot", "?"),
+                "swing_label": push_diag.get("swing_phase_label", "?"),
+                "swing_z": push_diag.get("desired_swing_z"),
+                "swing_vz": push_diag.get("desired_swing_vz"),
+                "remaining_ticks": push_diag.get("remaining_ticks"),
             })
 
     return rows, tuning
@@ -78,6 +87,12 @@ def print_full_table(rows):
         ("phase", 6),
         ("dir", 8),
         ("step", 5),
+        ("sup", 6),
+        ("swing", 6),
+        ("sw_phase", 11),
+        ("sw_z", 7),
+        ("sw_vz", 8),
+        ("rem", 5),
         ("adapt", 6),
         ("upd", 4),
         ("act", 4),
@@ -104,6 +119,12 @@ def print_full_table(rows):
                     fmt(r["phase"], 6),
                     fmt(r["direction"], 8),
                     fmt(r["push_step"], 5),
+                    fmt(r["support_foot"], 6),
+                    fmt(r["swing_foot"], 6),
+                    fmt(r["swing_label"], 11),
+                    fmt(r["swing_z"], 7),
+                    fmt(r["swing_vz"], 8),
+                    fmt(r["remaining_ticks"], 5),
                     fmt(r["adapt"], 6),
                     fmt(r["updates"], 4),
                     fmt(r["activations"], 4),

@@ -162,6 +162,10 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         self.push_force_world = np.zeros(3)
         self.push_target = 'base'
 
+        # Phase-aware push diagnostics.
+        # Filled at the exact tick where the push starts.
+        self.push_start_diagnostics = None
+
         self.push_force_arrow_shape = None
         self.push_force_simple_frame = None
         self.push_force_visual = None
@@ -258,6 +262,86 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             return self.lsole if support_foot == 'lfoot' else self.rsole
 
         return self.base
+
+    def _classify_swing_vertical_phase(self, z, vz, z_ground=0.006, vz_eps=0.015):
+        """
+        Classify the real vertical phase of the swing foot.
+
+        The foot pose convention in this codebase is:
+            pose = [rot_x, rot_y, rot_z, x, y, z]
+        so z is index 5.
+        """
+        if z is None or vz is None or not np.isfinite(z) or not np.isfinite(vz):
+            return 'unknown'
+
+        if abs(z) <= z_ground:
+            return 'near_ground'
+
+        if vz > vz_eps:
+            return 'rising'
+
+        if vz < -vz_eps:
+            return 'descending'
+
+        return 'apex'
+
+    def _get_push_phase_diagnostics(self):
+        """
+        Return diagnostics describing the real swing-foot state at the current tick.
+
+        This is more informative than push_phase alone, because the same numerical
+        push_phase can correspond to different swing-foot vertical phases on
+        left/right steps.
+        """
+        try:
+            step_index = self.footstep_planner.get_step_index_at_time(self.time)
+            phase = self.footstep_planner.get_phase_at_time(self.time)
+            time_in_step = int(self.footstep_planner.get_time_in_step(self.time))
+
+            step = self.footstep_planner.get_step(step_index)
+            support_foot = step['foot_id']
+            swing_foot = 'lfoot' if support_foot == 'rfoot' else 'rfoot'
+
+            ss_duration = int(step['ss_duration'])
+            remaining_ticks = int(ss_duration - time_in_step)
+
+            desired_pose = self.desired[swing_foot]['pos']
+            desired_vel = self.desired[swing_foot]['vel']
+            current_pose = self.current[swing_foot]['pos']
+            current_vel = self.current[swing_foot]['vel']
+
+            desired_z = float(desired_pose[5]) if len(desired_pose) >= 6 else None
+            desired_vz = float(desired_vel[5]) if len(desired_vel) >= 6 else None
+            current_z = float(current_pose[5]) if len(current_pose) >= 6 else None
+            current_vz = float(current_vel[5]) if len(current_vel) >= 6 else None
+
+            # Classify the planned swing-foot trajectory; keep current values as diagnostics.
+            label = self._classify_swing_vertical_phase(desired_z, desired_vz)
+
+            return {
+                'tick': int(self.time),
+                'time_s': float(self.time * self.params['world_time_step']),
+                'step_index': int(step_index),
+                'planner_phase': phase,
+                'support_foot': support_foot,
+                'swing_foot': swing_foot,
+                'time_in_step_ticks': time_in_step,
+                'ss_duration_ticks': ss_duration,
+                'remaining_ticks': remaining_ticks,
+                'desired_swing_z': desired_z,
+                'desired_swing_vz': desired_vz,
+                'current_swing_z': current_z,
+                'current_swing_vz': current_vz,
+                'swing_phase_label': label,
+            }
+
+        except Exception as e:
+            return {
+                'tick': int(self.time),
+                'time_s': float(self.time * self.params['world_time_step']),
+                'error': str(e),
+                'swing_phase_label': 'unknown',
+            }
 
     def _init_push_visual(self):
         self.push_force_arrow_shape = None
@@ -435,6 +519,10 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
                 self.push_start_tick is not None
                 and self.push_start_tick <= self.time < self.push_end_tick
             ),
+            'push_start_tick': bool(
+                self.push_start_tick is not None
+                and self.time == self.push_start_tick
+            ),
             'adapter_updated': bool(adapter_event is not None),
             'step_index': None,
             'dcm_error': None,
@@ -445,6 +533,19 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             'target_before_y': None,
             'target_after_x': None,
             'target_after_y': None,
+
+            # Filled after foot trajectory generation.
+            'planner_phase': None,
+            'support_foot': None,
+            'swing_foot': None,
+            'time_in_step_ticks': None,
+            'ss_duration_ticks': None,
+            'remaining_ticks': None,
+            'desired_swing_z': None,
+            'desired_swing_vz': None,
+            'current_swing_z': None,
+            'current_swing_vz': None,
+            'swing_phase_label': None,
         }
 
         if adapter_event is not None:
@@ -458,7 +559,6 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             trace_row['target_after_x'] = float(adapter_event['target_after_world'][0])
             trace_row['target_after_y'] = float(adapter_event['target_after_world'][1])
 
-        self.adapter_trace.append(trace_row)
         if adapter_event is not None and not getattr(self.args, 'quiet', False):
             before_xy = adapter_event['target_before_world']
             after_xy = adapter_event['target_after_world']
@@ -482,6 +582,29 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
         for foot in ['lfoot', 'rfoot']:
             for key in ['pos', 'vel', 'acc']:
                 self.desired[foot][key] = feet_trajectories[foot][key]
+
+        # Phase-aware diagnostics after desired swing-foot trajectory is available.
+        phase_diag = self._get_push_phase_diagnostics()
+        for k, v in phase_diag.items():
+            if k in trace_row:
+                trace_row[k] = v
+
+        # Store exact diagnostics at push start.
+        if self.push_start_tick is not None and self.time == self.push_start_tick:
+            self.push_start_diagnostics = dict(phase_diag)
+            if not getattr(self.args, 'quiet', False):
+                print(
+                    '[push-diagnostics] '
+                    f"step={phase_diag.get('step_index')} "
+                    f"support={phase_diag.get('support_foot')} "
+                    f"swing={phase_diag.get('swing_foot')} "
+                    f"label={phase_diag.get('swing_phase_label')} "
+                    f"z={phase_diag.get('desired_swing_z')} "
+                    f"vz={phase_diag.get('desired_swing_vz')} "
+                    f"remaining={phase_diag.get('remaining_ticks')}"
+                )
+
+        self.adapter_trace.append(trace_row)
 
         for link in ['torso', 'base']:
             for key in ['pos', 'vel', 'acc']:
@@ -650,6 +773,7 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
                 'end_tick': self.push_end_tick,
                 'dt': float(self.params['world_time_step']),
             },
+            'push_start_diagnostics': self.push_start_diagnostics,
             'tuning_params': {
                 'adapt_dcm_error_threshold': self.params['adapt_dcm_error_threshold'],
                 'adapt_margin_error_gate': self.params['adapt_margin_error_gate'],
