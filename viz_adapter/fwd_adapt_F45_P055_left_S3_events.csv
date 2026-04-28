@@ -1,0 +1,2 @@
+tick,time_s,step_index,target_step_index,ss_before,ss_after,target_before_x,target_before_y,target_after_x,target_after_y,dcm_error,margin
+446,4.46,3,4,70,70,0.6000000000000004,-0.1,0.5699649761850901,-0.05066256330699187,0.0030639404079893877,-0.023387999603015325
