@@ -1,0 +1,10 @@
+sudo apt install ffmpeg
+
+python simulation.py --headless --quiet --profile forward --steps 1400 \
+  --force 45 --duration 0.10 --direction left \
+  --push-step 3 --push-phase 0.55 --push-target base \
+  --log-json logs_viz/fwd_base_F45_P055_left_S3.json
+
+python plot_adapter_trace_fancy.py logs_viz/fwd_base_F45_P055_left_S3.json \
+  --outdir viz_adapter --fps 30 --stride 2
+
