@@ -1,0 +1,22 @@
+Ciao, ti aggiorno sulle ultime modifiche.
+
+Abbiamo implementato anche la parte di visualizzazione richiesta per confrontare meglio piano nominale e piano adattato. In particolare, abbiamo aggiunto degli script che generano sia grafici sia video `.mp4` a partire dai log JSON della simulazione.
+
+Nei video ora si vede:
+
+* il piano nominale rispetto al piano adattato;
+* quando entra l’adapter;
+* lo spostamento del prossimo footstep;
+* il cambio di timing, cioè `ss_before -> ss_after`;
+* i grafici `x(t)` e `y(t)` del target del passo nominale rispetto a quello adattato;
+* il segnale di trigger, come il DCM error, con la push window evidenziata.
+
+Per mostrare esplicitamente anche il cambio di timing abbiamo aggiunto una modalità diagnostica con pesi modificati (`--timing-biased`). L’idea non è sostituire il tuning usato nella batteria finale, ma forzare il QP a rendere più evidente anche l’adattamento temporale, perché nei test principali l’adapter tendeva soprattutto a modificare la posizione del passo. Con questa variante si vede un caso in cui vengono adattati sia il timing sia la posizione, ad esempio con aggiornamenti del tipo `ss:70->71` e spostamento del target del piede.
+
+Abbiamo quindi preparato e incluso anche i relativi output:
+
+* video `.mp4` della simulazione con adattamento;
+* dashboard statiche con timing e footstep update;
+* grafici `x/tempo` e `y/tempo` nominal vs adapted;
+* grafici aggregati sulle forze massime recuperabili;
+* README aggiornato con i nuovi parametri CLI, i comandi per generare i video/grafici e una nota che chiarisce che la batteria completa non è stata rieseguita con i nuovi pesi, ma che il caso timing-biased è solo dimostrativo.
