@@ -66,6 +66,10 @@ You need `dartpy >= 6.16`. If pip does not allow the correct version, use Python
 | `logger.py` | Real-time plotting |
 | `show_results.py` | Aggregates JSON logs and prints comparison tables |
 | `run_all_tests.sh` | Final 123-test battery used for the main quantitative results |
+| `plot_adapter_trace.py` | Basic adapter trace plots from one JSON run |
+| `plot_adapter_trace_fancy.py` | Video-oriented nominal-vs-adapted plan visualizer |
+| `plot_adapter_trace_timing_pretty.py` | Diagnostic timing/footstep visualizer, including x(t) and y(t) target plots |
+| `plot_recovery_radar.py` | Aggregates logs into bar/radar plots of maximum recoverable force |
 
 ---
 
@@ -126,10 +130,12 @@ The adapter also tracks:
 The current simulation entry point provides:
 
 - `--adapt` to enable the reactive layer
+- `--timing-biased` to enable a diagnostic tuning that makes timing changes cheaper and footstep relocation more expensive
 - `--headless` for reproducible command-line tests
 - push scheduling by force, duration, step, phase, direction, and target
 - `--profile {forward,inplace,scianca}`
 - optional JSON export via `--log-json`
+- rich adapter traces for visualization of nominal/adapted plans, timing updates, and next-step target evolution
 - summary printing at the end of each run
 
 The controller summary exported by `simulation.py` includes both adapter statistics and the tuning parameters used in that run.
@@ -184,6 +190,7 @@ If the QP returns a valid solution, the adapter may:
 | Argument | Description |
 |---|---|
 | `--adapt` | Enable the reactive step timing adaptation layer |
+| `--timing-biased` | Diagnostic tuning that favors timing adaptation by increasing the cost of footstep relocation and reducing the cost of timing deviation |
 | `--headless` | Run without the viewer |
 | `--steps N` | Maximum number of simulation ticks |
 | `--force F` | Push force in Newtons |
@@ -243,6 +250,48 @@ adapt_alpha_slack         = 10000.0
 
 So, the implementation description in this README is based on the current code files, while the experimental tables below are based on the `logs_final` summaries.
 
+
+### Diagnostic timing-biased tuning
+
+The default controller in the final battery mostly uses **footstep relocation** in the successful forward lateral push cases. To verify that the implemented QP can also modify timing, `simulation.py` includes an optional diagnostic mode:
+
+```bash
+--timing-biased
+```
+
+This mode changes the relative QP costs and activation thresholds so that timing changes become cheaper than in the default tuning:
+
+```python
+adapt_dcm_error_threshold = 0.0022
+adapt_margin_error_gate   = 0.0015
+adapt_viability_margin    = 0.030
+
+adapt_alpha_step          = 35.0   # or 80.0 for a more conservative hybrid test
+adapt_alpha_time          = 0.05
+adapt_alpha_offset        = 50.0
+adapt_alpha_slack         = 1e4
+
+T_gap_ticks               = 4
+T_min_ticks               = 20
+T_max_ticks               = 120
+
+min_timing_update_ticks   = 1
+min_step_update           = 0.005
+
+adapt_warmup_ticks        = 15
+adapt_freeze_ticks        = 4
+adapt_cooldown_ticks      = 8
+```
+
+This is intentionally described as a **diagnostic** tuning, not as the final controller. The full `logs_final` battery was **not** rerun with these new weights. We only tested targeted examples to show that the adapter can produce a real timing update, for example:
+
+```text
+ss:70->71
+xy:(0.600,-0.100)->(0.592,-0.051)
+```
+
+This means that the single-support duration changed by `+1` tick while the next footstep target also moved. The result is useful for demonstrating that the implementation can adapt both **when** and **where** to step, but it should not be mixed with the quantitative claims from the final battery.
+
 ---
 
 ## Usage examples
@@ -272,6 +321,61 @@ python simulation.py --headless --quiet --profile forward --adapt --steps 1400 \
     --force 40 --duration 0.10 --direction right \
     --push-step 4 --push-phase 0.55 --push-target base
 ```
+
+
+### Diagnostic timing + footstep video
+
+The following command runs the hybrid timing-biased example and stores the rich JSON trace:
+
+```bash
+mkdir -p logs_viz viz_adapter
+
+python simulation.py --headless --steps 1000 \
+    --adapt --timing-biased \
+    --profile forward \
+    --force 46 --duration 0.10 --direction left \
+    --push-step 3 --push-phase 0.55 --push-target base \
+    --log-json logs_viz/fwd_hybrid_timing_step_F46_P055_left_S3.json
+```
+
+The pretty timing visualizer generates a video, a static dashboard, and a CSV file with the accepted adapter events:
+
+```bash
+python plot_adapter_trace_timing_pretty.py logs_viz/fwd_hybrid_timing_step_F46_P055_left_S3.json \
+    --outdir viz_adapter --fps 8 --stride 4
+```
+
+Expected outputs:
+
+```text
+viz_adapter/fwd_hybrid_timing_step_F46_P055_left_S3_timing_animation.mp4
+viz_adapter/fwd_hybrid_timing_step_F46_P055_left_S3_timing_dashboard.png
+viz_adapter/fwd_hybrid_timing_step_F46_P055_left_S3_timing_events.csv
+```
+
+The updated dashboard/video contains two extra plots:
+
+- **next footstep target x(t)**: nominal vs adapted
+- **next footstep target y(t)**: nominal vs adapted
+
+These plots make the step-position update visible over time, while the update card shows the timing change as `ΔT` and `ss_before -> ss_after`.
+
+### Maximum recoverable force plots
+
+The log aggregation plotter compares the maximum recovered push force across scenarios:
+
+```bash
+python plot_recovery_radar.py logs_final logs_body_tuning
+```
+
+Expected outputs:
+
+```text
+recovery_bar.png
+recovery_radar.png
+```
+
+The bar plot is usually more readable for the report, while the radar plot is useful as a compact visual summary.
 
 ### Aggregate previous runs
 
@@ -477,13 +581,46 @@ python simulation.py --adapt --profile forward --force 50.0 --duration 0.1 --dir
 
 ---
 
+## Diagnostic timing-biased experiment
+
+The final battery supports the conservative claim that the adapter improves **forward-walking lateral push recovery**, mainly through changes in the next step location. This is also consistent with what is observed in the standard adapted runs, where the accepted updates often move the target footstep while leaving the single-support duration unchanged.
+
+A separate timing-biased experiment was added only to demonstrate that the implementation can also modify timing when the QP is encouraged to do so. In the reference paper, the forward walking examples without time adjustment already recover by adapting foot positions; when timing adaptation is enabled, the paper emphasizes the additional benefit of taking faster steps and, in the stepping-in-place push recovery example, explicitly shows both step location and timing being adapted. Our project does not reproduce the paper controller directly. It keeps the DIAG IS-MPC backbone and adds a gated reactive layer.
+
+For this reason, `--timing-biased` should be interpreted as:
+
+- a diagnostic mode;
+- a way to show that the `tau` / `ss_duration` branch of the QP is active;
+- **not** the tuning used for the `logs_final` quantitative battery.
+
+The tested hybrid case was:
+
+```bash
+python simulation.py --headless --steps 1000 \
+    --adapt --timing-biased \
+    --profile forward \
+    --force 46 --duration 0.10 --direction left \
+    --push-step 3 --push-phase 0.55 --push-target base
+```
+
+A representative accepted update is:
+
+```text
+ss:70->71
+xy:(0.600,-0.100)->(0.592,-0.051)
+```
+
+This demonstrates a simultaneous timing and footstep update. The result should be presented separately from the full battery, because the full battery was run with the original conservative tuning and not with the timing-biased weights.
+
+---
+
 ## Differences from the reference paper
 
 1. **Architecture**: this is an extension of DIAG IS-MPC, not a standalone controller designed from scratch around step timing adaptation.
 2. **Backbone**: the paper’s controller is built around step adaptation itself, whereas here the reactive layer sits on top of an existing CoM/ZMP MPC.
 3. **QP usage**: the paper solves the adaptation problem continuously at each control cycle; this implementation uses gated activation.
 4. **Triggering**: the current adapter includes warmup, freeze, cooldown, timing clamps, and displacement clamps to avoid jitter and infeasibility.
-5. **Observed behavior**: the paper reports strong benefits both in forward walking and stepping in place; this project only shows strong and repeatable benefits in the **forward lateral body-push** regime.
+5. **Observed behavior**: the paper reports strong benefits both in forward walking and stepping in place. In this project, the full battery only supports strong and repeatable benefits in the **forward lateral body-push** regime. The newer `--timing-biased` example is a separate diagnostic test, not part of that battery.
 
 ---
 

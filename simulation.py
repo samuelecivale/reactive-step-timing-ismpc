@@ -78,7 +78,52 @@ class Hrp4Controller(dart.gui.osg.RealTimeWorldNode):
             'T_max_ticks': 100,
         }
         self.params['eta'] = np.sqrt(self.params['g'] / self.params['h'])
+                # ------------------------------------------------------------
+        # Diagnostic timing-biased tuning.
+        # Use with: --timing-biased
+        #
+        # Goal:
+        #   Make timing changes cheaper than footstep-location changes,
+        #   in order to check whether the QP actually exploits ss_duration.
+        #
+        # This is NOT meant as the final robust tuning.
+        # ------------------------------------------------------------
+        if bool(getattr(self.args, 'timing_biased', False)):
+            self.params.update({
+                'adapt_dcm_error_threshold': 0.0022,
+                'adapt_margin_error_gate': 0.0015,
+                'adapt_viability_margin': 0.035,
 
+                # Hybrid timing + footstep adaptation.
+                # Step relocation is still penalized, but not almost blocked.
+                'adapt_alpha_step': 35.0,
+                'adapt_alpha_time': 0.05,
+                'adapt_alpha_offset': 50.0,
+                'adapt_alpha_slack': 1e4,
+
+                'T_gap_ticks': 4,
+                'T_min_ticks': 20,
+                'T_max_ticks': 120,
+
+                'min_timing_update_ticks': 1,
+                'min_step_update': 0.005,
+
+                'adapt_warmup_ticks': 10,
+                'adapt_freeze_ticks': 4,
+                'adapt_cooldown_ticks': 8,
+            })
+
+            print("[timing-biased] enabled")
+            print(
+                "[timing-biased] "
+                f"alpha_step={self.params['adapt_alpha_step']} "
+                f"alpha_time={self.params['adapt_alpha_time']} "
+                f"T_gap={self.params['T_gap_ticks']} "
+                f"T_min={self.params['T_min_ticks']} "
+                f"T_max={self.params['T_max_ticks']} "
+                f"err_thr={self.params['adapt_dcm_error_threshold']} "
+                f"gate={self.params['adapt_margin_error_gate']}"
+            )
         # Robot links.
         self.lsole = hrp4.getBodyNode('l_sole')
         self.rsole = hrp4.getBodyNode('r_sole')
@@ -1032,7 +1077,11 @@ def parse_args():
     parser.add_argument('--quiet', action='store_true', help='Reduce console output.')
     parser.add_argument('--profile',choices=['forward', 'inplace', 'scianca'],default='forward',help='Walking reference profile.')
     parser.add_argument('--log-json',type=str,default=None,help='Optional path to save a JSON summary of the run.')
-    
+    parser.add_argument(
+        '--timing-biased',
+        action='store_true',
+        help='Use diagnostic tuning that penalizes footstep relocation and favors timing adaptation.'
+    )
     return parser.parse_args()
 
 
