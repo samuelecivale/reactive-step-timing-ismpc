@@ -1,0 +1,11 @@
+category,variant,max_recoverable_force,max_tested_force,n_success,n_total,tested_forces,success_forces
+Forward L-S3,base,48.0,50.0,1,3,46.0 48.0 50.0,48.0
+Forward L-S3,timing-biased,50.0,50.0,3,3,46.0 48.0 50.0,46.0 48.0 50.0
+Forward R-S4,base,0.0,45.0,0,2,40.0 45.0,
+Forward R-S4,timing-biased,40.0,45.0,1,2,40.0 45.0,40.0
+Inplace L-S3,base,0.0,40.0,0,2,35.0 40.0,
+Inplace L-S3,timing-biased,0.0,40.0,0,2,35.0 40.0,
+Inplace R-S4,base,0.0,35.0,0,2,30.0 35.0,
+Inplace R-S4,timing-biased,0.0,35.0,0,2,30.0 35.0,
+Paper L-S3,base,35.0,40.0,1,2,35.0 40.0,35.0
+Paper L-S3,timing-biased,40.0,40.0,2,2,35.0 40.0,35.0 40.0

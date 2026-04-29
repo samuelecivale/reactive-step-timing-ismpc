@@ -1,0 +1,7 @@
+category,variant,max_recoverable_force,max_tested_force,n_success,n_total,tested_forces,success_forces
+Long L-S3,base,20.0,35.0,4,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 10.0 15.0 20.0
+Long L-S3,default,15.0,35.0,3,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 10.0 15.0
+Long L-S3,timing-biased,15.0,35.0,3,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 10.0 15.0
+Long R-S4,base,15.0,35.0,2,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 15.0
+Long R-S4,default,15.0,35.0,2,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 15.0
+Long R-S4,timing-biased,30.0,35.0,3,7,5.0 10.0 15.0 20.0 25.0 30.0 35.0,5.0 15.0 30.0

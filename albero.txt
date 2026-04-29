@@ -1,0 +1,1636 @@
+.
+├── albero.txt
+├── archives
+│   ├── old_logs
+│   │   ├── logs
+│   │   │   ├── body_adapt_F40_P055.json
+│   │   │   ├── body_adapt_F40_P055.log
+│   │   │   ├── body_adapt_F50_P055.json
+│   │   │   ├── body_adapt_F50_P055.log
+│   │   │   ├── body_adapt_F50_P.json
+│   │   │   ├── body_adapt_F50_P.log
+│   │   │   ├── body_adapt_F60_P055.json
+│   │   │   ├── body_adapt_F60_P055.log
+│   │   │   ├── body_base_F30_P055.json
+│   │   │   ├── body_base_F30_P055.log
+│   │   │   ├── body_base_F40_P055.json
+│   │   │   ├── body_base_F40_P055.log
+│   │   │   ├── body_base_F40_P.json
+│   │   │   ├── body_base_F40_P.log
+│   │   │   ├── body_base_F50_P055.json
+│   │   │   ├── body_base_F50_P055.log
+│   │   │   ├── paperlike_slip_adapt_inplace_F300_P055.json
+│   │   │   ├── paperlike_slip_adapt_inplace_F300_P055.log
+│   │   │   ├── paperlike_slip_base_forward_F250_P055.json
+│   │   │   ├── paperlike_slip_base_forward_F250_P055.log
+│   │   │   ├── slip_adapt_F200_P055.json
+│   │   │   ├── slip_adapt_F200_P055.log
+│   │   │   ├── slip_adapt_F250_P055.json
+│   │   │   ├── slip_adapt_F250_P055.log
+│   │   │   ├── slip_adapt_F300_P055.json
+│   │   │   ├── slip_adapt_F300_P055.log
+│   │   │   ├── slip_adapt_F300_P.json
+│   │   │   ├── slip_adapt_F300_P.log
+│   │   │   ├── slip_adapt_F350_P055.json
+│   │   │   ├── slip_adapt_F350_P055.log
+│   │   │   ├── slip_adapt_F400_P055.json
+│   │   │   ├── slip_adapt_F400_P055.log
+│   │   │   ├── slip_base_F150_P055.json
+│   │   │   ├── slip_base_F150_P055.log
+│   │   │   ├── slip_base_F200_P055.json
+│   │   │   ├── slip_base_F200_P055.log
+│   │   │   ├── slip_base_F250_P055.json
+│   │   │   ├── slip_base_F250_P055.log
+│   │   │   ├── slip_base_F250_P.json
+│   │   │   ├── slip_base_F250_P.log
+│   │   │   ├── slip_base_F300_P055.json
+│   │   │   └── slip_base_F300_P055.log
+│   │   └── logs_refined
+│   │       ├── body_adapt_F40_P075.json
+│   │       ├── body_adapt_F40_P075.log
+│   │       ├── body_adapt_F45_P055.json
+│   │       ├── body_adapt_F45_P055.log
+│   │       ├── body_adapt_F45_P075.json
+│   │       ├── body_adapt_F45_P075.log
+│   │       ├── body_adapt_F50_P005.json
+│   │       ├── body_adapt_F50_P005.log
+│   │       ├── body_adapt_F50_P035.json
+│   │       ├── body_adapt_F50_P035.log
+│   │       ├── body_adapt_F50_P055.json
+│   │       ├── body_adapt_F50_P055.log
+│   │       ├── body_adapt_F50_P075.json
+│   │       ├── body_adapt_F50_P075.log
+│   │       ├── body_adapt_F55_P055.json
+│   │       ├── body_adapt_F55_P055.log
+│   │       ├── body_adapt_F55_P075.json
+│   │       ├── body_adapt_F55_P075.log
+│   │       ├── body_adapt_F60_P055.json
+│   │       ├── body_adapt_F60_P055.log
+│   │       ├── body_base_F30_P075.json
+│   │       ├── body_base_F30_P075.log
+│   │       ├── body_base_F35_P055.json
+│   │       ├── body_base_F35_P055.log
+│   │       ├── body_base_F35_P075.json
+│   │       ├── body_base_F35_P075.log
+│   │       ├── body_base_F40_P005.json
+│   │       ├── body_base_F40_P005.log
+│   │       ├── body_base_F40_P035.json
+│   │       ├── body_base_F40_P035.log
+│   │       ├── body_base_F40_P055.json
+│   │       ├── body_base_F40_P055.log
+│   │       ├── body_base_F40_P075.json
+│   │       ├── body_base_F40_P075.log
+│   │       ├── body_base_F45_P055.json
+│   │       ├── body_base_F45_P055.log
+│   │       ├── slip_adapt_F300_P035.json
+│   │       ├── slip_adapt_F300_P035.log
+│   │       ├── slip_adapt_F300_P055.json
+│   │       ├── slip_adapt_F300_P055.log
+│   │       ├── slip_adapt_F300_P075.json
+│   │       ├── slip_adapt_F300_P075.log
+│   │       ├── slip_adapt_F325_P075.json
+│   │       ├── slip_adapt_F325_P075.log
+│   │       ├── slip_adapt_F350_P075.json
+│   │       ├── slip_adapt_F350_P075.log
+│   │       ├── slip_adapt_F375_P075.json
+│   │       ├── slip_adapt_F375_P075.log
+│   │       ├── slip_adapt_F400_P075.json
+│   │       ├── slip_adapt_F400_P075.log
+│   │       ├── slip_base_F250_P035.json
+│   │       ├── slip_base_F250_P035.log
+│   │       ├── slip_base_F250_P055.json
+│   │       ├── slip_base_F250_P055.log
+│   │       ├── slip_base_F250_P075.json
+│   │       ├── slip_base_F250_P075.log
+│   │       ├── slip_base_F275_P075.json
+│   │       ├── slip_base_F275_P075.log
+│   │       ├── slip_base_F300_P075.json
+│   │       ├── slip_base_F300_P075.log
+│   │       ├── slip_base_F325_P075.json
+│   │       └── slip_base_F325_P075.log
+│   ├── old_misc
+│   │   ├── output_original.txt
+│   │   └── todolist.txt
+│   ├── old_scripts
+│   │   ├── run_final_tests_ABCDE.sh
+│   │   ├── run_final_tests_arrow.sh
+│   │   └── run_final_tests.sh
+│   └── workspace_cleanup_20260428_230830
+├── clean_workspace_for_final.sh
+├── filter.py
+├── footstep_planner.py
+├── foot_trajectory_generator.py
+├── generate_all_plots_1000.sh
+├── generate_final_plots_and_assets.sh
+├── inspect_adapter_updates.py
+├── install_rich_trace_patch.py
+├── inverse_dynamics.py
+├── ismpc.py
+├── logger.py
+├── logs_body_tuning
+│   ├── body_base_F35_P035.json
+│   ├── body_base_F35_P035.log
+│   ├── body_base_F35_P055.json
+│   ├── body_base_F35_P055.log
+│   ├── body_base_F40_P035.json
+│   ├── body_base_F40_P035.log
+│   ├── body_base_F40_P055.log
+│   ├── body_base_F45_P035.json
+│   └── body_base_F45_P035.log
+├── logs_extra
+│   ├── frontier_fine_adapt_F50_P055_left.json
+│   ├── frontier_fine_adapt_F50_P055_left.log
+│   ├── frontier_fine_adapt_F52_P055_left.json
+│   ├── frontier_fine_adapt_F52_P055_left.log
+│   ├── frontier_fine_adapt_F55_P055_left.json
+│   ├── frontier_fine_adapt_F55_P055_left.log
+│   ├── frontier_fine_adapt_F58_P055_left.json
+│   ├── frontier_fine_adapt_F58_P055_left.log
+│   ├── frontier_fine_adapt_F60_P055_left.json
+│   ├── frontier_fine_adapt_F60_P055_left.log
+│   ├── frontier_fine_base_F50_P055_left.json
+│   ├── frontier_fine_base_F50_P055_left.log
+│   ├── frontier_fine_base_F52_P055_left.json
+│   ├── frontier_fine_base_F52_P055_left.log
+│   ├── frontier_fine_base_F55_P055_left.json
+│   ├── frontier_fine_base_F55_P055_left.log
+│   ├── frontier_fine_base_F58_P055_left.json
+│   ├── frontier_fine_base_F58_P055_left.log
+│   ├── frontier_fine_base_F60_P055_left.json
+│   ├── frontier_fine_base_F60_P055_left.log
+│   ├── fwd_adapt_F40_P035_backward.json
+│   ├── fwd_adapt_F40_P035_backward.log
+│   ├── fwd_adapt_F40_P035_forward.json
+│   ├── fwd_adapt_F40_P035_forward.log
+│   ├── fwd_adapt_F40_P035_right.json
+│   ├── fwd_adapt_F40_P035_right.log
+│   ├── fwd_adapt_F40_P055_backward.json
+│   ├── fwd_adapt_F40_P055_backward.log
+│   ├── fwd_adapt_F40_P055_forward.json
+│   ├── fwd_adapt_F40_P055_forward.log
+│   ├── fwd_adapt_F40_P055_right.json
+│   ├── fwd_adapt_F40_P055_right.log
+│   ├── fwd_adapt_F45_P035_backward.json
+│   ├── fwd_adapt_F45_P035_backward.log
+│   ├── fwd_adapt_F45_P035_forward.json
+│   ├── fwd_adapt_F45_P035_forward.log
+│   ├── fwd_adapt_F45_P035_right.json
+│   ├── fwd_adapt_F45_P035_right.log
+│   ├── fwd_adapt_F45_P055_backward.json
+│   ├── fwd_adapt_F45_P055_backward.log
+│   ├── fwd_adapt_F45_P055_forward.json
+│   ├── fwd_adapt_F45_P055_forward.log
+│   ├── fwd_adapt_F45_P055_right.json
+│   ├── fwd_adapt_F45_P055_right.log
+│   ├── fwd_adapt_F50_P035_backward.json
+│   ├── fwd_adapt_F50_P035_backward.log
+│   ├── fwd_adapt_F50_P035_forward.json
+│   ├── fwd_adapt_F50_P035_forward.log
+│   ├── fwd_adapt_F50_P035_right.json
+│   ├── fwd_adapt_F50_P035_right.log
+│   ├── fwd_adapt_F50_P055_backward.json
+│   ├── fwd_adapt_F50_P055_backward.log
+│   ├── fwd_adapt_F50_P055_forward.json
+│   ├── fwd_adapt_F50_P055_forward.log
+│   ├── fwd_adapt_F50_P055_right.json
+│   ├── fwd_adapt_F50_P055_right.log
+│   ├── fwd_base_F35_P035_backward.json
+│   ├── fwd_base_F35_P035_backward.log
+│   ├── fwd_base_F35_P035_forward.json
+│   ├── fwd_base_F35_P035_forward.log
+│   ├── fwd_base_F35_P035_right.json
+│   ├── fwd_base_F35_P035_right.log
+│   ├── fwd_base_F35_P055_backward.json
+│   ├── fwd_base_F35_P055_backward.log
+│   ├── fwd_base_F35_P055_forward.json
+│   ├── fwd_base_F35_P055_forward.log
+│   ├── fwd_base_F35_P055_right.json
+│   ├── fwd_base_F35_P055_right.log
+│   ├── fwd_base_F40_P035_backward.json
+│   ├── fwd_base_F40_P035_backward.log
+│   ├── fwd_base_F40_P035_forward.json
+│   ├── fwd_base_F40_P035_forward.log
+│   ├── fwd_base_F40_P035_right.json
+│   ├── fwd_base_F40_P035_right.log
+│   ├── fwd_base_F40_P055_backward.json
+│   ├── fwd_base_F40_P055_backward.log
+│   ├── fwd_base_F40_P055_forward.json
+│   ├── fwd_base_F40_P055_forward.log
+│   ├── fwd_base_F40_P055_right.json
+│   ├── fwd_base_F40_P055_right.log
+│   ├── inplace_adapt_F25_P035_left.json
+│   ├── inplace_adapt_F25_P035_left.log
+│   ├── inplace_adapt_F25_P055_left.json
+│   ├── inplace_adapt_F25_P055_left.log
+│   ├── inplace_adapt_F30_P035_left.json
+│   ├── inplace_adapt_F30_P035_left.log
+│   ├── inplace_adapt_F30_P035_right.json
+│   ├── inplace_adapt_F30_P035_right.log
+│   ├── inplace_adapt_F30_P055_left.json
+│   ├── inplace_adapt_F30_P055_left.log
+│   ├── inplace_adapt_F30_P055_right.json
+│   ├── inplace_adapt_F30_P055_right.log
+│   ├── inplace_adapt_F35_P035_left.json
+│   ├── inplace_adapt_F35_P035_left.log
+│   ├── inplace_adapt_F35_P035_right.json
+│   ├── inplace_adapt_F35_P035_right.log
+│   ├── inplace_adapt_F35_P055_left.json
+│   ├── inplace_adapt_F35_P055_left.log
+│   ├── inplace_adapt_F35_P055_right.json
+│   ├── inplace_adapt_F35_P055_right.log
+│   ├── inplace_adapt_F40_P035_left.json
+│   ├── inplace_adapt_F40_P035_left.log
+│   ├── inplace_adapt_F40_P055_left.json
+│   ├── inplace_adapt_F40_P055_left.log
+│   ├── inplace_base_F20_P035_left.json
+│   ├── inplace_base_F20_P035_left.log
+│   ├── inplace_base_F20_P055_left.json
+│   ├── inplace_base_F20_P055_left.log
+│   ├── inplace_base_F25_P035_left.json
+│   ├── inplace_base_F25_P035_left.log
+│   ├── inplace_base_F25_P035_right.json
+│   ├── inplace_base_F25_P035_right.log
+│   ├── inplace_base_F25_P055_left.json
+│   ├── inplace_base_F25_P055_left.log
+│   ├── inplace_base_F25_P055_right.json
+│   ├── inplace_base_F25_P055_right.log
+│   ├── inplace_base_F30_P035_left.json
+│   ├── inplace_base_F30_P035_left.log
+│   ├── inplace_base_F30_P035_right.json
+│   ├── inplace_base_F30_P035_right.log
+│   ├── inplace_base_F30_P055_left.json
+│   ├── inplace_base_F30_P055_left.log
+│   ├── inplace_base_F30_P055_right.json
+│   ├── inplace_base_F30_P055_right.log
+│   ├── long_push_adapt_F30_P055_left.json
+│   ├── long_push_adapt_F30_P055_left.log
+│   ├── long_push_adapt_F35_P055_left.json
+│   ├── long_push_adapt_F35_P055_left.log
+│   ├── long_push_adapt_F40_P055_left.json
+│   ├── long_push_adapt_F40_P055_left.log
+│   ├── long_push_base_F30_P055_left.json
+│   ├── long_push_base_F30_P055_left.log
+│   ├── long_push_base_F35_P055_left.json
+│   ├── long_push_base_F35_P055_left.log
+│   ├── long_push_base_F40_P055_left.json
+│   └── long_push_base_F40_P055_left.log
+├── logs_final
+│   ├── A_fwd_adapt_F40_P035_left_S3.json
+│   ├── A_fwd_adapt_F40_P035_left_S3.log
+│   ├── A_fwd_adapt_F40_P055_left_S3.json
+│   ├── A_fwd_adapt_F40_P055_left_S3.log
+│   ├── A_fwd_adapt_F40_P075_left_S3.json
+│   ├── A_fwd_adapt_F40_P075_left_S3.log
+│   ├── A_fwd_adapt_F45_P035_left_S3.json
+│   ├── A_fwd_adapt_F45_P035_left_S3.log
+│   ├── A_fwd_adapt_F45_P055_left_S3.json
+│   ├── A_fwd_adapt_F45_P055_left_S3.log
+│   ├── A_fwd_adapt_F45_P075_left_S3.json
+│   ├── A_fwd_adapt_F45_P075_left_S3.log
+│   ├── A_fwd_adapt_F50_P035_left_S3.json
+│   ├── A_fwd_adapt_F50_P035_left_S3.log
+│   ├── A_fwd_adapt_F50_P055_left_S3.json
+│   ├── A_fwd_adapt_F50_P055_left_S3.log
+│   ├── A_fwd_adapt_F50_P075_left_S3.json
+│   ├── A_fwd_adapt_F50_P075_left_S3.log
+│   ├── A_fwd_adapt_F55_P035_left_S3.json
+│   ├── A_fwd_adapt_F55_P035_left_S3.log
+│   ├── A_fwd_adapt_F55_P055_left_S3.json
+│   ├── A_fwd_adapt_F55_P055_left_S3.log
+│   ├── A_fwd_base_F35_P035_left_S3.json
+│   ├── A_fwd_base_F35_P035_left_S3.log
+│   ├── A_fwd_base_F35_P055_left_S3.json
+│   ├── A_fwd_base_F35_P055_left_S3.log
+│   ├── A_fwd_base_F35_P075_left_S3.json
+│   ├── A_fwd_base_F35_P075_left_S3.log
+│   ├── A_fwd_base_F40_P035_left_S3.json
+│   ├── A_fwd_base_F40_P035_left_S3.log
+│   ├── A_fwd_base_F40_P055_left_S3.json
+│   ├── A_fwd_base_F40_P055_left_S3.log
+│   ├── A_fwd_base_F40_P075_left_S3.json
+│   ├── A_fwd_base_F40_P075_left_S3.log
+│   ├── A_fwd_base_F45_P035_left_S3.json
+│   ├── A_fwd_base_F45_P035_left_S3.log
+│   ├── A_fwd_base_F45_P055_left_S3.json
+│   ├── A_fwd_base_F45_P055_left_S3.log
+│   ├── B_fwd_adapt_F40_P035_right_S4.json
+│   ├── B_fwd_adapt_F40_P035_right_S4.log
+│   ├── B_fwd_adapt_F40_P055_right_S4.json
+│   ├── B_fwd_adapt_F40_P055_right_S4.log
+│   ├── B_fwd_adapt_F45_P035_right_S4.json
+│   ├── B_fwd_adapt_F45_P035_right_S4.log
+│   ├── B_fwd_adapt_F45_P055_right_S4.json
+│   ├── B_fwd_adapt_F45_P055_right_S4.log
+│   ├── B_fwd_adapt_F50_P035_right_S4.json
+│   ├── B_fwd_adapt_F50_P035_right_S4.log
+│   ├── B_fwd_adapt_F50_P055_right_S4.json
+│   ├── B_fwd_adapt_F50_P055_right_S4.log
+│   ├── B_fwd_base_F35_P035_right_S4.json
+│   ├── B_fwd_base_F35_P035_right_S4.log
+│   ├── B_fwd_base_F35_P055_right_S4.json
+│   ├── B_fwd_base_F35_P055_right_S4.log
+│   ├── B_fwd_base_F40_P035_right_S4.json
+│   ├── B_fwd_base_F40_P035_right_S4.log
+│   ├── B_fwd_base_F40_P055_right_S4.json
+│   ├── B_fwd_base_F40_P055_right_S4.log
+│   ├── C_fwd_adapt_F40_P035_bwd_S3.json
+│   ├── C_fwd_adapt_F40_P035_bwd_S3.log
+│   ├── C_fwd_adapt_F40_P035_bwd_S4.json
+│   ├── C_fwd_adapt_F40_P035_bwd_S4.log
+│   ├── C_fwd_adapt_F40_P035_fwd_S3.json
+│   ├── C_fwd_adapt_F40_P035_fwd_S3.log
+│   ├── C_fwd_adapt_F40_P035_fwd_S4.json
+│   ├── C_fwd_adapt_F40_P035_fwd_S4.log
+│   ├── C_fwd_adapt_F40_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F40_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F40_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F40_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F40_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F40_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F40_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F40_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F45_P035_bwd_S3.json
+│   ├── C_fwd_adapt_F45_P035_bwd_S3.log
+│   ├── C_fwd_adapt_F45_P035_bwd_S4.json
+│   ├── C_fwd_adapt_F45_P035_bwd_S4.log
+│   ├── C_fwd_adapt_F45_P035_fwd_S3.json
+│   ├── C_fwd_adapt_F45_P035_fwd_S3.log
+│   ├── C_fwd_adapt_F45_P035_fwd_S4.json
+│   ├── C_fwd_adapt_F45_P035_fwd_S4.log
+│   ├── C_fwd_adapt_F45_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F45_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F45_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F45_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F45_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F45_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F45_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F45_P055_fwd_S4.log
+│   ├── C_fwd_base_F35_P035_bwd_S3.json
+│   ├── C_fwd_base_F35_P035_bwd_S3.log
+│   ├── C_fwd_base_F35_P035_bwd_S4.json
+│   ├── C_fwd_base_F35_P035_bwd_S4.log
+│   ├── C_fwd_base_F35_P035_fwd_S3.json
+│   ├── C_fwd_base_F35_P035_fwd_S3.log
+│   ├── C_fwd_base_F35_P035_fwd_S4.json
+│   ├── C_fwd_base_F35_P035_fwd_S4.log
+│   ├── C_fwd_base_F35_P055_bwd_S3.json
+│   ├── C_fwd_base_F35_P055_bwd_S3.log
+│   ├── C_fwd_base_F35_P055_bwd_S4.json
+│   ├── C_fwd_base_F35_P055_bwd_S4.log
+│   ├── C_fwd_base_F35_P055_fwd_S3.json
+│   ├── C_fwd_base_F35_P055_fwd_S3.log
+│   ├── C_fwd_base_F35_P055_fwd_S4.json
+│   ├── C_fwd_base_F35_P055_fwd_S4.log
+│   ├── C_fwd_base_F40_P035_bwd_S3.json
+│   ├── C_fwd_base_F40_P035_bwd_S3.log
+│   ├── C_fwd_base_F40_P035_bwd_S4.json
+│   ├── C_fwd_base_F40_P035_bwd_S4.log
+│   ├── C_fwd_base_F40_P035_fwd_S3.json
+│   ├── C_fwd_base_F40_P035_fwd_S3.log
+│   ├── C_fwd_base_F40_P035_fwd_S4.json
+│   ├── C_fwd_base_F40_P035_fwd_S4.log
+│   ├── C_fwd_base_F40_P055_bwd_S3.json
+│   ├── C_fwd_base_F40_P055_bwd_S3.log
+│   ├── C_fwd_base_F40_P055_bwd_S4.json
+│   ├── C_fwd_base_F40_P055_bwd_S4.log
+│   ├── C_fwd_base_F40_P055_fwd_S3.json
+│   ├── C_fwd_base_F40_P055_fwd_S3.log
+│   ├── C_fwd_base_F40_P055_fwd_S4.json
+│   ├── C_fwd_base_F40_P055_fwd_S4.log
+│   ├── D_inplace_adapt_F30_P035_left_S3.json
+│   ├── D_inplace_adapt_F30_P035_left_S3.log
+│   ├── D_inplace_adapt_F30_P035_right_S4.json
+│   ├── D_inplace_adapt_F30_P035_right_S4.log
+│   ├── D_inplace_adapt_F30_P055_left_S3.json
+│   ├── D_inplace_adapt_F30_P055_left_S3.log
+│   ├── D_inplace_adapt_F30_P055_right_S4.json
+│   ├── D_inplace_adapt_F30_P055_right_S4.log
+│   ├── D_inplace_adapt_F35_P035_left_S3.json
+│   ├── D_inplace_adapt_F35_P035_left_S3.log
+│   ├── D_inplace_adapt_F35_P035_right_S4.json
+│   ├── D_inplace_adapt_F35_P035_right_S4.log
+│   ├── D_inplace_adapt_F35_P055_left_S3.json
+│   ├── D_inplace_adapt_F35_P055_left_S3.log
+│   ├── D_inplace_adapt_F35_P055_right_S4.json
+│   ├── D_inplace_adapt_F35_P055_right_S4.log
+│   ├── D_inplace_adapt_F40_P035_left_S3.json
+│   ├── D_inplace_adapt_F40_P035_left_S3.log
+│   ├── D_inplace_adapt_F40_P035_right_S4.json
+│   ├── D_inplace_adapt_F40_P035_right_S4.log
+│   ├── D_inplace_adapt_F40_P055_left_S3.json
+│   ├── D_inplace_adapt_F40_P055_left_S3.log
+│   ├── D_inplace_adapt_F40_P055_right_S4.json
+│   ├── D_inplace_adapt_F40_P055_right_S4.log
+│   ├── D_inplace_base_F25_P035_left_S3.json
+│   ├── D_inplace_base_F25_P035_left_S3.log
+│   ├── D_inplace_base_F25_P035_right_S4.json
+│   ├── D_inplace_base_F25_P035_right_S4.log
+│   ├── D_inplace_base_F25_P055_left_S3.json
+│   ├── D_inplace_base_F25_P055_left_S3.log
+│   ├── D_inplace_base_F25_P055_right_S4.json
+│   ├── D_inplace_base_F25_P055_right_S4.log
+│   ├── D_inplace_base_F30_P035_left_S3.json
+│   ├── D_inplace_base_F30_P035_left_S3.log
+│   ├── D_inplace_base_F30_P035_right_S4.json
+│   ├── D_inplace_base_F30_P035_right_S4.log
+│   ├── D_inplace_base_F30_P055_left_S3.json
+│   ├── D_inplace_base_F30_P055_left_S3.log
+│   ├── D_inplace_base_F30_P055_right_S4.json
+│   ├── D_inplace_base_F30_P055_right_S4.log
+│   ├── E_long_adapt_F25_P055_left_S3.json
+│   ├── E_long_adapt_F25_P055_left_S3.log
+│   ├── E_long_adapt_F25_P055_right_S4.json
+│   ├── E_long_adapt_F25_P055_right_S4.log
+│   ├── E_long_adapt_F30_P055_left_S3.json
+│   ├── E_long_adapt_F30_P055_left_S3.log
+│   ├── E_long_adapt_F30_P055_right_S4.json
+│   ├── E_long_adapt_F30_P055_right_S4.log
+│   ├── E_long_adapt_F35_P055_left_S3.json
+│   ├── E_long_adapt_F35_P055_left_S3.log
+│   ├── E_long_adapt_F35_P055_right_S4.json
+│   ├── E_long_adapt_F35_P055_right_S4.log
+│   ├── E_long_base_F25_P055_left_S3.json
+│   ├── E_long_base_F25_P055_left_S3.log
+│   ├── E_long_base_F25_P055_right_S4.json
+│   ├── E_long_base_F25_P055_right_S4.log
+│   ├── E_long_base_F30_P055_left_S3.json
+│   ├── E_long_base_F30_P055_left_S3.log
+│   ├── E_long_base_F30_P055_right_S4.json
+│   ├── E_long_base_F30_P055_right_S4.log
+│   ├── E_long_base_F35_P055_left_S3.json
+│   ├── E_long_base_F35_P055_left_S3.log
+│   ├── E_long_base_F35_P055_right_S4.json
+│   ├── E_long_base_F35_P055_right_S4.log
+│   ├── F_frontier_adapt_F46_P055_left_S3.json
+│   ├── F_frontier_adapt_F46_P055_left_S3.log
+│   ├── F_frontier_adapt_F48_P055_left_S3.json
+│   ├── F_frontier_adapt_F48_P055_left_S3.log
+│   ├── F_frontier_adapt_F50_P055_left_S3.json
+│   ├── F_frontier_adapt_F50_P055_left_S3.log
+│   ├── F_frontier_adapt_F52_P055_left_S3.json
+│   ├── F_frontier_adapt_F52_P055_left_S3.log
+│   ├── F_frontier_adapt_F55_P055_left_S3.json
+│   ├── F_frontier_adapt_F55_P055_left_S3.log
+│   ├── F_frontier_adapt_F60_P055_left_S3.json
+│   ├── F_frontier_adapt_F60_P055_left_S3.log
+│   ├── F_frontier_base_F46_P055_left_S3.json
+│   ├── F_frontier_base_F46_P055_left_S3.log
+│   ├── F_frontier_base_F48_P055_left_S3.json
+│   ├── F_frontier_base_F48_P055_left_S3.log
+│   ├── F_frontier_base_F50_P055_left_S3.json
+│   ├── F_frontier_base_F50_P055_left_S3.log
+│   ├── F_frontier_base_F52_P055_left_S3.json
+│   ├── F_frontier_base_F52_P055_left_S3.log
+│   ├── F_frontier_base_F55_P055_left_S3.json
+│   ├── F_frontier_base_F55_P055_left_S3.log
+│   ├── F_frontier_base_F60_P055_left_S3.json
+│   ├── F_frontier_base_F60_P055_left_S3.log
+│   ├── G_paper_adapt_F35_P005_left_S3.json
+│   ├── G_paper_adapt_F35_P005_left_S3.log
+│   ├── G_paper_adapt_F35_P005_right_S4.json
+│   ├── G_paper_adapt_F35_P005_right_S4.log
+│   ├── G_paper_adapt_F40_P005_left_S3.json
+│   ├── G_paper_adapt_F40_P005_left_S3.log
+│   ├── G_paper_adapt_F40_P005_right_S4.json
+│   ├── G_paper_adapt_F40_P005_right_S4.log
+│   ├── G_paper_adapt_F45_P005_left_S3.json
+│   ├── G_paper_adapt_F45_P005_left_S3.log
+│   ├── G_paper_adapt_F45_P005_right_S4.json
+│   ├── G_paper_adapt_F45_P005_right_S4.log
+│   ├── G_paper_base_F35_P005_left_S3.json
+│   ├── G_paper_base_F35_P005_left_S3.log
+│   ├── G_paper_base_F35_P005_right_S4.json
+│   ├── G_paper_base_F35_P005_right_S4.log
+│   ├── G_paper_base_F40_P005_left_S3.json
+│   ├── G_paper_base_F40_P005_left_S3.log
+│   ├── G_paper_base_F40_P005_right_S4.json
+│   ├── G_paper_base_F40_P005_right_S4.log
+│   ├── G_paper_base_F45_P005_left_S3.json
+│   ├── G_paper_base_F45_P005_left_S3.log
+│   ├── G_paper_base_F45_P005_right_S4.json
+│   ├── G_paper_base_F45_P005_right_S4.log
+│   ├── G_paper_inplace_adapt_F25_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F25_P005_left_S3.log
+│   ├── G_paper_inplace_adapt_F30_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F30_P005_left_S3.log
+│   ├── G_paper_inplace_adapt_F35_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F35_P005_left_S3.log
+│   ├── G_paper_inplace_base_F25_P005_left_S3.json
+│   ├── G_paper_inplace_base_F25_P005_left_S3.log
+│   ├── G_paper_inplace_base_F30_P005_left_S3.json
+│   ├── G_paper_inplace_base_F30_P005_left_S3.log
+│   ├── G_paper_inplace_base_F35_P005_left_S3.json
+│   └── G_paper_inplace_base_F35_P005_left_S3.log
+├── logs_final_1000
+│   ├── A_fwd_adapt_F40_P035_left_S3.json
+│   ├── A_fwd_adapt_F40_P035_left_S3.log
+│   ├── A_fwd_adapt_F40_P055_left_S3.json
+│   ├── A_fwd_adapt_F40_P055_left_S3.log
+│   ├── A_fwd_adapt_F40_P075_left_S3.json
+│   ├── A_fwd_adapt_F40_P075_left_S3.log
+│   ├── A_fwd_adapt_F45_P035_left_S3.json
+│   ├── A_fwd_adapt_F45_P035_left_S3.log
+│   ├── A_fwd_adapt_F45_P055_left_S3.json
+│   ├── A_fwd_adapt_F45_P055_left_S3.log
+│   ├── A_fwd_adapt_F45_P075_left_S3.json
+│   ├── A_fwd_adapt_F45_P075_left_S3.log
+│   ├── A_fwd_adapt_F50_P035_left_S3.json
+│   ├── A_fwd_adapt_F50_P035_left_S3.log
+│   ├── A_fwd_adapt_F50_P055_left_S3.json
+│   ├── A_fwd_adapt_F50_P055_left_S3.log
+│   ├── A_fwd_adapt_F50_P075_left_S3.json
+│   ├── A_fwd_adapt_F50_P075_left_S3.log
+│   ├── A_fwd_adapt_F55_P035_left_S3.json
+│   ├── A_fwd_adapt_F55_P035_left_S3.log
+│   ├── A_fwd_adapt_F55_P055_left_S3.json
+│   ├── A_fwd_adapt_F55_P055_left_S3.log
+│   ├── A_fwd_base_F35_P035_left_S3.json
+│   ├── A_fwd_base_F35_P035_left_S3.log
+│   ├── A_fwd_base_F35_P055_left_S3.json
+│   ├── A_fwd_base_F35_P055_left_S3.log
+│   ├── A_fwd_base_F35_P075_left_S3.json
+│   ├── A_fwd_base_F35_P075_left_S3.log
+│   ├── A_fwd_base_F40_P035_left_S3.json
+│   ├── A_fwd_base_F40_P035_left_S3.log
+│   ├── A_fwd_base_F40_P055_left_S3.json
+│   ├── A_fwd_base_F40_P055_left_S3.log
+│   ├── A_fwd_base_F40_P075_left_S3.json
+│   ├── A_fwd_base_F40_P075_left_S3.log
+│   ├── A_fwd_base_F45_P035_left_S3.json
+│   ├── A_fwd_base_F45_P035_left_S3.log
+│   ├── A_fwd_base_F45_P055_left_S3.json
+│   ├── A_fwd_base_F45_P055_left_S3.log
+│   ├── B_fwd_adapt_F40_P035_right_S4.json
+│   ├── B_fwd_adapt_F40_P035_right_S4.log
+│   ├── B_fwd_adapt_F40_P055_right_S4.json
+│   ├── B_fwd_adapt_F40_P055_right_S4.log
+│   ├── B_fwd_adapt_F45_P035_right_S4.json
+│   ├── B_fwd_adapt_F45_P035_right_S4.log
+│   ├── B_fwd_adapt_F45_P055_right_S4.json
+│   ├── B_fwd_adapt_F45_P055_right_S4.log
+│   ├── B_fwd_adapt_F50_P035_right_S4.json
+│   ├── B_fwd_adapt_F50_P035_right_S4.log
+│   ├── B_fwd_adapt_F50_P055_right_S4.json
+│   ├── B_fwd_adapt_F50_P055_right_S4.log
+│   ├── B_fwd_base_F35_P035_right_S4.json
+│   ├── B_fwd_base_F35_P035_right_S4.log
+│   ├── B_fwd_base_F35_P055_right_S4.json
+│   ├── B_fwd_base_F35_P055_right_S4.log
+│   ├── B_fwd_base_F40_P035_right_S4.json
+│   ├── B_fwd_base_F40_P035_right_S4.log
+│   ├── B_fwd_base_F40_P055_right_S4.json
+│   ├── B_fwd_base_F40_P055_right_S4.log
+│   ├── C_fwd_adapt_F40_P035_bwd_S3.json
+│   ├── C_fwd_adapt_F40_P035_bwd_S3.log
+│   ├── C_fwd_adapt_F40_P035_bwd_S4.json
+│   ├── C_fwd_adapt_F40_P035_bwd_S4.log
+│   ├── C_fwd_adapt_F40_P035_fwd_S3.json
+│   ├── C_fwd_adapt_F40_P035_fwd_S3.log
+│   ├── C_fwd_adapt_F40_P035_fwd_S4.json
+│   ├── C_fwd_adapt_F40_P035_fwd_S4.log
+│   ├── C_fwd_adapt_F40_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F40_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F40_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F40_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F40_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F40_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F40_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F40_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F45_P035_bwd_S3.json
+│   ├── C_fwd_adapt_F45_P035_bwd_S3.log
+│   ├── C_fwd_adapt_F45_P035_bwd_S4.json
+│   ├── C_fwd_adapt_F45_P035_bwd_S4.log
+│   ├── C_fwd_adapt_F45_P035_fwd_S3.json
+│   ├── C_fwd_adapt_F45_P035_fwd_S3.log
+│   ├── C_fwd_adapt_F45_P035_fwd_S4.json
+│   ├── C_fwd_adapt_F45_P035_fwd_S4.log
+│   ├── C_fwd_adapt_F45_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F45_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F45_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F45_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F45_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F45_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F45_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F45_P055_fwd_S4.log
+│   ├── C_fwd_base_F35_P035_bwd_S3.json
+│   ├── C_fwd_base_F35_P035_bwd_S3.log
+│   ├── C_fwd_base_F35_P035_bwd_S4.json
+│   ├── C_fwd_base_F35_P035_bwd_S4.log
+│   ├── C_fwd_base_F35_P035_fwd_S3.json
+│   ├── C_fwd_base_F35_P035_fwd_S3.log
+│   ├── C_fwd_base_F35_P035_fwd_S4.json
+│   ├── C_fwd_base_F35_P035_fwd_S4.log
+│   ├── C_fwd_base_F35_P055_bwd_S3.json
+│   ├── C_fwd_base_F35_P055_bwd_S3.log
+│   ├── C_fwd_base_F35_P055_bwd_S4.json
+│   ├── C_fwd_base_F35_P055_bwd_S4.log
+│   ├── C_fwd_base_F35_P055_fwd_S3.json
+│   ├── C_fwd_base_F35_P055_fwd_S3.log
+│   ├── C_fwd_base_F35_P055_fwd_S4.json
+│   ├── C_fwd_base_F35_P055_fwd_S4.log
+│   ├── C_fwd_base_F40_P035_bwd_S3.json
+│   ├── C_fwd_base_F40_P035_bwd_S3.log
+│   ├── C_fwd_base_F40_P035_bwd_S4.json
+│   ├── C_fwd_base_F40_P035_bwd_S4.log
+│   ├── C_fwd_base_F40_P035_fwd_S3.json
+│   ├── C_fwd_base_F40_P035_fwd_S3.log
+│   ├── C_fwd_base_F40_P035_fwd_S4.json
+│   ├── C_fwd_base_F40_P035_fwd_S4.log
+│   ├── C_fwd_base_F40_P055_bwd_S3.json
+│   ├── C_fwd_base_F40_P055_bwd_S3.log
+│   ├── C_fwd_base_F40_P055_bwd_S4.json
+│   ├── C_fwd_base_F40_P055_bwd_S4.log
+│   ├── C_fwd_base_F40_P055_fwd_S3.json
+│   ├── C_fwd_base_F40_P055_fwd_S3.log
+│   ├── C_fwd_base_F40_P055_fwd_S4.json
+│   ├── C_fwd_base_F40_P055_fwd_S4.log
+│   ├── D_inplace_adapt_F30_P035_left_S3.json
+│   ├── D_inplace_adapt_F30_P035_left_S3.log
+│   ├── D_inplace_adapt_F30_P035_right_S4.json
+│   ├── D_inplace_adapt_F30_P035_right_S4.log
+│   ├── D_inplace_adapt_F30_P055_left_S3.json
+│   ├── D_inplace_adapt_F30_P055_left_S3.log
+│   ├── D_inplace_adapt_F30_P055_right_S4.json
+│   ├── D_inplace_adapt_F30_P055_right_S4.log
+│   ├── D_inplace_adapt_F35_P035_left_S3.json
+│   ├── D_inplace_adapt_F35_P035_left_S3.log
+│   ├── D_inplace_adapt_F35_P035_right_S4.json
+│   ├── D_inplace_adapt_F35_P035_right_S4.log
+│   ├── D_inplace_adapt_F35_P055_left_S3.json
+│   ├── D_inplace_adapt_F35_P055_left_S3.log
+│   ├── D_inplace_adapt_F35_P055_right_S4.json
+│   ├── D_inplace_adapt_F35_P055_right_S4.log
+│   ├── D_inplace_adapt_F40_P035_left_S3.json
+│   ├── D_inplace_adapt_F40_P035_left_S3.log
+│   ├── D_inplace_adapt_F40_P035_right_S4.json
+│   ├── D_inplace_adapt_F40_P035_right_S4.log
+│   ├── D_inplace_adapt_F40_P055_left_S3.json
+│   ├── D_inplace_adapt_F40_P055_left_S3.log
+│   ├── D_inplace_adapt_F40_P055_right_S4.json
+│   ├── D_inplace_adapt_F40_P055_right_S4.log
+│   ├── D_inplace_base_F25_P035_left_S3.json
+│   ├── D_inplace_base_F25_P035_left_S3.log
+│   ├── D_inplace_base_F25_P035_right_S4.json
+│   ├── D_inplace_base_F25_P035_right_S4.log
+│   ├── D_inplace_base_F25_P055_left_S3.json
+│   ├── D_inplace_base_F25_P055_left_S3.log
+│   ├── D_inplace_base_F25_P055_right_S4.json
+│   ├── D_inplace_base_F25_P055_right_S4.log
+│   ├── D_inplace_base_F30_P035_left_S3.json
+│   ├── D_inplace_base_F30_P035_left_S3.log
+│   ├── D_inplace_base_F30_P035_right_S4.json
+│   ├── D_inplace_base_F30_P035_right_S4.log
+│   ├── D_inplace_base_F30_P055_left_S3.json
+│   ├── D_inplace_base_F30_P055_left_S3.log
+│   ├── D_inplace_base_F30_P055_right_S4.json
+│   ├── D_inplace_base_F30_P055_right_S4.log
+│   ├── E_long_adapt_F25_P055_left_S3.json
+│   ├── E_long_adapt_F25_P055_left_S3.log
+│   ├── E_long_adapt_F25_P055_right_S4.json
+│   ├── E_long_adapt_F25_P055_right_S4.log
+│   ├── E_long_adapt_F30_P055_left_S3.json
+│   ├── E_long_adapt_F30_P055_left_S3.log
+│   ├── E_long_adapt_F30_P055_right_S4.json
+│   ├── E_long_adapt_F30_P055_right_S4.log
+│   ├── E_long_adapt_F35_P055_left_S3.json
+│   ├── E_long_adapt_F35_P055_left_S3.log
+│   ├── E_long_adapt_F35_P055_right_S4.json
+│   ├── E_long_adapt_F35_P055_right_S4.log
+│   ├── E_long_base_F25_P055_left_S3.json
+│   ├── E_long_base_F25_P055_left_S3.log
+│   ├── E_long_base_F25_P055_right_S4.json
+│   ├── E_long_base_F25_P055_right_S4.log
+│   ├── E_long_base_F30_P055_left_S3.json
+│   ├── E_long_base_F30_P055_left_S3.log
+│   ├── E_long_base_F30_P055_right_S4.json
+│   ├── E_long_base_F30_P055_right_S4.log
+│   ├── E_long_base_F35_P055_left_S3.json
+│   ├── E_long_base_F35_P055_left_S3.log
+│   ├── E_long_base_F35_P055_right_S4.json
+│   ├── E_long_base_F35_P055_right_S4.log
+│   ├── F_frontier_adapt_F46_P055_left_S3.json
+│   ├── F_frontier_adapt_F46_P055_left_S3.log
+│   ├── F_frontier_adapt_F48_P055_left_S3.json
+│   ├── F_frontier_adapt_F48_P055_left_S3.log
+│   ├── F_frontier_adapt_F50_P055_left_S3.json
+│   ├── F_frontier_adapt_F50_P055_left_S3.log
+│   ├── F_frontier_adapt_F52_P055_left_S3.json
+│   ├── F_frontier_adapt_F52_P055_left_S3.log
+│   ├── F_frontier_adapt_F55_P055_left_S3.json
+│   ├── F_frontier_adapt_F55_P055_left_S3.log
+│   ├── F_frontier_adapt_F60_P055_left_S3.json
+│   ├── F_frontier_adapt_F60_P055_left_S3.log
+│   ├── F_frontier_base_F46_P055_left_S3.json
+│   ├── F_frontier_base_F46_P055_left_S3.log
+│   ├── F_frontier_base_F48_P055_left_S3.json
+│   ├── F_frontier_base_F48_P055_left_S3.log
+│   ├── F_frontier_base_F50_P055_left_S3.json
+│   ├── F_frontier_base_F50_P055_left_S3.log
+│   ├── F_frontier_base_F52_P055_left_S3.json
+│   ├── F_frontier_base_F52_P055_left_S3.log
+│   ├── F_frontier_base_F55_P055_left_S3.json
+│   ├── F_frontier_base_F55_P055_left_S3.log
+│   ├── F_frontier_base_F60_P055_left_S3.json
+│   ├── F_frontier_base_F60_P055_left_S3.log
+│   ├── G_paper_adapt_F35_P005_left_S3.json
+│   ├── G_paper_adapt_F35_P005_left_S3.log
+│   ├── G_paper_adapt_F35_P005_right_S4.json
+│   ├── G_paper_adapt_F35_P005_right_S4.log
+│   ├── G_paper_adapt_F40_P005_left_S3.json
+│   ├── G_paper_adapt_F40_P005_left_S3.log
+│   ├── G_paper_adapt_F40_P005_right_S4.json
+│   ├── G_paper_adapt_F40_P005_right_S4.log
+│   ├── G_paper_adapt_F45_P005_left_S3.json
+│   ├── G_paper_adapt_F45_P005_left_S3.log
+│   ├── G_paper_adapt_F45_P005_right_S4.json
+│   ├── G_paper_adapt_F45_P005_right_S4.log
+│   ├── G_paper_base_F35_P005_left_S3.json
+│   ├── G_paper_base_F35_P005_left_S3.log
+│   ├── G_paper_base_F35_P005_right_S4.json
+│   ├── G_paper_base_F35_P005_right_S4.log
+│   ├── G_paper_base_F40_P005_left_S3.json
+│   ├── G_paper_base_F40_P005_left_S3.log
+│   ├── G_paper_base_F40_P005_right_S4.json
+│   ├── G_paper_base_F40_P005_right_S4.log
+│   ├── G_paper_base_F45_P005_left_S3.json
+│   ├── G_paper_base_F45_P005_left_S3.log
+│   ├── G_paper_base_F45_P005_right_S4.json
+│   ├── G_paper_base_F45_P005_right_S4.log
+│   ├── G_paper_inplace_adapt_F25_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F25_P005_left_S3.log
+│   ├── G_paper_inplace_adapt_F30_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F30_P005_left_S3.log
+│   ├── G_paper_inplace_adapt_F35_P005_left_S3.json
+│   ├── G_paper_inplace_adapt_F35_P005_left_S3.log
+│   ├── G_paper_inplace_base_F25_P005_left_S3.json
+│   ├── G_paper_inplace_base_F25_P005_left_S3.log
+│   ├── G_paper_inplace_base_F30_P005_left_S3.json
+│   ├── G_paper_inplace_base_F30_P005_left_S3.log
+│   ├── G_paper_inplace_base_F35_P005_left_S3.json
+│   └── G_paper_inplace_base_F35_P005_left_S3.log
+├── logs_gapfill_1000
+│   ├── C_fwd_adapt_F10_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F10_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F10_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F10_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F10_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F10_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F10_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F10_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F15_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F15_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F15_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F15_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F15_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F15_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F15_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F15_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F20_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F20_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F20_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F20_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F20_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F20_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F20_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F20_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F25_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F25_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F25_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F25_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F25_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F25_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F25_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F25_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F30_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F30_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F30_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F30_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F30_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F30_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F30_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F30_P055_fwd_S4.log
+│   ├── C_fwd_adapt_F5_P055_bwd_S3.json
+│   ├── C_fwd_adapt_F5_P055_bwd_S3.log
+│   ├── C_fwd_adapt_F5_P055_bwd_S4.json
+│   ├── C_fwd_adapt_F5_P055_bwd_S4.log
+│   ├── C_fwd_adapt_F5_P055_fwd_S3.json
+│   ├── C_fwd_adapt_F5_P055_fwd_S3.log
+│   ├── C_fwd_adapt_F5_P055_fwd_S4.json
+│   ├── C_fwd_adapt_F5_P055_fwd_S4.log
+│   ├── C_fwd_base_F10_P055_bwd_S3.json
+│   ├── C_fwd_base_F10_P055_bwd_S3.log
+│   ├── C_fwd_base_F10_P055_bwd_S4.json
+│   ├── C_fwd_base_F10_P055_bwd_S4.log
+│   ├── C_fwd_base_F10_P055_fwd_S3.json
+│   ├── C_fwd_base_F10_P055_fwd_S3.log
+│   ├── C_fwd_base_F10_P055_fwd_S4.json
+│   ├── C_fwd_base_F10_P055_fwd_S4.log
+│   ├── C_fwd_base_F15_P055_bwd_S3.json
+│   ├── C_fwd_base_F15_P055_bwd_S3.log
+│   ├── C_fwd_base_F15_P055_bwd_S4.json
+│   ├── C_fwd_base_F15_P055_bwd_S4.log
+│   ├── C_fwd_base_F15_P055_fwd_S3.json
+│   ├── C_fwd_base_F15_P055_fwd_S3.log
+│   ├── C_fwd_base_F15_P055_fwd_S4.json
+│   ├── C_fwd_base_F15_P055_fwd_S4.log
+│   ├── C_fwd_base_F20_P055_bwd_S3.json
+│   ├── C_fwd_base_F20_P055_bwd_S3.log
+│   ├── C_fwd_base_F20_P055_bwd_S4.json
+│   ├── C_fwd_base_F20_P055_bwd_S4.log
+│   ├── C_fwd_base_F20_P055_fwd_S3.json
+│   ├── C_fwd_base_F20_P055_fwd_S3.log
+│   ├── C_fwd_base_F20_P055_fwd_S4.json
+│   ├── C_fwd_base_F20_P055_fwd_S4.log
+│   ├── C_fwd_base_F25_P055_bwd_S3.json
+│   ├── C_fwd_base_F25_P055_bwd_S3.log
+│   ├── C_fwd_base_F25_P055_bwd_S4.json
+│   ├── C_fwd_base_F25_P055_bwd_S4.log
+│   ├── C_fwd_base_F25_P055_fwd_S3.json
+│   ├── C_fwd_base_F25_P055_fwd_S3.log
+│   ├── C_fwd_base_F25_P055_fwd_S4.json
+│   ├── C_fwd_base_F25_P055_fwd_S4.log
+│   ├── C_fwd_base_F30_P055_bwd_S3.json
+│   ├── C_fwd_base_F30_P055_bwd_S3.log
+│   ├── C_fwd_base_F30_P055_bwd_S4.json
+│   ├── C_fwd_base_F30_P055_bwd_S4.log
+│   ├── C_fwd_base_F30_P055_fwd_S3.json
+│   ├── C_fwd_base_F30_P055_fwd_S3.log
+│   ├── C_fwd_base_F30_P055_fwd_S4.json
+│   ├── C_fwd_base_F30_P055_fwd_S4.log
+│   ├── C_fwd_base_F5_P055_bwd_S3.json
+│   ├── C_fwd_base_F5_P055_bwd_S3.log
+│   ├── C_fwd_base_F5_P055_bwd_S4.json
+│   ├── C_fwd_base_F5_P055_bwd_S4.log
+│   ├── C_fwd_base_F5_P055_fwd_S3.json
+│   ├── C_fwd_base_F5_P055_fwd_S3.log
+│   ├── C_fwd_base_F5_P055_fwd_S4.json
+│   ├── C_fwd_base_F5_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F10_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F10_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F10_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F10_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F15_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F15_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F15_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F15_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F20_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F20_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F20_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F20_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F25_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F25_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F25_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F25_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F30_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F30_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F30_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F30_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F5_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F5_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F5_P055_fwd_S3.json
+│   ├── C_fwd_timing_biased_F5_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F5_P055_fwd_S4.log
+│   ├── D_inplace_adapt_F10_P055_left_S3.log
+│   ├── D_inplace_adapt_F10_P055_right_S4.log
+│   ├── D_inplace_adapt_F15_P055_left_S3.log
+│   ├── D_inplace_adapt_F15_P055_right_S4.log
+│   ├── D_inplace_adapt_F20_P055_left_S3.log
+│   ├── D_inplace_adapt_F20_P055_right_S4.log
+│   ├── D_inplace_adapt_F5_P055_left_S3.log
+│   ├── D_inplace_adapt_F5_P055_right_S4.log
+│   ├── D_inplace_base_F10_P055_left_S3.log
+│   ├── D_inplace_base_F10_P055_right_S4.log
+│   ├── D_inplace_base_F15_P055_left_S3.log
+│   ├── D_inplace_base_F15_P055_right_S4.log
+│   ├── D_inplace_base_F20_P055_left_S3.log
+│   ├── D_inplace_base_F20_P055_right_S4.log
+│   ├── D_inplace_base_F5_P055_left_S3.log
+│   ├── D_inplace_base_F5_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F10_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F10_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F15_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F15_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F20_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F20_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F5_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F5_P055_right_S4.log
+│   ├── E_long_adapt_F10_P055_left_S3.log
+│   ├── E_long_adapt_F10_P055_right_S4.log
+│   ├── E_long_adapt_F15_P055_left_S3.log
+│   ├── E_long_adapt_F15_P055_right_S4.log
+│   ├── E_long_adapt_F20_P055_left_S3.log
+│   ├── E_long_adapt_F20_P055_right_S4.log
+│   ├── E_long_adapt_F5_P055_left_S3.log
+│   ├── E_long_adapt_F5_P055_right_S4.log
+│   ├── E_long_base_F10_P055_left_S3.log
+│   ├── E_long_base_F10_P055_right_S4.log
+│   ├── E_long_base_F15_P055_left_S3.log
+│   ├── E_long_base_F15_P055_right_S4.log
+│   ├── E_long_base_F20_P055_left_S3.log
+│   ├── E_long_base_F20_P055_right_S4.log
+│   ├── E_long_base_F5_P055_left_S3.log
+│   ├── E_long_base_F5_P055_right_S4.log
+│   ├── E_long_timing_biased_F10_P055_left_S3.log
+│   ├── E_long_timing_biased_F10_P055_right_S4.log
+│   ├── E_long_timing_biased_F15_P055_left_S3.log
+│   ├── E_long_timing_biased_F15_P055_right_S4.log
+│   ├── E_long_timing_biased_F20_P055_left_S3.log
+│   ├── E_long_timing_biased_F20_P055_right_S4.log
+│   ├── E_long_timing_biased_F5_P055_left_S3.log
+│   ├── E_long_timing_biased_F5_P055_right_S4.log
+│   ├── G_paper_adapt_F10_P005_right_S4.log
+│   ├── G_paper_adapt_F15_P005_right_S4.log
+│   ├── G_paper_adapt_F20_P005_right_S4.log
+│   ├── G_paper_adapt_F25_P005_right_S4.log
+│   ├── G_paper_adapt_F30_P005_right_S4.log
+│   ├── G_paper_adapt_F5_P005_right_S4.log
+│   ├── G_paper_base_F10_P005_right_S4.log
+│   ├── G_paper_base_F15_P005_right_S4.log
+│   ├── G_paper_base_F20_P005_right_S4.log
+│   ├── G_paper_base_F25_P005_right_S4.log
+│   ├── G_paper_base_F30_P005_right_S4.log
+│   ├── G_paper_base_F5_P005_right_S4.log
+│   ├── G_paper_timing_biased_F10_P005_right_S4.log
+│   ├── G_paper_timing_biased_F15_P005_right_S4.log
+│   ├── G_paper_timing_biased_F20_P005_right_S4.log
+│   ├── G_paper_timing_biased_F25_P005_right_S4.log
+│   ├── G_paper_timing_biased_F30_P005_right_S4.log
+│   └── G_paper_timing_biased_F5_P005_right_S4.log
+├── logs_inplace
+│   └── nopush_adapt.log
+├── logs_phase
+│   ├── adapt_left_S3_F40_P025.json
+│   ├── adapt_left_S3_F40_P025.log
+│   ├── adapt_left_S3_F40_P050.json
+│   ├── adapt_left_S3_F40_P050.log
+│   ├── adapt_left_S3_F40_P075.json
+│   ├── adapt_left_S3_F40_P075.log
+│   ├── adapt_left_S3_F45_P025.json
+│   ├── adapt_left_S3_F45_P025.log
+│   ├── adapt_left_S3_F45_P050.json
+│   ├── adapt_left_S3_F45_P050.log
+│   ├── adapt_left_S3_F45_P075.json
+│   ├── adapt_left_S3_F45_P075.log
+│   ├── adapt_left_S3_F50_P025.json
+│   ├── adapt_left_S3_F50_P025.log
+│   ├── adapt_left_S3_F50_P050.json
+│   ├── adapt_left_S3_F50_P050.log
+│   ├── adapt_left_S3_F50_P075.json
+│   ├── adapt_left_S3_F50_P075.log
+│   ├── adapt_right_S4_F40_P025.json
+│   ├── adapt_right_S4_F40_P025.log
+│   ├── adapt_right_S4_F40_P050.json
+│   ├── adapt_right_S4_F40_P050.log
+│   ├── adapt_right_S4_F40_P075.json
+│   ├── adapt_right_S4_F40_P075.log
+│   ├── adapt_right_S4_F45_P025.json
+│   ├── adapt_right_S4_F45_P025.log
+│   ├── adapt_right_S4_F45_P050.json
+│   ├── adapt_right_S4_F45_P050.log
+│   ├── adapt_right_S4_F45_P075.json
+│   ├── adapt_right_S4_F45_P075.log
+│   ├── adapt_right_S4_F50_P025.json
+│   ├── adapt_right_S4_F50_P025.log
+│   ├── adapt_right_S4_F50_P050.json
+│   ├── adapt_right_S4_F50_P050.log
+│   ├── adapt_right_S4_F50_P075.json
+│   ├── adapt_right_S4_F50_P075.log
+│   ├── base_left_S3_F40_P025.json
+│   ├── base_left_S3_F40_P025.log
+│   ├── base_left_S3_F40_P050.json
+│   ├── base_left_S3_F40_P050.log
+│   ├── base_left_S3_F40_P075.json
+│   ├── base_left_S3_F40_P075.log
+│   ├── base_left_S3_F45_P025.json
+│   ├── base_left_S3_F45_P025.log
+│   ├── base_left_S3_F45_P050.json
+│   ├── base_left_S3_F45_P050.log
+│   ├── base_left_S3_F45_P075.json
+│   ├── base_left_S3_F45_P075.log
+│   ├── base_left_S3_F50_P025.json
+│   ├── base_left_S3_F50_P025.log
+│   ├── base_left_S3_F50_P050.json
+│   ├── base_left_S3_F50_P050.log
+│   ├── base_left_S3_F50_P075.json
+│   ├── base_left_S3_F50_P075.log
+│   ├── base_right_S4_F40_P025.json
+│   ├── base_right_S4_F40_P025.log
+│   ├── base_right_S4_F40_P050.json
+│   ├── base_right_S4_F40_P050.log
+│   ├── base_right_S4_F40_P075.json
+│   ├── base_right_S4_F40_P075.log
+│   ├── base_right_S4_F45_P025.json
+│   ├── base_right_S4_F45_P025.log
+│   ├── base_right_S4_F45_P050.json
+│   ├── base_right_S4_F45_P050.log
+│   ├── base_right_S4_F45_P075.json
+│   ├── base_right_S4_F45_P075.log
+│   ├── base_right_S4_F50_P025.json
+│   ├── base_right_S4_F50_P025.log
+│   ├── base_right_S4_F50_P050.json
+│   ├── base_right_S4_F50_P050.log
+│   ├── base_right_S4_F50_P075.json
+│   ├── base_right_S4_F50_P075.log
+│   ├── touch_adapt_left_S3_F40_P060.json
+│   ├── touch_adapt_left_S3_F40_P060.log
+│   ├── touch_adapt_left_S3_F40_P065.json
+│   ├── touch_adapt_left_S3_F40_P065.log
+│   ├── touch_adapt_left_S3_F40_P070.json
+│   ├── touch_adapt_left_S3_F40_P070.log
+│   ├── touch_adapt_left_S3_F40_P075.json
+│   ├── touch_adapt_left_S3_F40_P075.log
+│   ├── touch_adapt_left_S3_F40_P080.json
+│   ├── touch_adapt_left_S3_F40_P080.log
+│   ├── touch_adapt_right_S4_F40_P060.json
+│   ├── touch_adapt_right_S4_F40_P060.log
+│   ├── touch_adapt_right_S4_F40_P065.json
+│   ├── touch_adapt_right_S4_F40_P065.log
+│   ├── touch_adapt_right_S4_F40_P070.json
+│   ├── touch_adapt_right_S4_F40_P070.log
+│   ├── touch_adapt_right_S4_F40_P075.json
+│   ├── touch_adapt_right_S4_F40_P075.log
+│   ├── touch_adapt_right_S4_F40_P080.json
+│   └── touch_adapt_right_S4_F40_P080.log
+├── logs_slippage
+│   ├── slip_adapt_F100_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F100_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F100_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F100_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F20_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F20_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F20_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F20_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F30_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F30_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F30_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F30_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F40_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F40_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F40_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F40_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F50_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F50_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F50_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F50_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F60_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F60_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F60_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F60_P055_rfoot_S3_left.log
+│   ├── slip_adapt_F80_P055_lfoot_S4_right.json
+│   ├── slip_adapt_F80_P055_lfoot_S4_right.log
+│   ├── slip_adapt_F80_P055_rfoot_S3_left.json
+│   ├── slip_adapt_F80_P055_rfoot_S3_left.log
+│   ├── slip_base_F100_P055_lfoot_S4_right.json
+│   ├── slip_base_F100_P055_lfoot_S4_right.log
+│   ├── slip_base_F100_P055_rfoot_S3_left.json
+│   ├── slip_base_F100_P055_rfoot_S3_left.log
+│   ├── slip_base_F20_P055_lfoot_S4_right.json
+│   ├── slip_base_F20_P055_lfoot_S4_right.log
+│   ├── slip_base_F20_P055_rfoot_S3_left.json
+│   ├── slip_base_F20_P055_rfoot_S3_left.log
+│   ├── slip_base_F30_P055_lfoot_S4_right.json
+│   ├── slip_base_F30_P055_lfoot_S4_right.log
+│   ├── slip_base_F30_P055_rfoot_S3_left.json
+│   ├── slip_base_F30_P055_rfoot_S3_left.log
+│   ├── slip_base_F40_P055_lfoot_S4_right.json
+│   ├── slip_base_F40_P055_lfoot_S4_right.log
+│   ├── slip_base_F40_P055_rfoot_S3_left.json
+│   ├── slip_base_F40_P055_rfoot_S3_left.log
+│   ├── slip_base_F50_P055_lfoot_S4_right.json
+│   ├── slip_base_F50_P055_lfoot_S4_right.log
+│   ├── slip_base_F50_P055_rfoot_S3_left.json
+│   ├── slip_base_F50_P055_rfoot_S3_left.log
+│   ├── slip_base_F60_P055_lfoot_S4_right.json
+│   ├── slip_base_F60_P055_lfoot_S4_right.log
+│   ├── slip_base_F60_P055_rfoot_S3_left.json
+│   ├── slip_base_F60_P055_rfoot_S3_left.log
+│   ├── slip_base_F80_P055_lfoot_S4_right.json
+│   ├── slip_base_F80_P055_lfoot_S4_right.log
+│   ├── slip_base_F80_P055_rfoot_S3_left.json
+│   ├── slip_base_F80_P055_rfoot_S3_left.log
+│   ├── slip_long_adapt_F20_P055_rfoot_S3_left.json
+│   ├── slip_long_adapt_F20_P055_rfoot_S3_left.log
+│   ├── slip_long_adapt_F30_P055_rfoot_S3_left.json
+│   ├── slip_long_adapt_F30_P055_rfoot_S3_left.log
+│   ├── slip_long_adapt_F40_P055_rfoot_S3_left.json
+│   ├── slip_long_adapt_F40_P055_rfoot_S3_left.log
+│   ├── slip_long_adapt_F50_P055_rfoot_S3_left.json
+│   ├── slip_long_adapt_F50_P055_rfoot_S3_left.log
+│   ├── slip_long_base_F20_P055_rfoot_S3_left.json
+│   ├── slip_long_base_F20_P055_rfoot_S3_left.log
+│   ├── slip_long_base_F30_P055_rfoot_S3_left.json
+│   ├── slip_long_base_F30_P055_rfoot_S3_left.log
+│   ├── slip_long_base_F40_P055_rfoot_S3_left.json
+│   ├── slip_long_base_F40_P055_rfoot_S3_left.log
+│   ├── slip_long_base_F50_P055_rfoot_S3_left.json
+│   └── slip_long_base_F50_P055_rfoot_S3_left.log
+├── logs_timing_biased_full
+│   ├── A_fwd_timing_biased_F40_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F40_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F40_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F55_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F55_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F55_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F55_P055_left_S3.log
+│   ├── B_fwd_timing_biased_F40_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F40_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F40_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F40_P055_right_S4.log
+│   ├── B_fwd_timing_biased_F45_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F45_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F45_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F45_P055_right_S4.log
+│   ├── B_fwd_timing_biased_F50_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F50_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F50_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F50_P055_right_S4.log
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S4.log
+│   ├── compare_default_vs_timing.py
+│   ├── D_inplace_timing_biased_F30_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F30_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F30_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F30_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F30_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F30_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F30_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F30_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F35_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F35_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F35_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F35_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F35_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F35_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F35_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F35_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F40_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F40_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F40_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F40_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F40_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F40_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F40_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F40_P055_right_S4.log
+│   ├── E_long_timing_biased_F25_P055_left_S3.json
+│   ├── E_long_timing_biased_F25_P055_left_S3.log
+│   ├── E_long_timing_biased_F25_P055_right_S4.json
+│   ├── E_long_timing_biased_F25_P055_right_S4.log
+│   ├── E_long_timing_biased_F30_P055_left_S3.json
+│   ├── E_long_timing_biased_F30_P055_left_S3.log
+│   ├── E_long_timing_biased_F30_P055_right_S4.json
+│   ├── E_long_timing_biased_F30_P055_right_S4.log
+│   ├── E_long_timing_biased_F35_P055_left_S3.json
+│   ├── E_long_timing_biased_F35_P055_left_S3.log
+│   ├── E_long_timing_biased_F35_P055_right_S4.json
+│   ├── E_long_timing_biased_F35_P055_right_S4.log
+│   ├── F_frontier_timing_biased_F46_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F46_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F48_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F48_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F50_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F50_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F52_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F52_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F55_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F55_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F60_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F60_P055_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F25_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F25_P005_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F30_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F30_P005_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F35_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F35_P005_left_S3.log
+│   ├── G_paper_timing_biased_F35_P005_left_S3.json
+│   ├── G_paper_timing_biased_F35_P005_left_S3.log
+│   ├── G_paper_timing_biased_F35_P005_right_S4.json
+│   ├── G_paper_timing_biased_F35_P005_right_S4.log
+│   ├── G_paper_timing_biased_F40_P005_left_S3.json
+│   ├── G_paper_timing_biased_F40_P005_left_S3.log
+│   ├── G_paper_timing_biased_F40_P005_right_S4.json
+│   ├── G_paper_timing_biased_F40_P005_right_S4.log
+│   ├── G_paper_timing_biased_F45_P005_left_S3.json
+│   ├── G_paper_timing_biased_F45_P005_left_S3.log
+│   ├── G_paper_timing_biased_F45_P005_right_S4.json
+│   └── G_paper_timing_biased_F45_P005_right_S4.log
+├── logs_timing_biased_full_1000
+│   ├── A_fwd_timing_biased_F40_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F40_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F40_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F40_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F45_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F45_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P055_left_S3.log
+│   ├── A_fwd_timing_biased_F50_P075_left_S3.json
+│   ├── A_fwd_timing_biased_F50_P075_left_S3.log
+│   ├── A_fwd_timing_biased_F55_P035_left_S3.json
+│   ├── A_fwd_timing_biased_F55_P035_left_S3.log
+│   ├── A_fwd_timing_biased_F55_P055_left_S3.json
+│   ├── A_fwd_timing_biased_F55_P055_left_S3.log
+│   ├── B_fwd_timing_biased_F40_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F40_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F40_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F40_P055_right_S4.log
+│   ├── B_fwd_timing_biased_F45_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F45_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F45_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F45_P055_right_S4.log
+│   ├── B_fwd_timing_biased_F50_P035_right_S4.json
+│   ├── B_fwd_timing_biased_F50_P035_right_S4.log
+│   ├── B_fwd_timing_biased_F50_P055_right_S4.json
+│   ├── B_fwd_timing_biased_F50_P055_right_S4.log
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P035_bwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P035_fwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S3.json
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S4.json
+│   ├── C_fwd_timing_biased_F40_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P035_bwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P035_fwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S3.json
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S4.json
+│   ├── C_fwd_timing_biased_F45_P055_fwd_S4.log
+│   ├── compare_default_vs_timing.py
+│   ├── D_inplace_timing_biased_F30_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F30_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F30_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F30_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F30_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F30_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F30_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F30_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F35_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F35_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F35_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F35_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F35_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F35_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F35_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F35_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F40_P035_left_S3.json
+│   ├── D_inplace_timing_biased_F40_P035_left_S3.log
+│   ├── D_inplace_timing_biased_F40_P035_right_S4.json
+│   ├── D_inplace_timing_biased_F40_P035_right_S4.log
+│   ├── D_inplace_timing_biased_F40_P055_left_S3.json
+│   ├── D_inplace_timing_biased_F40_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F40_P055_right_S4.json
+│   ├── D_inplace_timing_biased_F40_P055_right_S4.log
+│   ├── E_long_timing_biased_F25_P055_left_S3.json
+│   ├── E_long_timing_biased_F25_P055_left_S3.log
+│   ├── E_long_timing_biased_F25_P055_right_S4.json
+│   ├── E_long_timing_biased_F25_P055_right_S4.log
+│   ├── E_long_timing_biased_F30_P055_left_S3.json
+│   ├── E_long_timing_biased_F30_P055_left_S3.log
+│   ├── E_long_timing_biased_F30_P055_right_S4.json
+│   ├── E_long_timing_biased_F30_P055_right_S4.log
+│   ├── E_long_timing_biased_F35_P055_left_S3.json
+│   ├── E_long_timing_biased_F35_P055_left_S3.log
+│   ├── E_long_timing_biased_F35_P055_right_S4.json
+│   ├── E_long_timing_biased_F35_P055_right_S4.log
+│   ├── F_frontier_timing_biased_F46_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F46_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F48_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F48_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F50_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F50_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F52_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F52_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F55_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F55_P055_left_S3.log
+│   ├── F_frontier_timing_biased_F60_P055_left_S3.json
+│   ├── F_frontier_timing_biased_F60_P055_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F25_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F25_P005_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F30_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F30_P005_left_S3.log
+│   ├── G_paper_inplace_timing_biased_F35_P005_left_S3.json
+│   ├── G_paper_inplace_timing_biased_F35_P005_left_S3.log
+│   ├── G_paper_timing_biased_F35_P005_left_S3.json
+│   ├── G_paper_timing_biased_F35_P005_left_S3.log
+│   ├── G_paper_timing_biased_F35_P005_right_S4.json
+│   ├── G_paper_timing_biased_F35_P005_right_S4.log
+│   ├── G_paper_timing_biased_F40_P005_left_S3.json
+│   ├── G_paper_timing_biased_F40_P005_left_S3.log
+│   ├── G_paper_timing_biased_F40_P005_right_S4.json
+│   ├── G_paper_timing_biased_F40_P005_right_S4.log
+│   ├── G_paper_timing_biased_F45_P005_left_S3.json
+│   ├── G_paper_timing_biased_F45_P005_left_S3.log
+│   ├── G_paper_timing_biased_F45_P005_right_S4.json
+│   └── G_paper_timing_biased_F45_P005_right_S4.log
+├── logs_timing_check
+│   └── fwd_adapt_F46_P055_left_S3.json
+├── logs_timing_weights
+│   ├── H_time_base_F40_P055_right_S4.json
+│   ├── H_time_base_F40_P055_right_S4.log
+│   ├── H_time_base_F45_P055_right_S4.json
+│   ├── H_time_base_F45_P055_right_S4.log
+│   ├── H_time_base_F46_P055_left_S3.json
+│   ├── H_time_base_F46_P055_left_S3.log
+│   ├── H_time_base_F48_P055_left_S3.json
+│   ├── H_time_base_F48_P055_left_S3.log
+│   ├── H_time_base_F50_P055_left_S3.json
+│   ├── H_time_base_F50_P055_left_S3.log
+│   ├── H_time_biased_F40_P055_right_S4.json
+│   ├── H_time_biased_F40_P055_right_S4.log
+│   ├── H_time_biased_F45_P055_right_S4.json
+│   ├── H_time_biased_F45_P055_right_S4.log
+│   ├── H_time_biased_F46_P055_left_S3.json
+│   ├── H_time_biased_F46_P055_left_S3.log
+│   ├── H_time_biased_F48_P055_left_S3.json
+│   ├── H_time_biased_F48_P055_left_S3.log
+│   ├── H_time_biased_F50_P055_left_S3.json
+│   ├── H_time_biased_F50_P055_left_S3.log
+│   ├── H_time_inplace_base_F30_P055_right_S4.json
+│   ├── H_time_inplace_base_F30_P055_right_S4.log
+│   ├── H_time_inplace_base_F35_P055_left_S3.json
+│   ├── H_time_inplace_base_F35_P055_left_S3.log
+│   ├── H_time_inplace_base_F35_P055_right_S4.json
+│   ├── H_time_inplace_base_F35_P055_right_S4.log
+│   ├── H_time_inplace_base_F40_P055_left_S3.json
+│   ├── H_time_inplace_base_F40_P055_left_S3.log
+│   ├── H_time_inplace_biased_F30_P055_right_S4.json
+│   ├── H_time_inplace_biased_F30_P055_right_S4.log
+│   ├── H_time_inplace_biased_F35_P055_left_S3.json
+│   ├── H_time_inplace_biased_F35_P055_left_S3.log
+│   ├── H_time_inplace_biased_F35_P055_right_S4.json
+│   ├── H_time_inplace_biased_F35_P055_right_S4.log
+│   ├── H_time_inplace_biased_F40_P055_left_S3.json
+│   ├── H_time_inplace_biased_F40_P055_left_S3.log
+│   ├── H_time_paper_base_F35_P005_left_S3.json
+│   ├── H_time_paper_base_F35_P005_left_S3.log
+│   ├── H_time_paper_base_F40_P005_left_S3.json
+│   ├── H_time_paper_base_F40_P005_left_S3.log
+│   ├── H_time_paper_biased_F35_P005_left_S3.json
+│   ├── H_time_paper_biased_F35_P005_left_S3.log
+│   ├── H_time_paper_biased_F40_P005_left_S3.json
+│   └── H_time_paper_biased_F40_P005_left_S3.log
+├── logs_viz
+│   ├── fwd_adapt_F45_P055_left_S3.json
+│   ├── fwd_adapt_F46_P055_left_S3.json
+│   ├── fwd_base_F45_P055_left_S3.json
+│   ├── fwd_base_F46_P055_left_S3.json
+│   └── fwd_hybrid_timing_step_F46_P055_left_S3.json
+├── meshes
+│   ├── CHEST_P.dae
+│   ├── CHEST_R.dae
+│   ├── CHEST_Y.dae
+│   ├── ELBOW_P.dae
+│   ├── F2.dae
+│   ├── F2L.dae
+│   ├── F2S.dae
+│   ├── F3.dae
+│   ├── F3L.dae
+│   ├── F3S.dae
+│   ├── HIP_Y.dae
+│   ├── HRP4RBush_main.dae
+│   ├── HRP4Rmain.dae
+│   ├── KNEE_P.dae
+│   ├── L_ANKLE_P.dae
+│   ├── L_ANKLE_R.dae
+│   ├── L_F1.dae
+│   ├── L_FOOT.dae
+│   ├── L_HIP_P.dae
+│   ├── L_KNEE_P.dae
+│   ├── L_SHOULDER_P.dae
+│   ├── L_SHOULDER_R.dae
+│   ├── L_THUMB.dae
+│   ├── L_WRIST_R.dae
+│   ├── L_WRIST_Y.dae
+│   ├── NECK_P.dae
+│   ├── NECK_R.dae
+│   ├── NECK_Y.dae
+│   ├── R_ANKLE_R.dae
+│   ├── R_F1.dae
+│   ├── R_FOOT.dae
+│   ├── R_HIP_P.dae
+│   ├── R_KNEE_P.dae
+│   ├── R_SHOULDER_P.dae
+│   ├── R_SHOULDER_R.dae
+│   ├── R_THUMB.dae
+│   ├── R_WRIST_P.dae
+│   ├── R_WRIST_R.dae
+│   ├── R_WRIST_Y.dae
+│   ├── SHOULDER_Y.dae
+│   ├── WAIST_LINK.dae
+│   └── WRIST_P.dae
+├── messaggio_scianca.txtù
+├── plot_adapter_trace_fancy.py
+├── plot_adapter_trace.py
+├── plot_adapter_trace_timing_pretty.py
+├── plot_adapter_trace_timing.py
+├── plot_better_recovery_radar.py
+├── plot_recovery_radar.py
+├── plots_better
+│   ├── recovery_bar_clean.png
+│   ├── recovery_frontier_values.csv
+│   └── recovery_radar_clean.png
+├── plots_better_all
+│   ├── recovery_bar_clean.png
+│   ├── recovery_frontier_values.csv
+│   └── recovery_radar_clean.png
+├── plots_better_H
+│   ├── recovery_bar_clean.png
+│   ├── recovery_frontier_values.csv
+│   └── recovery_radar_clean.png
+├── plots_better_p055
+│   ├── recovery_bar_clean.png
+│   ├── recovery_frontier_values.csv
+│   └── recovery_radar_clean.png
+├── plots_better_paper
+│   ├── recovery_bar_clean.png
+│   ├── recovery_frontier_values.csv
+│   └── recovery_radar_clean.png
+├── plots_body
+│   ├── body_adapt_F45_P055_dcm_error.png
+│   ├── body_adapt_F45_P055_margin.png
+│   ├── body_adapt_F45_P055_step_updates.png
+│   ├── body_adapt_F45_P055_summary.txt
+│   ├── body_adapt_F50_P055_dcm_error.png
+│   ├── body_adapt_F50_P055_margin.png
+│   ├── body_adapt_F50_P055_step_updates.png
+│   ├── body_adapt_F50_P055_summary.txt
+│   ├── body_base_F40_P055_dcm_error.png
+│   ├── body_base_F40_P055_margin.png
+│   ├── body_base_F40_P055_step_updates.png
+│   └── body_base_F40_P055_summary.txt
+├── plots_final_1000
+│   ├── all
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
+│   ├── compare_default_vs_timing_1000.txt
+│   ├── gapfilled_all
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
+│   ├── gapfilled_p055_short
+│   ├── long_push
+│   │   ├── recovery_bar_clean.png
+│   │   └── recovery_frontier_values.csv
+│   ├── p055_short
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
+│   └── paper_style
+│       ├── recovery_bar_clean.png
+│       ├── recovery_frontier_values.csv
+│       └── recovery_radar_clean.png
+├── plots_timing_weights
+│   ├── H_time_biased_F46_P055_left_S3_timing_animation.mp4
+│   ├── H_time_biased_F46_P055_left_S3_timing_dashboard.png
+│   ├── H_time_biased_F46_P055_left_S3_timing_events.csv
+│   ├── recovery_bar_timing_H.png
+│   └── recovery_radar_timing_H.png
+├── plot_timing_vs_step.py
+├── __pycache__
+│   ├── filter.cpython-312.pyc
+│   ├── footstep_planner.cpython-312.pyc
+│   ├── foot_trajectory_generator.cpython-312.pyc
+│   ├── inverse_dynamics.cpython-312.pyc
+│   ├── ismpc.cpython-312.pyc
+│   ├── logger.cpython-312.pyc
+│   ├── step_timing_adapter.cpython-312.pyc
+│   └── utils.cpython-312.pyc
+├── README.md
+├── README_UPDATED_FOR_PRESENTATION.md
+├── requirements.txt
+├── results_all_1000.txt
+├── run_all_tests.sh
+├── run_final_1000_pipeline.sh
+├── run_gapfill_tests_1000.sh
+├── run_inplace_tests.sh
+├── run_only_timing_H.sh
+├── run_phase_tests.sh
+├── run_slippage_tests.sh
+├── run_timing_biased_on_old_tests.sh
+├── show_results.py
+├── simulation.py
+├── simulation.py.bak_rich_trace
+├── step_timing_adapter.py
+├── test.txt
+├── urdf
+│   ├── ground.urdf
+│   └── hrp4.urdf
+├── utils.py
+├── videos
+│   ├── adapt_46N.mp4
+│   ├── adapted_45N.mp4
+│   ├── base_45N.mp4
+│   └── base_46N.mp4
+├── viz_adapter
+│   ├── fwd_adapt_F45_P055_left_S3_dashboard.png
+│   ├── fwd_adapt_F45_P055_left_S3_events.csv
+│   ├── fwd_adapt_F45_P055_left_S3_plan_animation.gif
+│   ├── fwd_adapt_F45_P055_left_S3_plan_animation.mp4
+│   ├── fwd_adapt_F46_P055_left_S3_dashboard.png
+│   ├── fwd_adapt_F46_P055_left_S3_events.csv
+│   ├── fwd_adapt_F46_P055_left_S3_plan_animation.mp4
+│   ├── fwd_base_F45_P055_left_S3_dashboard.png
+│   ├── fwd_base_F45_P055_left_S3_events.csv
+│   ├── fwd_base_F45_P055_left_S3_plan_animation.gif
+│   ├── fwd_base_F45_P055_left_S3_plan_animation.mp4
+│   ├── fwd_base_F46_P055_left_S3_dashboard.png
+│   ├── fwd_base_F46_P055_left_S3_events.csv
+│   ├── fwd_base_F46_P055_left_S3_plan_animation.mp4
+│   ├── fwd_hybrid_timing_step_F46_P055_left_S3_timing_animation.mp4
+│   ├── fwd_hybrid_timing_step_F46_P055_left_S3_timing_dashboard.png
+│   └── fwd_hybrid_timing_step_F46_P055_left_S3_timing_events.csv
+└── viz_final_1000
+    ├── A_fwd_adapt_F45_P055_left_S3_timing_animation.mp4
+    ├── A_fwd_adapt_F45_P055_left_S3_timing_dashboard.png
+    ├── A_fwd_adapt_F45_P055_left_S3_timing_events.csv
+    ├── A_fwd_base_F45_P055_left_S3_timing_animation.mp4
+    ├── A_fwd_base_F45_P055_left_S3_timing_dashboard.png
+    ├── A_fwd_base_F45_P055_left_S3_timing_events.csv
+    ├── A_fwd_timing_biased_F40_P075_left_S3_timing_animation.mp4
+    ├── A_fwd_timing_biased_F40_P075_left_S3_timing_dashboard.png
+    ├── A_fwd_timing_biased_F40_P075_left_S3_timing_events.csv
+    ├── B_fwd_timing_biased_F45_P055_right_S4_timing_animation.mp4
+    ├── B_fwd_timing_biased_F45_P055_right_S4_timing_dashboard.png
+    ├── B_fwd_timing_biased_F45_P055_right_S4_timing_events.csv
+    ├── F_frontier_adapt_F50_P055_left_S3_timing_animation.mp4
+    ├── F_frontier_adapt_F50_P055_left_S3_timing_dashboard.png
+    ├── F_frontier_adapt_F50_P055_left_S3_timing_events.csv
+    ├── F_frontier_base_F50_P055_left_S3_timing_animation.mp4
+    ├── F_frontier_base_F50_P055_left_S3_timing_dashboard.png
+    ├── F_frontier_base_F50_P055_left_S3_timing_events.csv
+    ├── F_frontier_timing_biased_F50_P055_left_S3_timing_animation.mp4
+    ├── F_frontier_timing_biased_F50_P055_left_S3_timing_dashboard.png
+    └── F_frontier_timing_biased_F50_P055_left_S3_timing_events.csv
+
+41 directories, 1593 files

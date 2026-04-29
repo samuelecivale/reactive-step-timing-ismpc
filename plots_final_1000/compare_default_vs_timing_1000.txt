@@ -1,0 +1,80 @@
+====================================================================================================
+BASELINE vs DEFAULT ADAPTER vs TIMING-BIASED ADAPTER
+====================================================================================================
+old_dir:    logs_final_1000
+timing_dir: logs_timing_biased_full_1000
+
+profile  dir       S     F    P   dt |       base        default      timing-biased | result
+--------------------------------------------------------------------------------------------
+forward  backward  3  40.0 0.35 0.10 | FELL( 468)   FELL( 469,u=0,q=0)   FELL( 464,u=2,q=0) | both fall, Δticks=-5
+forward  backward  3  40.0 0.55 0.10 | FELL( 491)   FELL( 486,u=0,q=0)   FELL( 491,u=1,q=0) | both fall, Δticks=+5
+forward  backward  3  45.0 0.35 0.10 | missing(   -)   FELL( 464,u=0,q=0)   FELL( 464,u=2,q=0) | both fall, Δticks=+0
+forward  backward  3  45.0 0.55 0.10 | missing(   -)   FELL( 482,u=1,q=0)   FELL( 482,u=1,q=0) | both fall, Δticks=+0
+forward  backward  4  40.0 0.35 0.10 | FELL( 566)   FELL( 566,u=0,q=0)   FELL( 570,u=2,q=0) | both fall, Δticks=+4
+forward  backward  4  40.0 0.55 0.10 | FELL( 587)   FELL( 590,u=0,q=0)   FELL( 591,u=1,q=0) | both fall, Δticks=+1
+forward  backward  4  45.0 0.35 0.10 | missing(   -)   FELL( 560,u=0,q=0)   FELL( 561,u=2,q=0) | both fall, Δticks=+1
+forward  backward  4  45.0 0.55 0.10 | missing(   -)   FELL( 582,u=1,q=0)   FELL( 582,u=1,q=0) | both fall, Δticks=+0
+forward  forward   3  40.0 0.35 0.10 | FELL( 439)   FELL( 455,u=2,q=0)   FELL( 447,u=2,q=0) | both fall, Δticks=-8
+forward  forward   3  40.0 0.55 0.10 | FELL( 456)   FELL( 459,u=1,q=0)   FELL( 480,u=1,q=0) | both fall, Δticks=+21
+forward  forward   3  45.0 0.35 0.10 | missing(   -)   FELL( 451,u=3,q=0)   FELL( 443,u=2,q=0) | both fall, Δticks=-8
+forward  forward   3  45.0 0.55 0.10 | missing(   -)   FELL( 456,u=1,q=0)   FELL( 457,u=2,q=0) | both fall, Δticks=+1
+forward  forward   4  40.0 0.35 0.10 | FELL( 538)   FELL( 552,u=2,q=0)   FELL( 545,u=2,q=0) | both fall, Δticks=-7
+forward  forward   4  40.0 0.55 0.10 | FELL( 579)   FELL( 560,u=1,q=0)   FELL( 560,u=2,q=0) | both fall, Δticks=+0
+forward  forward   4  45.0 0.35 0.10 | missing(   -)   FELL( 548,u=2,q=0)   FELL( 561,u=1,q=0) | both fall, Δticks=+13
+forward  forward   4  45.0 0.55 0.10 | missing(   -)   FELL( 555,u=1,q=0)   FELL( 557,u=2,q=0) | both fall, Δticks=+2
+forward  left      3  25.0 0.55 0.20 | FELL( 511)   FELL( 532,u=3,q=0)   FELL( 482,u=0,q=0) | both fall, Δticks=-50
+forward  left      3  30.0 0.55 0.20 | FELL( 474)   FELL( 483,u=1,q=0)   FELL( 490,u=2,q=0) | both fall, Δticks=+7
+forward  left      3  35.0 0.05 0.10 |   ok(1000)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | same survival
+forward  left      3  35.0 0.55 0.20 | FELL( 465)   FELL( 478,u=1,q=0)   FELL( 479,u=2,q=0) | both fall, Δticks=+1
+forward  left      3  40.0 0.05 0.10 | FELL( 500)   FELL( 480,u=0,q=1)     ok(1000,u=1,q=0) | saves vs base; improves vs default
+forward  left      3  40.0 0.35 0.10 | FELL( 522)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  left      3  40.0 0.55 0.10 |   ok(1000)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | same survival
+forward  left      3  40.0 0.75 0.10 | FELL( 502)     ok(1000,u=0,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  left      3  45.0 0.05 0.10 | FELL( 462)   FELL( 458,u=1,q=1)   FELL( 465,u=1,q=0) | both fall, Δticks=+7
+forward  left      3  45.0 0.35 0.10 | FELL( 485)   FELL( 572,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; improves vs default
+forward  left      3  45.0 0.55 0.10 | FELL( 488)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  left      3  45.0 0.75 0.10 | missing(   -)   FELL( 485,u=0,q=0)   FELL( 524,u=4,q=0) | both fall, Δticks=+39
+forward  left      3  46.0 0.55 0.10 | FELL( 483)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  left      3  48.0 0.55 0.10 | FELL( 516)   FELL( 570,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; improves vs default
+forward  left      3  50.0 0.35 0.10 | missing(   -)   FELL( 487,u=1,q=0)   FELL( 486,u=2,q=0) | both fall, Δticks=-1
+forward  left      3  50.0 0.55 0.10 | FELL( 499)   FELL( 519,u=1,q=0)   FELL( 696,u=2,q=0) | both fall, Δticks=+177
+forward  left      3  50.0 0.75 0.10 | missing(   -)   FELL( 480,u=0,q=0)   FELL( 535,u=4,q=0) | both fall, Δticks=+55
+forward  left      3  52.0 0.55 0.10 | FELL( 478)   FELL( 504,u=1,q=0)   FELL( 568,u=3,q=0) | both fall, Δticks=+64
+forward  left      3  55.0 0.35 0.10 | missing(   -)   FELL( 475,u=1,q=0)   FELL( 471,u=2,q=0) | both fall, Δticks=-4
+forward  left      3  55.0 0.55 0.10 | FELL( 480)   FELL( 489,u=1,q=0)     ok(1000,u=2,q=0) | saves vs base; improves vs default
+forward  left      3  60.0 0.55 0.10 | FELL( 470)   FELL( 481,u=1,q=0)   FELL( 530,u=2,q=0) | both fall, Δticks=+49
+forward  right     4  25.0 0.55 0.20 | FELL( 635)   FELL( 611,u=1,q=0)   FELL( 579,u=0,q=0) | both fall, Δticks=-32
+forward  right     4  30.0 0.55 0.20 | FELL( 570)   FELL( 597,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; improves vs default
+forward  right     4  35.0 0.05 0.10 | FELL( 586)   FELL( 587,u=0,q=1)   FELL( 678,u=1,q=0) | both fall, Δticks=+91
+forward  right     4  35.0 0.55 0.20 | FELL( 562)   FELL( 579,u=1,q=0)   FELL( 587,u=2,q=0) | both fall, Δticks=+8
+forward  right     4  40.0 0.05 0.10 | FELL( 578)   FELL( 558,u=0,q=2)   FELL( 548,u=2,q=0) | both fall, Δticks=-10
+forward  right     4  40.0 0.35 0.10 | FELL( 598)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  right     4  40.0 0.55 0.10 | FELL( 588)     ok(1000,u=1,q=0)     ok(1000,u=1,q=0) | saves vs base; same survival
+forward  right     4  45.0 0.05 0.10 | FELL( 552)   FELL( 544,u=0,q=2)   FELL( 564,u=1,q=0) | both fall, Δticks=+20
+forward  right     4  45.0 0.35 0.10 | missing(   -)   FELL( 592,u=1,q=0)   FELL( 623,u=1,q=0) | both fall, Δticks=+31
+forward  right     4  45.0 0.55 0.10 | missing(   -)     ok(1000,u=1,q=0)   FELL( 666,u=1,q=0) | worse vs default
+forward  right     4  50.0 0.35 0.10 | missing(   -)   FELL( 575,u=1,q=0)   FELL( 572,u=2,q=0) | both fall, Δticks=-3
+forward  right     4  50.0 0.55 0.10 | missing(   -)   FELL( 599,u=1,q=0)     ok(1000,u=2,q=0) | improves vs default
+inplace  left      3  25.0 0.05 0.10 | FELL( 375)     ok(1000,u=0,q=0)     ok(1000,u=0,q=0) | saves vs base; same survival
+inplace  left      3  30.0 0.05 0.10 | FELL( 375)     ok(1000,u=0,q=0)     ok(1000,u=0,q=0) | saves vs base; same survival
+inplace  left      3  30.0 0.35 0.10 | FELL( 375)   FELL( 365,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+10
+inplace  left      3  30.0 0.55 0.10 | FELL( 369)   FELL( 375,u=0,q=0)     ok(1000,u=0,q=0) | saves vs base; improves vs default
+inplace  left      3  35.0 0.05 0.10 | FELL( 619)   FELL( 375,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+0
+inplace  left      3  35.0 0.35 0.10 | missing(   -)   FELL( 375,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+0
+inplace  left      3  35.0 0.55 0.10 | missing(   -)   FELL( 365,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+10
+inplace  left      3  40.0 0.35 0.10 | missing(   -)   FELL( 375,u=0,q=0)   FELL( 777,u=4,q=0) | both fall, Δticks=+402
+inplace  left      3  40.0 0.55 0.10 | missing(   -)   FELL( 375,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+0
+inplace  right     4  30.0 0.35 0.10 |   ok(1000)   FELL( 365,u=0,q=0)     ok(1000,u=0,q=0) | improves vs default
+inplace  right     4  30.0 0.55 0.10 | FELL( 365)   FELL( 365,u=0,q=0)   FELL( 372,u=1,q=0) | both fall, Δticks=+7
+inplace  right     4  35.0 0.35 0.10 | missing(   -)   FELL( 375,u=0,q=0)     ok(1000,u=1,q=0) | improves vs default
+inplace  right     4  35.0 0.55 0.10 | missing(   -)     ok(1000,u=2,q=0)   FELL( 375,u=0,q=0) | worse vs default
+inplace  right     4  40.0 0.35 0.10 | missing(   -)   FELL( 362,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+13
+inplace  right     4  40.0 0.55 0.10 | missing(   -)   FELL( 365,u=0,q=0)   FELL( 375,u=0,q=0) | both fall, Δticks=+10
+
+====================================================================================================
+Compared timing-biased cases: 64
+Timing-biased saves vs baseline:      14
+Timing-biased improves vs default:    9
+Timing-biased same category/default:  53
+Timing-biased worse than default:     2
+====================================================================================================
