@@ -2,3 +2,22 @@ __pycache__/*
 __pycache__/
 *.pyc
 archives/old_docs/
+archives/
+
+# Python
+*.py[cod]
+.pytest_cache/
+# Local environments
+.venv/
+venv/
+.env
+# OS/editor noise
+.DS_Store
+*.swp
+# Local cleanup archives
+archives/workspace_cleanup_*/
+# Temporary local files
+albero.txt
+test.txt
+*.bak
+*.bak_*

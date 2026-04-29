@@ -1,7 +1,0 @@
-[init] step_timing_adaptation=False
-[init] adapt_debug=True
-[push] scheduled backward push on base: t=5.24s, F=35.0N, dt=0.10s
-[summary]
-  profile=forward adapt=False fell=True ticks=580 sim_time=5.80s contact=ds
-  force=35.0N duration=0.10s direction=backward push_step=4 push_phase=0.35
-  adapter_updates=0 activations=0 qp_failures=0 max_dcm_error=0.0000
