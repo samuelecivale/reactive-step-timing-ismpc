@@ -117,6 +117,20 @@
 │   │   └── run_final_tests.sh
 │   └── workspace_cleanup_20260428_230830
 ├── clean_workspace_for_final.sh
+├── docs
+│   └── assets
+│       ├── anim_forward_45N_baseline.gif
+│       ├── anim_forward_45N_default_adapter.gif
+│       ├── anim_forward_50N_baseline.gif
+│       ├── anim_forward_50N_default_adapter.gif
+│       ├── anim_forward_50N_timing_biased.gif
+│       ├── recovery_frontier_all_bar.png
+│       ├── recovery_frontier_all_radar.png
+│       ├── recovery_frontier_long_dt020_bar.png
+│       ├── recovery_frontier_p055_dt010_bar.png
+│       ├── recovery_frontier_p055_dt010_radar.png
+│       ├── recovery_frontier_paper_bar.png
+│       └── recovery_frontier_paper_radar.png
 ├── filter.py
 ├── footstep_planner.py
 ├── foot_trajectory_generator.py
@@ -865,96 +879,185 @@
 │   ├── C_fwd_base_F5_P055_fwd_S3.log
 │   ├── C_fwd_base_F5_P055_fwd_S4.json
 │   ├── C_fwd_base_F5_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F10_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F10_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F10_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F10_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F10_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F10_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F10_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F10_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F15_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F15_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F15_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F15_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F15_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F15_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F15_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F15_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F20_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F20_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F20_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F20_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F20_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F20_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F20_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F20_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F25_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F25_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F25_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F25_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F25_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F25_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F25_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F25_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F30_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F30_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F30_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F30_P055_bwd_S4.log
+│   ├── C_fwd_timing_biased_F30_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F30_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F30_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F30_P055_fwd_S4.log
+│   ├── C_fwd_timing_biased_F5_P055_bwd_S3.json
 │   ├── C_fwd_timing_biased_F5_P055_bwd_S3.log
+│   ├── C_fwd_timing_biased_F5_P055_bwd_S4.json
 │   ├── C_fwd_timing_biased_F5_P055_bwd_S4.log
 │   ├── C_fwd_timing_biased_F5_P055_fwd_S3.json
 │   ├── C_fwd_timing_biased_F5_P055_fwd_S3.log
+│   ├── C_fwd_timing_biased_F5_P055_fwd_S4.json
 │   ├── C_fwd_timing_biased_F5_P055_fwd_S4.log
+│   ├── D_inplace_adapt_F10_P055_left_S3.json
 │   ├── D_inplace_adapt_F10_P055_left_S3.log
+│   ├── D_inplace_adapt_F10_P055_right_S4.json
 │   ├── D_inplace_adapt_F10_P055_right_S4.log
+│   ├── D_inplace_adapt_F15_P055_left_S3.json
 │   ├── D_inplace_adapt_F15_P055_left_S3.log
+│   ├── D_inplace_adapt_F15_P055_right_S4.json
 │   ├── D_inplace_adapt_F15_P055_right_S4.log
+│   ├── D_inplace_adapt_F20_P055_left_S3.json
 │   ├── D_inplace_adapt_F20_P055_left_S3.log
+│   ├── D_inplace_adapt_F20_P055_right_S4.json
 │   ├── D_inplace_adapt_F20_P055_right_S4.log
+│   ├── D_inplace_adapt_F5_P055_left_S3.json
 │   ├── D_inplace_adapt_F5_P055_left_S3.log
+│   ├── D_inplace_adapt_F5_P055_right_S4.json
 │   ├── D_inplace_adapt_F5_P055_right_S4.log
+│   ├── D_inplace_base_F10_P055_left_S3.json
 │   ├── D_inplace_base_F10_P055_left_S3.log
+│   ├── D_inplace_base_F10_P055_right_S4.json
 │   ├── D_inplace_base_F10_P055_right_S4.log
+│   ├── D_inplace_base_F15_P055_left_S3.json
 │   ├── D_inplace_base_F15_P055_left_S3.log
+│   ├── D_inplace_base_F15_P055_right_S4.json
 │   ├── D_inplace_base_F15_P055_right_S4.log
+│   ├── D_inplace_base_F20_P055_left_S3.json
 │   ├── D_inplace_base_F20_P055_left_S3.log
+│   ├── D_inplace_base_F20_P055_right_S4.json
 │   ├── D_inplace_base_F20_P055_right_S4.log
+│   ├── D_inplace_base_F5_P055_left_S3.json
 │   ├── D_inplace_base_F5_P055_left_S3.log
+│   ├── D_inplace_base_F5_P055_right_S4.json
 │   ├── D_inplace_base_F5_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F10_P055_left_S3.json
 │   ├── D_inplace_timing_biased_F10_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F10_P055_right_S4.json
 │   ├── D_inplace_timing_biased_F10_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F15_P055_left_S3.json
 │   ├── D_inplace_timing_biased_F15_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F15_P055_right_S4.json
 │   ├── D_inplace_timing_biased_F15_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F20_P055_left_S3.json
 │   ├── D_inplace_timing_biased_F20_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F20_P055_right_S4.json
 │   ├── D_inplace_timing_biased_F20_P055_right_S4.log
+│   ├── D_inplace_timing_biased_F5_P055_left_S3.json
 │   ├── D_inplace_timing_biased_F5_P055_left_S3.log
+│   ├── D_inplace_timing_biased_F5_P055_right_S4.json
 │   ├── D_inplace_timing_biased_F5_P055_right_S4.log
+│   ├── E_long_adapt_F10_P055_left_S3.json
 │   ├── E_long_adapt_F10_P055_left_S3.log
+│   ├── E_long_adapt_F10_P055_right_S4.json
 │   ├── E_long_adapt_F10_P055_right_S4.log
+│   ├── E_long_adapt_F15_P055_left_S3.json
 │   ├── E_long_adapt_F15_P055_left_S3.log
+│   ├── E_long_adapt_F15_P055_right_S4.json
 │   ├── E_long_adapt_F15_P055_right_S4.log
+│   ├── E_long_adapt_F20_P055_left_S3.json
 │   ├── E_long_adapt_F20_P055_left_S3.log
+│   ├── E_long_adapt_F20_P055_right_S4.json
 │   ├── E_long_adapt_F20_P055_right_S4.log
+│   ├── E_long_adapt_F5_P055_left_S3.json
 │   ├── E_long_adapt_F5_P055_left_S3.log
+│   ├── E_long_adapt_F5_P055_right_S4.json
 │   ├── E_long_adapt_F5_P055_right_S4.log
+│   ├── E_long_base_F10_P055_left_S3.json
 │   ├── E_long_base_F10_P055_left_S3.log
+│   ├── E_long_base_F10_P055_right_S4.json
 │   ├── E_long_base_F10_P055_right_S4.log
+│   ├── E_long_base_F15_P055_left_S3.json
 │   ├── E_long_base_F15_P055_left_S3.log
+│   ├── E_long_base_F15_P055_right_S4.json
 │   ├── E_long_base_F15_P055_right_S4.log
+│   ├── E_long_base_F20_P055_left_S3.json
 │   ├── E_long_base_F20_P055_left_S3.log
+│   ├── E_long_base_F20_P055_right_S4.json
 │   ├── E_long_base_F20_P055_right_S4.log
+│   ├── E_long_base_F5_P055_left_S3.json
 │   ├── E_long_base_F5_P055_left_S3.log
+│   ├── E_long_base_F5_P055_right_S4.json
 │   ├── E_long_base_F5_P055_right_S4.log
+│   ├── E_long_timing_biased_F10_P055_left_S3.json
 │   ├── E_long_timing_biased_F10_P055_left_S3.log
+│   ├── E_long_timing_biased_F10_P055_right_S4.json
 │   ├── E_long_timing_biased_F10_P055_right_S4.log
+│   ├── E_long_timing_biased_F15_P055_left_S3.json
 │   ├── E_long_timing_biased_F15_P055_left_S3.log
+│   ├── E_long_timing_biased_F15_P055_right_S4.json
 │   ├── E_long_timing_biased_F15_P055_right_S4.log
+│   ├── E_long_timing_biased_F20_P055_left_S3.json
 │   ├── E_long_timing_biased_F20_P055_left_S3.log
+│   ├── E_long_timing_biased_F20_P055_right_S4.json
 │   ├── E_long_timing_biased_F20_P055_right_S4.log
+│   ├── E_long_timing_biased_F5_P055_left_S3.json
 │   ├── E_long_timing_biased_F5_P055_left_S3.log
+│   ├── E_long_timing_biased_F5_P055_right_S4.json
 │   ├── E_long_timing_biased_F5_P055_right_S4.log
+│   ├── G_paper_adapt_F10_P005_right_S4.json
 │   ├── G_paper_adapt_F10_P005_right_S4.log
+│   ├── G_paper_adapt_F15_P005_right_S4.json
 │   ├── G_paper_adapt_F15_P005_right_S4.log
+│   ├── G_paper_adapt_F20_P005_right_S4.json
 │   ├── G_paper_adapt_F20_P005_right_S4.log
+│   ├── G_paper_adapt_F25_P005_right_S4.json
 │   ├── G_paper_adapt_F25_P005_right_S4.log
+│   ├── G_paper_adapt_F30_P005_right_S4.json
 │   ├── G_paper_adapt_F30_P005_right_S4.log
+│   ├── G_paper_adapt_F5_P005_right_S4.json
 │   ├── G_paper_adapt_F5_P005_right_S4.log
+│   ├── G_paper_base_F10_P005_right_S4.json
 │   ├── G_paper_base_F10_P005_right_S4.log
+│   ├── G_paper_base_F15_P005_right_S4.json
 │   ├── G_paper_base_F15_P005_right_S4.log
+│   ├── G_paper_base_F20_P005_right_S4.json
 │   ├── G_paper_base_F20_P005_right_S4.log
+│   ├── G_paper_base_F25_P005_right_S4.json
 │   ├── G_paper_base_F25_P005_right_S4.log
+│   ├── G_paper_base_F30_P005_right_S4.json
 │   ├── G_paper_base_F30_P005_right_S4.log
+│   ├── G_paper_base_F5_P005_right_S4.json
 │   ├── G_paper_base_F5_P005_right_S4.log
+│   ├── G_paper_timing_biased_F10_P005_right_S4.json
 │   ├── G_paper_timing_biased_F10_P005_right_S4.log
+│   ├── G_paper_timing_biased_F15_P005_right_S4.json
 │   ├── G_paper_timing_biased_F15_P005_right_S4.log
+│   ├── G_paper_timing_biased_F20_P005_right_S4.json
 │   ├── G_paper_timing_biased_F20_P005_right_S4.log
+│   ├── G_paper_timing_biased_F25_P005_right_S4.json
 │   ├── G_paper_timing_biased_F25_P005_right_S4.log
+│   ├── G_paper_timing_biased_F30_P005_right_S4.json
 │   ├── G_paper_timing_biased_F30_P005_right_S4.log
+│   ├── G_paper_timing_biased_F5_P005_right_S4.json
 │   └── G_paper_timing_biased_F5_P005_right_S4.log
 ├── logs_inplace
 │   └── nopush_adapt.log
@@ -1538,7 +1641,21 @@
 │   │   ├── recovery_bar_clean.png
 │   │   ├── recovery_frontier_values.csv
 │   │   └── recovery_radar_clean.png
+│   ├── gapfilled_long
+│   │   ├── recovery_bar_clean.png
+│   │   └── recovery_frontier_values.csv
 │   ├── gapfilled_p055_short
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
+│   ├── gapfilled_paper
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
+│   ├── gapfilled_paper_p055
+│   │   ├── recovery_bar_clean.png
+│   │   ├── recovery_frontier_values.csv
+│   │   └── recovery_radar_clean.png
 │   ├── long_push
 │   │   ├── recovery_bar_clean.png
 │   │   └── recovery_frontier_values.csv
@@ -1633,4 +1750,4 @@
     ├── F_frontier_timing_biased_F50_P055_left_S3_timing_dashboard.png
     └── F_frontier_timing_biased_F50_P055_left_S3_timing_events.csv
 
-41 directories, 1593 files
+46 directories, 1705 files
