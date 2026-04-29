@@ -179,7 +179,7 @@ python3 simulation.py --headless --steps 1000 \
 ```bash
 python3 simulation.py --headless --steps 1000 \
   --profile forward --adapt --timing-biased \
-  --force 50 --duration 0.10 --direction left \
+  --force 45 --duration 0.10 --direction left \
   --push-step 3 --push-phase 0.55 --push-target base
 ```
 
