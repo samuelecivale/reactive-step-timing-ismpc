@@ -60,6 +60,32 @@ If the generated assets are available, the main recovery-frontier plots can be s
 
 ---
 
+## Visual examples
+
+The repository can also include lightweight GIFs generated from selected simulation traces. These are useful to show the qualitative difference between the baseline controller and the adapted controller.
+
+### Baseline failure
+
+<p align="center">
+  <img src="docs/assets/anim_forward_45N_baseline.gif" width="80%">
+</p>
+
+### Default adapter recovery
+
+<p align="center">
+  <img src="docs/assets/anim_forward_45N_default_adapter.gif" width="80%">
+</p>
+
+### Timing-biased adapter
+
+<p align="center">
+  <img src="docs/assets/anim_forward_50N_timing_biased.gif" width="80%">
+</p>
+
+If the GIFs are too large for GitHub, keep only the most representative one or replace them with links to the corresponding MP4 files in `viz_final_1000/`.
+
+---
+
 ## Repository structure
 
 | Path | Description |
@@ -220,6 +246,28 @@ The main outputs are:
 ```text
 plots_final_1000/gapfilled_p055_short/recovery_bar_clean.png
 plots_final_1000/gapfilled_p055_short/recovery_radar_clean.png
+```
+
+To copy the main README figures:
+
+```bash
+mkdir -p docs/assets
+
+cp plots_final_1000/gapfilled_p055_short/recovery_bar_clean.png    docs/assets/recovery_frontier_p055_dt010_bar.png
+
+cp plots_final_1000/gapfilled_p055_short/recovery_radar_clean.png    docs/assets/recovery_frontier_p055_dt010_radar.png
+```
+
+To generate GIFs from selected animations:
+
+```bash
+mkdir -p docs/assets
+
+ffmpeg -y -i viz_final_1000/A_fwd_base_F45_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_45N_baseline.gif
+
+ffmpeg -y -i viz_final_1000/A_fwd_adapt_F45_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_45N_default_adapter.gif
+
+ffmpeg -y -i viz_final_1000/F_frontier_timing_biased_F50_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_50N_timing_biased.gif
 ```
 
 ---
