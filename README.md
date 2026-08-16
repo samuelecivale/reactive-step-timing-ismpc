@@ -1,227 +1,343 @@
 # Reactive Step Timing Adaptation for IS-MPC Humanoid Locomotion
 
-This repository extends the DIAG Robotics Lab IS-MPC humanoid walking framework with a reactive step adaptation layer for push recovery.
+Reactive footstep and step-timing adaptation for **humanoid push recovery**, built on top of an IS-MPC walking controller.
 
-The original framework provides nominal footstep planning, IS-MPC CoM/ZMP regulation, swing-foot trajectory generation, inverse dynamics control, and DART-based simulation. This project adds an online layer that can update the active footstep plan during walking by modifying:
+The project adds a lightweight online adaptation layer that modifies the active walking plan when external disturbances make the nominal plan insufficient.
 
-- the position of the next footstep;
-- the duration of the current or next single-support phase.
+## Key Results
 
-The implementation is inspired by Khadiv et al., *Walking Control Based on Step Timing Adaptation*, but it is not a direct reimplementation. The goal is to keep the original IS-MPC architecture mostly unchanged and add a lightweight reactive overlay on top of it.
+Under lateral pushes during forward walking:
+
+| Scenario     | Baseline IS-MPC | Default Adapter | Timing-Biased Adapter |
+| ------------ | --------------: | --------------: | --------------------: |
+| Forward L-S3 |            40 N |        **50 N** |              **55 N** |
+| Forward R-S4 |            35 N |        **45 N** |              **50 N** |
+
+The default adapter improves recoverable push magnitude by approximately:
+
+* **+25%** in the Forward L-S3 scenario;
+* **+29%** in the Forward R-S4 scenario.
+
+The timing-biased configuration extends the recovery frontier further in selected cases, reaching **55 N** and **50 N**, respectively.
+
+> The default adapter should be considered the stable controller.
+> The timing-biased configuration is an ablation used to study the contribution of temporal adaptation.
 
 ---
 
-## Overview
+## Motivation
 
-A nominal walking controller follows a fixed footstep plan. This works well in unperturbed walking, but external pushes can make the original plan insufficient. The idea of this project is to keep two plans:
+A nominal humanoid walking controller follows a predefined footstep sequence and timing schedule.
 
-- a **nominal plan**, used as the original reference;
-- an **active plan**, which can be updated online when a disturbance is detected.
+This works well during undisturbed locomotion, but a sufficiently strong external push can make the current plan dynamically infeasible.
 
-The reactive adapter is gated: it stays inactive during nominal walking and intervenes only when the robot is in single support and the DCM/viability conditions indicate that the current plan may not be sufficient.
+Instead of replacing the underlying walking controller, this project introduces a **reactive adaptation layer** that modifies the reference plan online.
 
-The strongest result is obtained in forward walking under lateral body pushes toward the unsupported side. In this regime, the adapter improves the maximum recoverable push force compared with the baseline IS-MPC controller.
+The system maintains two plans:
+
+* **Nominal plan** — the original walking reference;
+* **Active plan** — the plan currently used by the controller and updated after disturbances.
+
+The adapter remains inactive during normal walking and intervenes only when the current walking state indicates that the nominal plan may no longer be sufficient.
 
 ---
 
-## Main results
+## System Architecture
 
-Final results are evaluated with:
+The original walking pipeline contains:
 
 ```text
-simulation horizon: 1000 ticks
-push phase:        0.55
-push duration:     0.10 s
-push target:       base
+Footstep Planning
+       │
+       ▼
+IS-MPC CoM / ZMP Control
+       │
+       ▼
+Swing-Foot Trajectory Generation
+       │
+       ▼
+Whole-Body Inverse Dynamics
+       │
+       ▼
+DART Simulation
 ```
 
-| Scenario | Baseline | Default adapter | Timing-biased adapter |
-|---|---:|---:|---:|
-| Forward L-S3 | 40 N | 50 N | 55 N |
-| Forward R-S4 | 35 N | 45 N | 50 N |
+This project inserts a reactive layer between state estimation/planning and the existing walking-control modules:
 
-The default adapter improves robustness mainly through online next-footstep relocation. The timing-biased variant confirms that the timing branch is functional and can further improve selected cases, but it is more tuning-sensitive and can introduce regressions.
+```text
+Walking State
+     │
+     ▼
+Reactive Step Adapter
+     │
+     ├── Footstep Position Update
+     └── Step Timing Update
+     │
+     ▼
+Active Footstep Plan
+     │
+     ├───────────────┐
+     ▼               ▼
+   IS-MPC       Swing-Foot Generator
+     │               │
+     └───────┬───────┘
+             ▼
+     Inverse Dynamics
+             │
+             ▼
+       DART Simulation
+```
 
-Therefore, the default adapter should be considered the stable controller, while the timing-biased mode should be treated as an ablation/diagnostic extension.
+The original IS-MPC controller therefore remains largely unchanged.
 
----
-
-## Example figures
-
-If the generated assets are available, the main recovery-frontier plots can be shown directly in the README.
-
-<p align="center">
-  <img src="docs/assets/recovery_frontier_p055_dt010_bar.png" width="95%">
-</p>
-
-<p align="center">
-  <img src="docs/assets/recovery_frontier_p055_dt010_radar.png" width="75%">
-</p>
-
----
-
-## Visual examples
-
-The repository can also include lightweight GIFs generated from selected simulation traces. These are useful to show the qualitative difference between the baseline controller and the adapted controller.
-
-### Baseline failure
-
-<p align="center">
-  <img src="docs/assets/anim_forward_45N_baseline.gif" width="80%">
-</p>
-
-### Default adapter recovery
-
-<p align="center">
-  <img src="docs/assets/anim_forward_45N_default_adapter.gif" width="80%">
-</p>
-
-### Timing-biased adapter
-
-<p align="center">
-  <img src="docs/assets/anim_forward_50N_timing_biased.gif" width="80%">
-</p>
-
-If the GIFs are too large for GitHub, keep only the most representative one or replace them with links to the corresponding MP4 files in `viz_final_1000/`.
+The adapter modifies the **reference plan**, rather than replacing the underlying stabilization architecture.
 
 ---
 
-## Repository structure
+## Reactive Adaptation
 
-| Path | Description |
-|---|---|
-| `simulation.py` | Main simulation entry point, CLI, push scheduling, logging, adapter setup |
-| `step_timing_adapter.py` | Reactive QP layer for footstep and timing adaptation |
-| `footstep_planner.py` | Nominal and active footstep plans |
-| `foot_trajectory_generator.py` | Swing-foot trajectory generation from the active plan |
-| `ismpc.py` | IS-MPC controller backbone |
-| `inverse_dynamics.py` | Whole-body inverse dynamics |
-| `filter.py` | CoM/ZMP state filtering |
-| `logger.py` | Runtime/debug plotting utilities |
-| `show_results.py` | Aggregates JSON logs and prints result summaries |
-| `plot_better_recovery_radar.py` | Generates recovery-frontier bar/radar plots |
-| `plot_adapter_trace_fancy.py` | Generates dashboard plots and plan animations |
-| `run_all_tests.sh` | Baseline and default-adapter test battery |
-| `run_timing_biased_on_old_tests.sh` | Timing-biased ablation battery |
-| `run_gapfill_tests_1000.sh` | Additional tests for gap-filled recovery-frontier plots |
-| `logs_final_1000/` | Final baseline/default-adapter logs |
-| `logs_timing_biased_full_1000/` | Final timing-biased logs |
-| `logs_gapfill_1000/` | Additional gap-filling logs |
-| `plots_final_1000/` | Final recovery-frontier plots |
-| `viz_final_1000/` | Trace dashboards and animations |
-| `docs/assets/` | README-ready figures and optional animations |
-| `archives/` | Older logs, plots, and scripts |
+At every simulation step:
+
+1. the current walking state is read;
+2. the adapter determines whether intervention is allowed;
+3. disturbance-related viability conditions are evaluated;
+4. if necessary, a local optimization problem is solved;
+5. the active footstep plan is updated;
+6. the existing IS-MPC and swing-foot modules continue using the updated plan.
+
+This allows the controller to react to disturbances while preserving the original walking-control pipeline.
 
 ---
 
-## Method
+## Adaptation Variables
 
-The adapter is inserted between the walking state estimation/planning logic and the IS-MPC/swing-foot modules.
+The reactive optimization can modify both spatial and temporal quantities.
 
-At each simulation tick:
+| Variable   | Meaning                                  |
+| ---------- | ---------------------------------------- |
+| `dx`       | Next-footstep displacement along local x |
+| `dy`       | Next-footstep displacement along local y |
+| `tau`      | Timing-related decision variable         |
+| `bx`, `by` | DCM offset variables                     |
+| `sx`, `sy` | Slack variables                          |
 
-1. the simulator reads the current walking state;
-2. the adapter checks whether intervention is allowed;
-3. if the activation gates are satisfied, it solves a local QP;
-4. if the QP solution is accepted, the active footstep plan is updated;
-5. IS-MPC and swing-foot generation continue using the updated active plan.
+A successful intervention may therefore contain both:
 
-This keeps the original walking controller largely intact. The adapter only modifies the reference plan used by the existing pipeline.
+* **footstep relocation**;
+* **step-duration modification**.
 
----
-
-## Adapter logic
-
-The reactive QP can update both spatial and temporal quantities.
-
-| Variable | Meaning |
-|---|---|
-| `dx` | next-step displacement along the local x direction |
-| `dy` | next-step displacement along the local y direction |
-| `tau` | timing-related decision variable |
-| `bx`, `by` | DCM offset variables |
-| `sx`, `sy` | slack variables |
-
-The adapter is not always active. It can intervene only when the main conditions are satisfied:
-
-- adaptation is enabled with `--adapt`;
-- the robot is in single support;
-- a valid next step exists;
-- the current tick is outside the warmup, freeze, and cooldown windows;
-- the DCM/viability trigger indicates that the current plan may be insufficient.
-
-The implementation also includes practical safeguards such as timing bounds, minimum update thresholds, displacement clamps, and soft propagation to the following step.
+The resulting recovery should be interpreted as **spatio-temporal adaptation**, rather than timing adaptation alone.
 
 ---
 
-## Running simulations
+## Activation Logic
+
+The adapter does not continuously alter the nominal gait.
+
+An update is considered only when the main activation conditions are satisfied:
+
+* adaptation has been enabled;
+* the robot is in **single support**;
+* a valid next footstep exists;
+* the controller is outside warm-up, freeze, and cooldown intervals;
+* the DCM/viability trigger indicates that the current plan may be insufficient.
+
+Additional safeguards include:
+
+* timing bounds;
+* footstep displacement limits;
+* minimum update thresholds;
+* update rejection logic;
+* soft propagation of corrections to subsequent footsteps.
+
+These constraints reduce unnecessary modifications during nominal walking.
+
+---
+
+## Evaluation Setup
+
+The main final evaluation uses:
+
+```text
+Simulation horizon : 1000 ticks
+Push phase         : 0.55
+Push duration      : 0.10 s
+Push target        : robot base
+```
+
+The main benchmark studies forward walking under lateral disturbances toward the unsupported side.
+
+The maximum recoverable disturbance is then compared across:
+
+```text
+Baseline IS-MPC
+      vs
+Default Reactive Adapter
+      vs
+Timing-Biased Adapter
+```
+
+---
+
+## Results
+
+### Recovery Frontier
+
+| Controller      | Forward L-S3 | Forward R-S4 |
+| --------------- | -----------: | -----------: |
+| Baseline        |         40 N |         35 N |
+| Default adapter |     **50 N** |     **45 N** |
+| Timing-biased   |     **55 N** |     **50 N** |
+
+The **default adapter** provides the main robust improvement.
+
+Its gain is driven primarily by reactive next-footstep relocation.
+
+The **timing-biased adapter** demonstrates that the timing branch is active and can improve selected recovery cases further, but it is more sensitive to tuning and may introduce regressions in other scenarios.
+
+For this reason:
+
+```text
+Default Adapter  → main controller
+Timing-Biased    → diagnostic / ablation configuration
+```
+
+---
+
+## Example Recovery
+
+A typical experiment applies a lateral push while the robot is in single support.
 
 ### Baseline
 
 ```bash
-python3 simulation.py --headless --steps 1000 \
+python3 simulation.py \
+  --headless \
+  --steps 1000 \
   --profile forward \
-  --force 45 --duration 0.10 --direction left \
-  --push-step 3 --push-phase 0.55 --push-target base
+  --force 45 \
+  --duration 0.10 \
+  --direction left \
+  --push-step 3 \
+  --push-phase 0.55 \
+  --push-target base
 ```
 
-### Default adapter
+### Reactive Adapter
 
 ```bash
-python3 simulation.py --headless --steps 1000 \
-  --profile forward --adapt \
-  --force 45 --duration 0.10 --direction left \
-  --push-step 3 --push-phase 0.55 --push-target base
+python3 simulation.py \
+  --headless \
+  --steps 1000 \
+  --profile forward \
+  --adapt \
+  --force 45 \
+  --duration 0.10 \
+  --direction left \
+  --push-step 3 \
+  --push-phase 0.55 \
+  --push-target base
 ```
 
-### Timing-biased adapter
+### Timing-Biased Ablation
 
 ```bash
-python3 simulation.py --headless --steps 1000 \
-  --profile forward --adapt --timing-biased \
-  --force 45 --duration 0.10 --direction left \
-  --push-step 3 --push-phase 0.55 --push-target base
+python3 simulation.py \
+  --headless \
+  --steps 1000 \
+  --profile forward \
+  --adapt \
+  --timing-biased \
+  --force 45 \
+  --duration 0.10 \
+  --direction left \
+  --push-step 3 \
+  --push-phase 0.55 \
+  --push-target base
 ```
 
 ---
 
-## Useful CLI arguments
+## Timing Adaptation Example
 
-| Argument | Description |
-|---|---|
-| `--adapt` | Enables the reactive adapter |
-| `--timing-biased` | Enables the timing-biased diagnostic tuning |
-| `--headless` | Runs the simulation without viewer |
-| `--steps N` | Sets the maximum simulation horizon |
-| `--profile forward/inplace/scianca` | Selects the walking profile |
-| `--force F` | Push force in Newtons |
-| `--duration D` | Push duration in seconds |
-| `--direction left/right/forward/backward` | Push direction |
-| `--push-step S` | Step index where the push is applied |
-| `--push-phase P` | Fraction of the single-support phase where the push is applied |
-| `--push-target base/stance_foot/lfoot/rfoot` | Push target |
-| `--log-json PATH` | Saves a JSON trace |
-| `--quiet` | Reduces console output |
+A timing-biased intervention may produce an update such as:
+
+```text
+[adapter] t=0443 step=3
+ss: 70 -> 71
+xy: (0.600, -0.100) -> (0.562, -0.051)
+```
+
+In this example both the support duration and the target footstep position change.
+
+This illustrates why the improvement should be interpreted as **combined spatial and temporal adaptation**.
 
 ---
 
-## Evaluation workflow
+## Repository Structure
 
-Run the final 1000-tick evaluation battery:
+```text
+reactive-step-timing-ismpc/
+│
+├── simulation.py
+├── step_timing_adapter.py
+├── footstep_planner.py
+├── foot_trajectory_generator.py
+├── ismpc.py
+├── inverse_dynamics.py
+├── filter.py
+├── logger.py
+│
+├── show_results.py
+├── plot_better_recovery_radar.py
+├── plot_adapter_trace_fancy.py
+│
+├── run_all_tests.sh
+├── run_final_1000_pipeline.sh
+├── run_gapfill_tests_1000.sh
+├── run_timing_biased_on_old_tests.sh
+│
+├── logs_final_1000/
+├── logs_timing_biased_full_1000/
+├── logs_gapfill_1000/
+│
+├── plots_final_1000/
+├── viz_final_1000/
+└── docs/assets/
+```
+
+### Main Components
+
+| File                            | Purpose                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| `simulation.py`                 | Simulation entry point, disturbance scheduling and adapter configuration |
+| `step_timing_adapter.py`        | Reactive optimization layer                                              |
+| `footstep_planner.py`           | Nominal and active footstep-plan management                              |
+| `foot_trajectory_generator.py`  | Swing-foot trajectory generation                                         |
+| `ismpc.py`                      | IS-MPC walking-control backbone                                          |
+| `inverse_dynamics.py`           | Whole-body inverse-dynamics controller                                   |
+| `show_results.py`               | Aggregation of evaluation results                                        |
+| `plot_better_recovery_radar.py` | Recovery-frontier visualization                                          |
+
+---
+
+## Reproducing the Evaluation
+
+Run the complete final evaluation battery:
 
 ```bash
 chmod +x run_final_1000_pipeline.sh
 ./run_final_1000_pipeline.sh
 ```
 
-Run the gap-filling battery:
+Additional recovery-frontier experiments can be generated with:
 
 ```bash
 chmod +x run_gapfill_tests_1000.sh
 ./run_gapfill_tests_1000.sh
 ```
 
-Aggregate the results:
+Aggregate the generated logs:
 
 ```bash
 python3 show_results.py \
@@ -230,100 +346,156 @@ python3 show_results.py \
   logs_gapfill_1000
 ```
 
-Generate the main recovery-frontier plots:
+Generate the recovery-frontier plots:
 
 ```bash
 python3 plot_better_recovery_radar.py \
-  --logs logs_final_1000 logs_timing_biased_full_1000 logs_gapfill_1000 \
+  --logs \
+    logs_final_1000 \
+    logs_timing_biased_full_1000 \
+    logs_gapfill_1000 \
   --phase 0.55 \
   --duration 0.10 \
   --complete-only \
   --outdir plots_final_1000/gapfilled_p055_short
 ```
 
-The main outputs are:
+---
 
-```text
-plots_final_1000/gapfilled_p055_short/recovery_bar_clean.png
-plots_final_1000/gapfilled_p055_short/recovery_radar_clean.png
-```
+## Visualizations
 
-To copy the main README figures:
+The evaluation pipeline can produce:
 
-```bash
-mkdir -p docs/assets
+* recovery-frontier plots;
+* controller traces;
+* footstep-plan evolution;
+* robot-motion animations;
+* baseline vs adapted-controller comparisons.
 
-cp plots_final_1000/gapfilled_p055_short/recovery_bar_clean.png    docs/assets/recovery_frontier_p055_dt010_bar.png
+Representative simulation animations can also be converted to lightweight GIFs for visualization directly on GitHub.
 
-cp plots_final_1000/gapfilled_p055_short/recovery_radar_clean.png    docs/assets/recovery_frontier_p055_dt010_radar.png
-```
-
-To generate GIFs from selected animations:
+Example:
 
 ```bash
-mkdir -p docs/assets
+ffmpeg \
+  -i viz_final_1000/A_fwd_adapt_F45_P055_left_S3_timing_animation.mp4 \
+  -vf "fps=12,scale=900:-1:flags=lanczos" \
+  docs/assets/adapter_recovery.gif
+```
 
-ffmpeg -y -i viz_final_1000/A_fwd_base_F45_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_45N_baseline.gif
+If available, a representative recovery GIF can then be embedded near the top of this README:
 
-ffmpeg -y -i viz_final_1000/A_fwd_adapt_F45_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_45N_default_adapter.gif
-
-ffmpeg -y -i viz_final_1000/F_frontier_timing_biased_F50_P055_left_S3_timing_animation.mp4   -vf "fps=12,scale=900:-1:flags=lanczos"   docs/assets/anim_forward_50N_timing_biased.gif
+```markdown
+![Reactive humanoid push recovery](docs/assets/adapter_recovery.gif)
 ```
 
 ---
 
-## Timing-biased ablation
+## Useful CLI Options
 
-The timing-biased mode is enabled with:
+| Argument          | Description                                     |
+| ----------------- | ----------------------------------------------- |
+| `--adapt`         | Enable reactive adaptation                      |
+| `--timing-biased` | Enable timing-biased ablation                   |
+| `--headless`      | Run without graphical viewer                    |
+| `--steps N`       | Maximum simulation horizon                      |
+| `--profile`       | Walking profile                                 |
+| `--force F`       | Push magnitude in Newtons                       |
+| `--duration D`    | Push duration                                   |
+| `--direction`     | Push direction                                  |
+| `--push-step S`   | Step where the disturbance is applied           |
+| `--push-phase P`  | Phase of single support where the push occurs   |
+| `--push-target`   | Body or contact point receiving the disturbance |
+| `--log-json PATH` | Save simulation trace                           |
+| `--quiet`         | Reduce terminal output                          |
 
-```bash
---timing-biased
-```
+---
 
-It changes the QP tuning to make timing updates easier to accept. This mode is useful to verify that the timing branch of the adapter is active.
+## Design Philosophy
 
-Example timing update:
+The main design goal was to avoid replacing an existing walking controller with a completely new architecture.
+
+Instead, the project explores whether a **small reactive planning layer** can significantly improve robustness.
+
+The resulting architecture separates:
 
 ```text
-[adapter] t=0443 step=3 err=0.0025 margin=0.1814
-ss:70->71
-xy:(0.600,-0.100)->(0.562,-0.051)
+Nominal locomotion control
+          +
+Reactive disturbance handling
 ```
 
-This update changes both the single-support duration and the next footstep target. The recovery is therefore spatio-temporal: timing adaptation should not be presented as the only cause of the improvement.
-
-Final timing-biased comparison:
-
-```text
-matched timing-biased cases:        64
-saves vs baseline:                  14
-improvements over default adapter:   9
-same category as default adapter:   53
-worse than default adapter:          2
-```
+This keeps the baseline controller interpretable while allowing online adaptation when necessary.
 
 ---
 
 ## Limitations
 
-The current implementation should not be interpreted as a general push-recovery controller.
+The results should be interpreted within the tested simulation conditions.
 
-The strongest and most reliable result is forward walking under lateral pushes toward the unsupported side. Other regimes are less consistent:
+In particular:
 
-- sagittal pushes are not cleanly solved;
-- long pushes remain difficult;
-- in-place stepping gives mixed results;
-- timing-biased adaptation can improve some cases but regress others;
-- slippage tests are not part of the final supported claim.
+* the strongest improvements were observed in selected forward-walking disturbance scenarios;
+* the timing-biased configuration is more tuning-sensitive than the default adapter;
+* not every disturbance direction benefits equally from adaptation;
+* the evaluation is simulation-based;
+* the current method does not establish robustness for arbitrary pushes or walking conditions.
 
-A fair summary is:
-
-> The project demonstrates that a lightweight reactive footstep adaptation layer can improve selected humanoid push-recovery cases inside an existing IS-MPC walking stack. Timing adaptation is functional, but still tuning-sensitive.
+The timing-biased configuration should therefore not be interpreted as universally superior to the default adapter.
 
 ---
 
-## References
+## Possible Extensions
 
-- M. Khadiv, A. Herzog, S. A. A. Moosavian, and L. Righetti, *Walking Control Based on Step Timing Adaptation*, arXiv:1704.01271.
-- N. Scianca, D. De Simone, L. Lanari, and G. Oriolo, *MPC for Humanoid Gait Generation: Stability and Feasibility*, IEEE Transactions on Robotics, 2020.
-- DIAG Robotics Lab IS-MPC framework.
+Future work could explore:
+
+* automatic tuning of adaptation weights;
+* more systematic viability constraints;
+* broader disturbance directions and magnitudes;
+* uneven terrain;
+* turning and non-straight walking;
+* online disturbance estimation;
+* learned adaptation policies;
+* integration with model-based reinforcement learning;
+* evaluation on a physical humanoid platform.
+
+---
+
+## Tech Stack
+
+`Python` · `Model Predictive Control` · `Quadratic Programming` · `Humanoid Robotics` · `Walking Control` · `DART` · `Inverse Dynamics` · `Optimization`
+
+---
+
+## Skills Demonstrated
+
+This project covers:
+
+* humanoid locomotion;
+* model predictive control;
+* online optimization;
+* disturbance recovery;
+* reactive planning;
+* inverse dynamics;
+* simulation;
+* controller evaluation;
+* experiment design;
+* quantitative robustness analysis.
+
+---
+
+## Background
+
+The project extends an existing **IS-MPC humanoid walking framework** by adding a reactive layer for online footstep and timing adaptation.
+
+The approach is inspired by research on step-timing adaptation for humanoid walking, while preserving the original controller architecture and implementing the adaptation as a lightweight overlay.
+
+---
+
+## Author
+
+**Samuele Civale**
+MSc Artificial Intelligence and Robotics
+Sapienza University of Rome
+
+GitHub: [@samuelecivale](https://github.com/samuelecivale)
